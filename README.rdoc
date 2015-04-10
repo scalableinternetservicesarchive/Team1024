@@ -1,5 +1,19 @@
 == README
 
+Team Name: Team1024
+
+Project Description:
+...
+
+Pivotal Tracker: https://www.pivotaltracker.com/n/projects/1321136
+
+Members:
+
+
+
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
