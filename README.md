@@ -29,7 +29,7 @@ Members:
 		<tr>
 			<td style="padding: 0px; margin: 0px;"><img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/8/005/091/34b/04d8b97.jpg" alt="Weijian Lin" width="150px" height="150px"></td>
 			<td style="padding: 0px; margin: 0px;"><img src="https://raw.githubusercontent.com/scalableinternetservices/Team1024/gaoyuanzhi/Yuanzhi.jpg" alt="Yuanzhi Gao" width="150px" height="150px"></td>
-			<td style="padding: 0px; margin: 0px;"><img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAOVAAAAJGU0NTU2MTQzLTZlOTAtNGE1ZS05ZDU5LTUxMzNmYTk4YmNkYg.jpg" alt="Xi Han" width="200px" height="200px"></td>
+			<td style="padding: 0px; margin: 0px;"><img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAOVAAAAJGU0NTU2MTQzLTZlOTAtNGE1ZS05ZDU5LTUxMzNmYTk4YmNkYg.jpg" alt="Xi Han" width="150px" height="150px"></td>
 			<td style="padding: 0px; margin: 0px;"><img src="#" alt="Junda Zhu" width="150px" height="150px"></td>
 		</tr>
 		<tr>
