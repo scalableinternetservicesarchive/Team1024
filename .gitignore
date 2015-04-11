@@ -4,6 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# XIH: add the following to ignore OS X file system trash.
+.DS_STORE
+
 # Ignore bundler config.
 /.bundle
 
