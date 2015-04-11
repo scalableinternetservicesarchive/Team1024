@@ -1,14 +1,17 @@
-== README
 
-Team Name: Team1024
+#SingleFile by Team 1024
 
-Project Description:
+##Project Description
 
+Have you ever had some events you really want to go but the huge line in front of the ticket office terrified you?
 
-The Big Picture
-Singlefile eliminate the physical line for popular events where priority is a concern. We replace long lines with a shorter physical line and a better virtual line. 
+You may have a homework due soon, or have to go somewhere.. or maybe you just simply hate wasting time!
 
-At first, businesses provide us all the related info about the event or store, such as: location, start time, ticket information, capacity, etc.. Then, the virtual line for either purchasing tickets or entering the event (the process is relatively the same) starts some time before the event begins. 
+Have you ever seen tickets sold out online in ten seconds and you just cannot get one because your Internet sucks?
+
+'SingleFile' eliminates the physical line for popular events where priority is a concern. We replace long lines with a better virtual line so that everybody spends less time and lower energy while the fairness still maintained well!
+
+Businesses provide us all the related info about the event or store, such as: location, start time, ticket information, capacity, etc.. Then, use SingleFile for purchasing tickets starts some time before the event begins. 
 
 The virtual line’s core logic is similar to a physical line in the "real-world" :
 
@@ -18,25 +21,29 @@ The virtual line’s core logic is similar to a physical line in the "real-world
 
 3.Those who spend more time and energy in line will get a better chance of entering the event or purchasing tickets.
 
-Put simply, the purpose of this virtual line is to provide a prioritization process that is as ‘fair’ and easy as possible while also reducing everybody’s burden(both participants and organizers) at the same time.
 
+##<a href="https://www.pivotaltracker.com/n/projects/1321136">Pivotal Tracker</a>
+https://www.pivotaltracker.com/n/projects/1321136
 
-Pivotal Tracker: https://www.pivotaltracker.com/n/projects/1321136
+##Members
+<table>
+	<tbody>
+		<tr>
+			<td style="padding: 0px; margin: 0px;"><img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/8/005/091/34b/04d8b97.jpg" alt="Weijian Lin" width="150px" height="150px"></td>
+			<td style="padding: 0px; margin: 0px;"><img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/046/323/3c9c38c.jpg" alt="Yuanzhi Gao" width="150px" height="150px"></td>
+			<td style="padding: 0px; margin: 0px;"><img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAOVAAAAJGU0NTU2MTQzLTZlOTAtNGE1ZS05ZDU5LTUxMzNmYTk4YmNkYg.jpg" alt="Xi Han" width="150px" height="150px"></td>
+			<td style="padding: 0px; margin: 0px;"><img src="https://media.licdn.com/media/p/2/000/231/38a/1b6be44.jpg" alt="Junda Zhu" width="150px" height="150px"></td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Weijian Lin</td>
+			<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yuanzhi Gao</td>
+			<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Xi Han</td>
+			<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Junda Zhu</td>
+		</tr>
+	</tbody>
+</table>
 
-Members:
-
-![Weijian Lin](https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/8/005/091/34b/04d8b97.jpg)
-![Yuanzhi Gao]()
-![Xi Han](https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAOVAAAAJGU0NTU2MTQzLTZlOTAtNGE1ZS05ZDU5LTUxMzNmYTk4YmNkYg.jpg)
-![Junda Zhu]()
-
-
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+##Things to be covered
 
 * Ruby version
 
@@ -55,7 +62,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
