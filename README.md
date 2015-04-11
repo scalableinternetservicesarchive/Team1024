@@ -24,17 +24,22 @@ Put simply, the purpose of this virtual line is to provide a prioritization proc
 Pivotal Tracker: https://www.pivotaltracker.com/n/projects/1321136
 
 Members:
-
-
-
-![Weijian Lin](https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/8/005/091/34b/04d8b97.jpg =200x200)
-![Yuanzhi Gao](https://github.com/scalableinternetservices/Team1024/blob/gaoyuanzhi/Yuanzhi.jpg =200x200)
-![Xi Han](https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAOVAAAAJGU0NTU2MTQzLTZlOTAtNGE1ZS05ZDU5LTUxMzNmYTk4YmNkYg.jpg)
-![Junda Zhu](/jz/jz-photo.jpg =200x200)
-
-Weijian Lin 			Yuanzhi Gao 			Xi Han		 			Junda Zhu
-
-
+<table>
+	<tbody>
+		<tr>
+			<td style="padding: 0px; margin: 0px;"><img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/8/005/091/34b/04d8b97.jpg" alt="Weijian Lin" width="150px" height="150px"></td>
+			<td style="padding: 0px; margin: 0px;"><img src="https://raw.githubusercontent.com/scalableinternetservices/Team1024/gaoyuanzhi/Yuanzhi.jpg" alt="Yuanzhi Gao" width="150px" height="150px"></td>
+			<td style="padding: 0px; margin: 0px;"><img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAOVAAAAJGU0NTU2MTQzLTZlOTAtNGE1ZS05ZDU5LTUxMzNmYTk4YmNkYg.jpg" alt="Xi Han" width="150px" height="150px"></td>
+			<td style="padding: 0px; margin: 0px;"><img src="#" alt="Junda Zhu" width="150px" height="150px"></td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Weijian Lin</td>
+			<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yuanzhi Gao</td>
+			<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Xi Han</td>
+			<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Junda Zhu</td>
+		</tr>
+	</tbody>
+</table>
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
