@@ -3,8 +3,10 @@ Team Name: 1024
 
 Project Description:
 
-Have you ever had some events you really want to go but the huge line in front of the ticket office terriied you?
+Have you ever had some events you really want to go but the huge line in front of the ticket office terrified you?
+
 You may have a homework due soon, or have to go somewhere.. or maybe you just simply hate wasting time!
+
 Have you ever seen tickets sold out online in ten seconds and you just cannot get one because your Internet sucks?
 
 'SingleFile' eliminates the physical line for popular events where priority is a concern. We replace long lines with a better virtual line so that everybody spends less time and lower energy while the fairness still maintained well!
