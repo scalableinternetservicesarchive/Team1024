@@ -1,14 +1,15 @@
-== README
 
-Team Name: Team1024
+Team Name: 1024
 
 Project Description:
 
+Have you ever had some events you really want to go but the huge line in front of the ticket office terriied you?
+You may have a homework due soon, or have to go somewhere.. or maybe you just simply hate wasting time!
+Have you ever seen tickets sold out online in ten seconds and you just cannot get one because your Internet sucks?
 
-The Big Picture
-Singlefile eliminate the physical line for popular events where priority is a concern. We replace long lines with a shorter physical line and a better virtual line. 
+'SingleFile' eliminates the physical line for popular events where priority is a concern. We replace long lines with a better virtual line so that everybody spends less time and lower energy while the fairness still maintained well!
 
-At first, businesses provide us all the related info about the event or store, such as: location, start time, ticket information, capacity, etc.. Then, the virtual line for either purchasing tickets or entering the event (the process is relatively the same) starts some time before the event begins. 
+Businesses provide us all the related info about the event or store, such as: location, start time, ticket information, capacity, etc.. Then, use SingleFile for purchasing tickets starts some time before the event begins. 
 
 The virtual line’s core logic is similar to a physical line in the "real-world" :
 
@@ -17,8 +18,6 @@ The virtual line’s core logic is similar to a physical line in the "real-world
 2.People can lose their position if they're inattentive or leave the line
 
 3.Those who spend more time and energy in line will get a better chance of entering the event or purchasing tickets.
-
-Put simply, the purpose of this virtual line is to provide a prioritization process that is as ‘fair’ and easy as possible while also reducing everybody’s burden(both participants and organizers) at the same time.
 
 
 Pivotal Tracker: https://www.pivotaltracker.com/n/projects/1321136
