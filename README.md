@@ -25,11 +25,15 @@ Pivotal Tracker: https://www.pivotaltracker.com/n/projects/1321136
 
 Members:
 
-![Weijian Lin](https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/8/005/091/34b/04d8b97.jpg)
-![Yuanzhi Gao]()
-![Xi Han](https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAOVAAAAJGU0NTU2MTQzLTZlOTAtNGE1ZS05ZDU5LTUxMzNmYTk4YmNkYg.jpg)
-![Junda Zhu]()
 
+
+![Weijian Lin](https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/8/005/091/34b/04d8b97.jpg =200x200)
+![Yuanzhi Gao](https://github.com/scalableinternetservices/Team1024/blob/gaoyua\
+nzhi/Yuanzhi.jpg = 200x200)
+![Xi Han](https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAOVAAAAJGU0NTU2MTQzLTZlOTAtNGE1ZS05ZDU5LTUxMzNmYTk4YmNkYg.jpg)
+![Junda Zhu](/jz/jz-photo.jpg =200x200)
+
+Weijian Lin 			Yuanzhi Gao 			Xi Han		 			Junda Zhu
 
 
 
