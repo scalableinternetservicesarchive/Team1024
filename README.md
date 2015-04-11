@@ -1,7 +1,7 @@
 
-Team Name: 1024
+#SingleFile by Team 1024
 
-Project Description:
+##Project Description
 
 Have you ever had some events you really want to go but the huge line in front of the ticket office terrified you?
 
@@ -22,9 +22,10 @@ The virtual line’s core logic is similar to a physical line in the "real-world
 3.Those who spend more time and energy in line will get a better chance of entering the event or purchasing tickets.
 
 
-Pivotal Tracker: https://www.pivotaltracker.com/n/projects/1321136
+##<a href="https://www.pivotaltracker.com/n/projects/1321136">Pivotal Tracker</a>
+https://www.pivotaltracker.com/n/projects/1321136
 
-Members:
+##Members
 <table>
 	<tbody>
 		<tr>
@@ -42,10 +43,7 @@ Members:
 	</tbody>
 </table>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+##Things to be covered
 
 * Ruby version
 
@@ -64,7 +62,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
