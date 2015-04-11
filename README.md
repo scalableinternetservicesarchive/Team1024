@@ -33,10 +33,10 @@ Members:
 			<td style="padding: 0px; margin: 0px;"><img src="#" alt="Junda Zhu" width="150px" height="150px"></td>
 		</tr>
 		<tr>
-			<td style="text-align: center;">Weijian Lin</td>
-			<td style="text-align: center;">Yuanzhi Gao</td>
-			<td style="text-align: center;">Xi Han</td>
-			<td style="text-align: center;">Junda Zhu</td>
+			<td style="text-align: center;">&nbsp;&nbsp;Weijian Lin</td>
+			<td style="text-align: center;">&nbsp;&nbsp;Yuanzhi Gao</td>
+			<td style="text-align: center;">&nbsp;&nbsp;Xi Han</td>
+			<td style="text-align: center;">&nbsp;&nbsp;Junda Zhu</td>
 		</tr>
 	</tbody>
 </table>
