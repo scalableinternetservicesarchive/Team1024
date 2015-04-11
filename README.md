@@ -30,9 +30,9 @@ https://www.pivotaltracker.com/n/projects/1321136
 	<tbody>
 		<tr>
 			<td style="padding: 0px; margin: 0px;"><img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/8/005/091/34b/04d8b97.jpg" alt="Weijian Lin" width="150px" height="150px"></td>
-			<td style="padding: 0px; margin: 0px;"><img src="https://raw.githubusercontent.com/scalableinternetservices/Team1024/gaoyuanzhi/Yuanzhi.jpg" alt="Yuanzhi Gao" width="150px" height="150px"></td>
+			<td style="padding: 0px; margin: 0px;"><img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/046/323/3c9c38c.jpg" alt="Yuanzhi Gao" width="150px" height="150px"></td>
 			<td style="padding: 0px; margin: 0px;"><img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAOVAAAAJGU0NTU2MTQzLTZlOTAtNGE1ZS05ZDU5LTUxMzNmYTk4YmNkYg.jpg" alt="Xi Han" width="150px" height="150px"></td>
-			<td style="padding: 0px; margin: 0px;"><img src="#" alt="Junda Zhu" width="150px" height="150px"></td>
+			<td style="padding: 0px; margin: 0px;"><img src="https://media.licdn.com/media/p/2/000/231/38a/1b6be44.jpg" alt="Junda Zhu" width="150px" height="150px"></td>
 		</tr>
 		<tr>
 			<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Weijian Lin</td>
