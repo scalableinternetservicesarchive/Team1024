@@ -1,1 +1,2 @@
-sudo gem install nokogiri
+sudo yum install -y patch
+sudo yum install -y sqlite-devel
