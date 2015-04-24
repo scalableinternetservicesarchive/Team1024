@@ -1,18 +1,24 @@
 Rails.application.routes.draw do
+  devise_for :managers
   resources :lines
   resources :fake_users
   resources :events
-  devise_for :users, controllers: { sessions: 'user/sessions', registrations: 'user/registrations' }
 
+  devise_scope :user do
+    get '/' => 'user/sessions#new'
+    get 'user/sign_out' => 'user/sessions#destroy'
+  end
+  devise_for :user, controllers: { sessions: 'user/sessions', registrations: 'user/registrations' }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'user#index'
+  root 'user/sessions#new'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-  get 'users/user_dashboard' => 'user#user_dashboard'
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

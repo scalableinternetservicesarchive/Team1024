@@ -53,7 +53,7 @@
                 <%= f.submit "Log in", class: 'btn btn-lrg', id: 'sign_in_button' %>
               </div>
             <% end %>
-            <!--<form id="login_form" method="post" action="/users/login/">
+            <!--<form id="login_form" method="post" action="/user/login/">
               Username:<input name="username" id="username" type="text" placeholder="Username">
               Password:<input name="password" id="password" type="password" placeholder="Password"><br>
               <button type="submit" class="btn btn-lrg" id = "sign_in_button">Sign in</button>
@@ -284,21 +284,7 @@
   </div>
 </footer>
 
-<!-- Modal for logout  -->
-<div id="logout_modal" class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-body">
-            <center><h2>Are you sure you want to log out?</h2> <span style="color:blue; font-size: 12pt"> You'll still be able to receive SMS notification</span></center>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'btn btn-danger', type: 'button' %>
-    <!--        <a href="/users/logout/" type="button" class="btn btn-danger">Log out</a>-->
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-</div>
+
 <!-- end footer -->
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -325,3 +311,18 @@
 
 </script>
 
+<!-- Modal for logout  -->
+<div id="logout_modal" class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-body">
+            <center><h2>Are you sure you want to log out?</h2> <span style="color:blue; font-size: 12pt"> You'll still be able to receive SMS notification</span></center>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'btn btn-danger', type: 'button' %>
+    <!--        <a href="/user/logout/" type="button" class="btn btn-danger">Log out</a>-->
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+</div>
