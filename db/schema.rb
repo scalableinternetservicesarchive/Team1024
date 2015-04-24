@@ -11,7 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424002854) do
+ActiveRecord::Schema.define(version: 20150424044834) do
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name",           null: false
+    t.integer  "max_attendance", null: false
+    t.datetime "start_time",     null: false
+    t.datetime "create_time",    null: false
+    t.text     "description"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "fake_users", force: :cascade do |t|
+    t.string   "phone_number",             null: false
+    t.integer  "lives",                    null: false
+    t.integer  "position",                 null: false
+    t.integer  "score",                    null: false
+    t.integer  "checkin_count",            null: false
+    t.integer  "continuous_checkin_count", null: false
+    t.integer  "missed_checkin_count",     null: false
+    t.integer  "delta_value",              null: false
+    t.boolean  "checkin_current_period",   null: false
+    t.boolean  "first_try",                null: false
+    t.boolean  "robot",                    null: false
+    t.datetime "send_notification_time",   null: false
+    t.string   "notification_option",      null: false
+    t.boolean  "send_notification",        null: false
+    t.datetime "notification_deadline",    null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "lines", force: :cascade do |t|
+    t.string   "status",              null: false
+    t.boolean  "already_start",       null: false
+    t.datetime "start_time",          null: false
+    t.datetime "end_time",            null: false
+    t.datetime "next_checkin_time",   null: false
+    t.integer  "number_of_fake_user", null: false
+    t.integer  "min_score",           null: false
+    t.integer  "max_score",           null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

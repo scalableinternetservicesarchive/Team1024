@@ -1,0 +1,357 @@
+/*
+ * Author: Carlos Alvarez
+ * URL: http://alvarez.is
+ *
+ * Project Name: FLATTY - Free Bootstrap 3 Theme
+ * Version: 1.0
+ * URL: http://blacktie.co
+ */
+
+body {
+  background-color: #F1F2F2;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: #555;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+/* Titles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    color: #333;
+}
+
+h1 {
+	font-size: 40px;
+}
+
+h3 {
+	color: #95a5a6;
+	font-weight: 400;
+}
+
+h4 {
+	color: #95a5a6;
+	font-weight: 400;
+	font-size: 20px;
+}
+
+/* Paragraph & Typographic */
+p {
+    line-height: 28px;
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.centered {
+    text-align: center;
+}
+
+/* Links */
+a {
+    color: white;
+    word-wrap: break-word;
+
+    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+    transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+a:hover,
+a:focus {
+    color: #7b7b7b;
+    text-decoration: none;
+    outline: 0;
+}
+
+a:before,
+a:after {
+    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+    transition: color 0.1s ease-in, background 0.1s ease-in;
+}
+
+ hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.navbar-default {
+	background-color: #4CAED3;
+	border-color: transparent;
+}
+
+.navbar-default .navbar-brand {
+	color: white;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: white;
+}
+
+/* Helpers */
+
+.mt {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.form-control {
+	height: 42px;
+	font-size: 18px;
+	width: 280px;
+}
+
+i {
+	margin: 8px;
+	color: #4CAED3; 
+}
+
+
+/* HeaderWrap */
+#headerwrap {
+	/* background: url(../img/bg01.jpg) no-repeat center top; */
+	background-color: #4CAED3;
+	margin-top: -20px;
+	padding-top:200px;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 650px;
+	width: 100%;
+	
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#headerwrap h1 {
+	margin-top: 60px;
+	margin-bottom: 15px;
+	color: white;
+	font-size: 45px;
+	font-weight: 300;
+	letter-spacing: 1px;
+}
+
+
+/* 3.5 Footer */
+.footer{
+    text-align:center;
+    display:block;
+    margin:20px 0 10px 0;
+}
+
+.footer {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+}
+.footer {
+    width:100%;
+    position:relative;
+    z-index:20;
+    background-color: #424242;
+
+}
+.footer-top {
+    width:100%;
+    font-size:15px;
+    color:#999;
+    text-align:center;
+    padding: 20px 0;
+
+}
+.footer-bottom {
+    border-top:solid 1px #666;
+    width:100%;
+    font-size:12px;
+    color:#666;
+    padding:10px 0 50px 0;
+}
+.footer-top h4 {
+    font-size:24px;
+    color:#fff;
+    padding:0 0 24px 0;
+}
+.footer-top p {
+    line-height:24px;
+}
+.footer-top a {
+    color:#999;
+}
+.footer-top a:hover {
+    color:#fff;
+}
+.footer-bottom p {
+    padding-top:8px;
+}
+
+
+/* 3.5.1 Social */
+ul.social {
+    float:right;
+}
+ul.social li {
+    border:solid 1px #212121;
+    width:36px;
+    height:30px;
+    float:left;
+    margin:0 0 0 14px;
+    display:inline;
+    background-color: #444;
+    background-image: -ms-linear-gradient(top, #4d4d4e, #444444);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4d4d4e), to(#444444));
+    background-image: -webkit-linear-gradient(top, #4d4d4e, #444444);
+    background-image: -o-linear-gradient(top, #4d4d4e, #444444);
+    background-image: -moz-linear-gradient(top, #4d4d4e, #444444);
+    background-image: linear-gradient(top, #4d4d4e, #444444);
+    background-repeat: repeat-x;
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#4d4d4e', endColorstr='#444444', GradientType=0);
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+    box-shadow:0 1px 0 rgba(255,255,255, .1), 0 1px 0 rgba(255,255,255, .3) inset;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    position:relative;
+}
+ul.social li:hover {
+    box-shadow:0 1px 2px rgba(255,255,255, .1), 0 1px 2px rgba(255,255,255, .3) inset;
+}
+ul.social li a {
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:20px 17px;
+    display:block;
+    line-height:30px;
+    width:36px;
+    text-indent:-9999px;
+    height:30px;
+}
+ul.social li.fb a {
+    background-image:url(../images_copy/ico_facebook.png);
+}
+ul.social li.fb:hover {
+    background-color: #405aa2;
+    background-image: -ms-linear-gradient(top, #445fad, #405aa2);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#445fad), to(#405aa2));
+    background-image: -webkit-linear-gradient(top, #445fad, #405aa2);
+    background-image: -o-linear-gradient(top, #445fad, #405aa2);
+    background-image: -moz-linear-gradient(top, #445fad, #405aa2);
+    background-image: linear-gradient(top, #445fad, #405aa2);
+    background-repeat: repeat-x;
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#445fad', endColorstr='#405aa2', GradientType=0);
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+ul.social li.tw a {
+    background-image:url(../images_copy/ico_twitter.png);
+}
+ul.social li.tw:hover {
+    background-color: #0487b2;
+    background-image: -ms-linear-gradient(top, #0590be, #0487b2);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0590be), to(#0487b2));
+    background-image: -webkit-linear-gradient(top, #0590be, #0487b2);
+    background-image: -o-linear-gradient(top, #0590be, #0487b2);
+    background-image: -moz-linear-gradient(top, #0590be, #0487b2);
+    background-image: linear-gradient(top, #0590be, #0487b2);
+    background-repeat: repeat-x;
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#0590be', endColorstr='#0487b2', GradientType=0);
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+ul.social li.gp a {
+    background-image:url(assets/images_copy/google_plus.png);
+}
+ul.social li.gp:hover {
+    background-color: #c5c5c5;
+    background-image: -ms-linear-gradient(top, #d2d2d2, #c5c5c5);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d2d2d2), to(#c5c5c5));
+    background-image: -webkit-linear-gradient(top, #d2d2d2, #c5c5c5);
+    background-image: -o-linear-gradient(top, #d2d2d2, #c5c5c5);
+    background-image: -moz-linear-gradient(top, #d2d2d2, #c5c5c5);
+    background-image: linear-gradient(top, #d2d2d2, #c5c5c5);
+    background-repeat: repeat-x;
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#d2d2d2', endColorstr='#c5c5c5', GradientType=0);
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+
+#scrollTop a {
+    background:#000;
+    width:40px;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:100;
+    -moz-border-radius:40px;
+    -webkit-border-radius:40px;
+    border-radius:40px;
+}
+#scrollTop a:hover {
+    background:rgba(0, 0, 0, 0.90);
+}
+
+.dashboard-mobile_customcss {
+    width: 240px;
+    padding: 10px 0 25px 20px;
+}
+
+.large-form {
+    font-size: 16px;
+}
+
+
+.control-label .form-large{
+    line-height: normal;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.input-mysize {
+    width: 400px;
+}
+
+
+.reg-form {
+    border-radius: 5px;
+    background: #fff;
+    max-width: 540px;
+    padding: 30px 40px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.color-body {
+    background-color: #4CAED3;
+    padding-top: 100px;
+}
+
+.nav-color {
+    background-color: #fff;
+}
+
+.success1 {
+    background-color: #fff;
+}
+

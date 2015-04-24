@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :lines
+  resources :fake_users
+  resources :events
+  devise_for :users, controllers: { sessions: 'user/sessions', registrations: 'user/registrations' }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -8,7 +12,7 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-
+  get 'users/user_dashboard' => 'user#user_dashboard'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
