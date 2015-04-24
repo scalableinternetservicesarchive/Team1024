@@ -28,7 +28,7 @@ class FakeUsersController < ApplicationController
 
     respond_to do |format|
       if @fake_user.save
-        format.html { redirect_to @fake_user, notice: 'Fake user was successfully created.' }
+        format.html { redirect_to @fake_user, notice: 'Fake users was successfully created.' }
         format.json { render :show, status: :created, location: @fake_user }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class FakeUsersController < ApplicationController
   def update
     respond_to do |format|
       if @fake_user.update(fake_user_params)
-        format.html { redirect_to @fake_user, notice: 'Fake user was successfully updated.' }
+        format.html { redirect_to @fake_user, notice: 'Fake users was successfully updated.' }
         format.json { render :show, status: :ok, location: @fake_user }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class FakeUsersController < ApplicationController
   def destroy
     @fake_user.destroy
     respond_to do |format|
-      format.html { redirect_to fake_users_url, notice: 'Fake user was successfully destroyed.' }
+      format.html { redirect_to fake_users_url, notice: 'Fake users was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

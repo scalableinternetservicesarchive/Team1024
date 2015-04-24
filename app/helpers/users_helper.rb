@@ -1,6 +1,6 @@
 module UsersHelper
   def resource_name
-    :user
+    :users
   end
 
   def resource
@@ -8,6 +8,6 @@ module UsersHelper
   end
 
   def devise_mapping
-    @devise_mapping ||= Devise.mappings[:user]
+    @devise_mapping ||= Devise.mappings[:users]
   end
 end

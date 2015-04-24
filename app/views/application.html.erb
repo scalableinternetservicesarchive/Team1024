@@ -1,6 +1,6 @@
 <!-- Transplantation Note:
      1. We need RoR ways to adding form validation.
-     2. We need to integrate "devise" into this template to achieve user authentication.
+     2. We need to integrate "devise" into this template to achieve users authentication.
         Currently, all django embedded "if registered"s are commented out.
  -->
 
@@ -53,7 +53,7 @@
                 <%= f.submit "Log in", class: 'btn btn-lrg', id: 'sign_in_button' %>
               </div>
             <% end %>
-            <!--<form id="login_form" method="post" action="/user/login/">
+            <!--<form id="login_form" method="post" action="/users/login/">
               Username:<input name="username" id="username" type="text" placeholder="Username">
               Password:<input name="password" id="password" type="password" placeholder="Password"><br>
               <button type="submit" class="btn btn-lrg" id = "sign_in_button">Sign in</button>
@@ -305,7 +305,7 @@
         $("#footer").hide();
 
     }
-    window.onscroll=testScroll
+    window.onscroll=testScroll;
   });
 
 
@@ -321,7 +321,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'btn btn-danger', type: 'button' %>
-    <!--        <a href="/user/logout/" type="button" class="btn btn-danger">Log out</a>-->
+    <!--        <a href="/users/logout/" type="button" class="btn btn-danger">Log out</a>-->
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
