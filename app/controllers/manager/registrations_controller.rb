@@ -1,4 +1,4 @@
-class Manager::RegistrationsController < Devise::RegistrationsController
+gclass Manager::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
@@ -8,9 +8,30 @@ class Manager::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    build_resource(sign_up_params)
+
+    resource_saved = resource.save
+    yield resource if block_given?
+    if resource_saved
+      if resource.active_for_authentication?
+        set_flash_message :notice, :signed_up if is_flashing_format?
+        sign_up(resource_name, resource)
+        render 'managers_dashboard'
+      else
+        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
+        expire_data_after_sign_in!
+        render 'managers_dashboard'
+      end
+    else
+      clean_up_passwords resource
+      @validatable = devise_mapping.validatable?
+      if @validatable
+        @minimum_password_length = resource_class.password_length.min
+      end
+      redirect_to 'managers_dashboard'
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -23,9 +44,9 @@ class Manager::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign

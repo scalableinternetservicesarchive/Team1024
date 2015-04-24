@@ -8,7 +8,7 @@ class User::SessionsController < Devise::SessionsController
       self.resource = resource_class.new;
     end
     respond_to do |format|
-        format.html { render '/application' }
+        format.html { render '/application', layout: 'index' }
     end
   end
 
@@ -20,7 +20,7 @@ class User::SessionsController < Devise::SessionsController
     sign_in(resource_name, resource)
     yield resource if block_given?
     respond_to do |format|
-      format.html { render '/application' }
+      format.html { render '/application', layout: 'index' }
     end
   end
 
