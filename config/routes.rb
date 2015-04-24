@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'user/sessions', registrations: 'user/registrations' }
-  devise_for :managers
+  devise_for :managers, controllers: { sessions: 'manager/sessions', registrations: 'manager/registrations' }
   resources :lines
   resources :fake_users
   resources :events
@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     get 'users/sign_out' => 'user/sessions#destroy'
   end
 
+  devise_scope :manager do
+    get 'managers/sign_out' => 'manager/sessions#destroy'
+    get 'managers/dashboard' => 'managers#dashboard'
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

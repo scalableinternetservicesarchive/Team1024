@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @events = Event.all
   end
 
   # GET /events/new
@@ -69,6 +70,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params[:event]
+      params[:event].permit(:name, :start_time, :create_time, :max_attendance, :description)
     end
 end

@@ -6,7 +6,7 @@
 
 # XIH: add the following to ignore OS X file system trash.
 .DS_STORE
-.idea
+.idea/
 
 # Ignore bundler config.
 /.bundle

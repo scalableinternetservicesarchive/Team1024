@@ -181,7 +181,7 @@
     </div>
   </div><!-- /row -->
 
-  <! -- CAROUSEL -->
+  <!-- CAROUSEL -->
   <div class="row mt centered">
     <div class="col-lg-6 col-lg-offset-3">
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -207,7 +207,7 @@
       </div>
     </div><!-- /col-lg-8 -->
   </div><!-- /row -->
-</div><! --/container -->
+</div><!--/container -->
 
 <div class="container">
   <hr>
@@ -263,7 +263,7 @@
       <div class="footer-top">
         <h4>Get in touch.</h4>
         <h4>
-          Call us at <a href="tel:12345678901"> 1-234-567-8901 </a> or email <a href="mailto:team@singlefile.co"> team@singlefile.co</a>
+          Are you an event manager? <%= link_to "Sign in", new_manager_session_path %> as a manager or <%= link_to "Sign up", new_manager_registration_path %>.
         </h4>
       </div>
       <!-- end top -->
@@ -284,7 +284,21 @@
   </div>
 </footer>
 
-
+<!-- Modal for logout  -->
+<div id="logout_modal" class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-body">
+            <center><h2>Are you sure you want to log out?</h2> <span style="color:blue; font-size: 12pt"> You'll still be able to receive SMS notification</span></center>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'btn btn-danger', type: 'button' %>
+    <!--        <a href="/users/logout/" type="button" class="btn btn-danger">Log out</a>-->
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+</div>
 <!-- end footer -->
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -310,19 +324,3 @@
 
 
 </script>
-
-<!-- Modal for logout  -->
-<div id="logout_modal" class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-body">
-            <center><h2>Are you sure you want to log out?</h2> <span style="color:blue; font-size: 12pt"> You'll still be able to receive SMS notification</span></center>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'btn btn-danger', type: 'button' %>
-    <!--        <a href="/users/logout/" type="button" class="btn btn-danger">Log out</a>-->
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-</div>

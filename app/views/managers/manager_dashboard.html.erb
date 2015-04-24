@@ -48,13 +48,12 @@
             <!-- /input-group -->
           </li>
           <li>
-            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Line Dashboard <span class="label label-danger label-as-badge">{{number_of_lines}}</span></a>
+            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Line Dashboard <span class="label label-danger label-as-badge">2</span></a>
           </li>
           <li>
-            <a href="/managers/events/"><i class="glyphicon glyphicon-th-list fa-fw"></i> My Events</a>
-          </li>
-          <li>
-            <a href="/managers/create-event"><i class="fa fa-flash fa-fw"></i> Create Event</a>
+            <%= link_to new_event_path do %>
+              <i class='fa fa-flash fa-fw'></i> Create Event
+            <% end %>
           </li>
 
 
@@ -80,28 +79,28 @@
     <!-- /.row -->
     <!-- Progress bar -->
     <ul class="nav nav-tabs" role="tablist" id="tabs-customcss">
-      {% for event in current_events %}
-      <li role="presentation" ><a href="#line_panel{{forloop.counter}}" aria-controls="line_panel{{event.id}}" role="tab" data-toggle="tab"><span style="color:black;">Line {{forloop.counter}}</span></a></li>
-      {%endfor%}
+
+      <li role="presentation" ><a href="#" aria-controls="1" role="tab" data-toggle="tab"><span style="color:black;">Line 1</span></a></li>
+      <li role="presentation" ><a href="#" aria-controls="2" role="tab" data-toggle="tab"><span style="color:black;">Line 2</span></a></li>
+
     </ul>
 
     <div class="tab-content">
 
-      {% for event in current_events %}
-      <div role="tabpanel" class="tab-pane" id="line_panel{{forloop.counter}}">
+      <div role="tabpanel" class="tab-pane" id="line_panel1">
         <a href="#">
           <div>
             <p>
               </br>
-              <strong>Line{{forloop.counter}}: {{event.name}}</strong>
+              <strong>Line 1: Event 1</strong>
             </p>
-            <p id="timing_info{{event.id}}">
-              <span id="past-time{{event.id}}" class="pull-left text-muted"></span>
-              <span id="total-time{{event.id}}" class="pull-right text-muted"></span>
+            <p id="timing_info1">
+              <span id="past-time1" class="pull-left text-muted"></span>
+              <span id="total-time1" class="pull-right text-muted"></span>
             </p>
             </br>
-            <div id="line{{event.id}}-bar-control" class="progress progress-striped active">
-              <div id="line{{event.id}}-bar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+            <div id="line1-bar-control" class="progress progress-striped active">
+              <div id="line1-bar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
                 <span class="sr-only">80% Complete (danger)</span>
               </div>
             </div>
@@ -117,7 +116,7 @@
                     <i class="fa fa-user fa-5x"></i>
                   </div>
                   <div class="col-xs-9 text-right">
-                    <div class="huge" id="number_of_fake_user{{event.id}}">{{event.line.number_of_fake_user}}</div>
+                    <div class="huge" id="number_of_fake_user1">1</div>
                     <div>Total People in Line!</div>
 
                   </div>
@@ -159,7 +158,7 @@
                     <i class="glyphicon glyphicon-envelope fa-5x"></i>
                   </div>
                   <div class="col-xs-9 text-right">
-                    <div class="huge" id="notifs_sent{{event.id}}">{{event.number_of_notifications}} </div>
+                    <div class="huge" id="notifs_sent1">1 </div>
                     <div>Push Notifications Sent!</div>
                   </div>
                 </div>
@@ -183,7 +182,7 @@
               </div>
               <!-- /.panel-heading -->
               <div class="panel-body">
-                <div id="chart{{event.id}}" width="100%"></div>
+                <div id="chart1" width="100%"></div>
               </div>
               <!-- /.panel-body -->
             </div>
@@ -206,16 +205,14 @@
                           <th>Total People in Line</th>
                         </tr>
                         </thead>
-                        <tbody id="tbody{{event.id}}">
+                        <tbody id="tbody1">
 
-                        {%for record in event.notif_history reversed%}
                         <tr>
-                          <td>#{{record.num}}</td>
-                          <td>{{record.end_time}} </td>
-                          <td>{{record.number_of_checkin}} </td>
-                          <td>{{record.number_of_fake_user}} </td>
+                          <td>#1}</td>
+                          <td>1 </td>
+                          <td>1 </td>
+                          <td>1 </td>
                         </tr>
-                        {%endfor%}
 
                         </tbody>
                       </table>
@@ -329,7 +326,6 @@
 
       </div>
       <!-- /#page-wrapper -->
-      {%endfor%}
     </div>
 
   </div>
@@ -340,13 +336,14 @@
 <!-- jQuery Version 1.11.0 -->
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src={% static "assets/js/bootstrap.min.js"%}></script>
+<%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => true %>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src={% static "assets/js/plugins/metisMenu/metisMenu.min.js"%}></script>
+<%= javascript_include_tag 'plugins/metisMenu/metisMenu.min', 'data-turbolinks-track' => true %>
 
 <!-- Custom Theme JavaScript -->
-<script src={% static "assets/js/sb-admin-2.js" %}></script>
+<%= javascript_include_tag 'sb-admin-2', 'data-turbolinks-track' => true %>
+
 <!-- Pusher -->
 <script src="//js.pusher.com/2.2/pusher.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -382,11 +379,10 @@
 
   //--update progress bar every second--//
   function progress_bar_update(){
-    {%for event in current_events%}
-      if ('{{event.line.status}}'=='O'){
+      if ('O'=='O'){
         var start_time, end_time;
-        start_time =new Date("{{event.line.line_time.isoformat}}");
-        end_time   =new Date("{{event.line.end_time.isoformat}}");
+        start_time =new Date();
+        end_time   =new Date();
         var time_now = new Date();
         var total_length_in_sec = (end_time-start_time)/1000;
         var past_time_in_sec = (time_now - start_time)/1000;
@@ -399,17 +395,17 @@
         var past_time = secondsToTime(past_time_in_sec);
         if (time_now > end_time){
           past_time = total_time;
-          $("#line{{event.id}}-bar-control").attr("class","progress progress-striped");
+          $("#line1-bar-control").attr("class","progress progress-striped");
 
         }
         if(past_time.h == 0){
-          $("#past-time{{event.id}}").text(" time passed: "+past_time.m+"mins"+past_time.s+"s");}
+          $("#past-time1").text(" time passed: "+past_time.m+"mins"+past_time.s+"s");}
         else{
-          $("#past-time{{event.id}}").text(" time passed: "+past_time.h+"hours "+past_time.m+"mins"+past_time.s+"s");
+          $("#past-time1").text(" time passed: "+past_time.h+"hours "+past_time.m+"mins"+past_time.s+"s");
         }
-        $("#total-time{{event.id}}").text("total line time: "+total_time.h+"hours "+total_time.m+"mins");
-        $("#line{{event.id}}-bar").attr("style","width: "+past_percentage+"%");
-        $("#line{{event.id}}-bar").text(past_percentage+"% Complete");
+        $("#total-time1").text("total line time: "+total_time.h+"hours "+total_time.m+"mins");
+        $("#line1-bar").attr("style","width: "+past_percentage+"%");
+        $("#line1-bar").text(past_percentage+"% Complete");
       }
       if ('{{event.line.status}}'=='R'){
         var start_time =new Date("{{event.line.line_time.isoformat}}");
@@ -420,10 +416,10 @@
           time_before_start_in_sec = 0;
         }
         var time_before_start = secondsToTime(time_before_start_in_sec);
-        $("#line{{event.id}}-bar").attr("class","progress-bar progress-bar-info");
-        $("#line{{event.id}}-bar").attr("style","width: 100%");
-        $("#timing_info{{event.id}}").html("<span class='pull-left text-muted'>Will start at {{event.line.line_time}}</span>")
-        $("#line{{event.id}}-bar").text("Start in "+time_before_start.h+"hours"+time_before_start.m+"mins"+time_before_start.s+"s");
+        $("#line1-bar").attr("class","progress-bar progress-bar-info");
+        $("#line1-bar").attr("style","width: 100%");
+        $("#timing_info1").html("<span class='pull-left text-muted'>Will start at {{event.line.line_time}}</span>")
+        $("#line1-bar").text("Start in "+time_before_start.h+"hours"+time_before_start.m+"mins"+time_before_start.s+"s");
       }
       {%endfor%}
     }
@@ -491,8 +487,7 @@
 
     // {%endfor%}
 
-    {%for event in current_events%}
-      window.generateChart{{event.id}} = function (data_update){
+      window.generateChart1 = function (data_update){
 
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
@@ -503,9 +498,7 @@
         data.addColumn('number','Succssful Check-ins');
         data.addRows([
           ['Beginning',0,0],
-          {%for record in event.notif_history%}
-      ['#{{record.num}}', {{record.number_of_fake_user}}, {{record.number_of_checkin}}],
-    {%endfor%}
+          ['1', 1, 1],
   ]);
     console.log("I got called");
     if (data_update){
@@ -521,29 +514,27 @@
       height: 200,
     };
 
-    var chart = new google.visualization.AreaChart(document.getElementById('chart{{event.id}}'));
+    var chart = new google.visualization.AreaChart(document.getElementById('chart1'));
     chart.draw(data, options);
   }
   }
-  generateChart{{event.id}}();
-  {%endfor%}
+  generateChart1();
   /* this test code for generateChart{{event.id}}() works.
    datatest={"round_number":3,"notification_time":"March 4, 2015, 3:59 p.m.","number_of_checkin":19, "number_of_fake_user":21}
    generateChart4(datatest);
    */
-  {%for event in current_events%}
-    channel.bind("people_in_line_update"+{{event.id}}, function(data){
-    $("#number_of_fake_user{{event.id}}").text(data.number_of_fake_user);
+
+    channel.bind("people_in_line_update"+'1', function(data){
+    $("#number_of_fake_user1").text(data.number_of_fake_user);
   });
-  channel.bind("checkin_phase_meta"+{{event.id}}, function(data){
+  channel.bind("checkin_phase_meta"+'1', function(data){
     location.reload();
     //would prefer this commented code if generateChart{{event.id}}() can work.
     //generateChart({{event.id}},null,data);
-    $("#notifs_sent{{event.id}}").text(data.number_of_notification);
-    $("#tbody{{event.id}}").prepend("<tr><td>"+'#'+data.round_number+"</td><td>"+data.notification_time+"</td><td>"+data.number_of_checkin+"</td><td>"+data.number_of_fake_user+"</td></tr>");
+    $("#notifs_sent1").text(data.number_of_notification);
+    $("#tbody1}").prepend("<tr><td>"+'#'+data.round_number+"</td><td>"+data.notification_time+"</td><td>"+data.number_of_checkin+"</td><td>"+data.number_of_fake_user+"</td></tr>");
 
   });
-  {%endfor%}
 
   // var chat_channel = pusher.subscribe('private-chatChannel');
   // {%for event in current_events%}

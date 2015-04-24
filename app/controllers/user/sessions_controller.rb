@@ -3,7 +3,6 @@ class User::SessionsController < Devise::SessionsController
   skip_before_filter :authenticate
   # GET /resource/sign_in
   def new
-
     ## Copied code from 'devise' gem and changed redirecting address.
     if !self.resource
       self.resource = resource_class.new;
