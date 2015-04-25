@@ -17,11 +17,11 @@ gclass Manager::RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_flashing_format?
         sign_up(resource_name, resource)
-        render 'managers_dashboard'
+        render '/managers/manager_dashboard', layout: '/manager/manager_dashboard'
       else
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
         expire_data_after_sign_in!
-        render 'managers_dashboard'
+        render '/managers/manager_dashboard', layout: '/manager/manager_dashboard'
       end
     else
       clean_up_passwords resource
@@ -29,7 +29,8 @@ gclass Manager::RegistrationsController < Devise::RegistrationsController
       if @validatable
         @minimum_password_length = resource_class.password_length.min
       end
-      redirect_to 'managers_dashboard'
+
+      respond_with resource
     end
   end
 
@@ -78,4 +79,22 @@ gclass Manager::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def require_no_authentication
+    assert_is_devise_resource!
+    return unless is_navigational_format?
+    no_input = devise_mapping.no_input_strategies
+
+    authenticated = if no_input.present?
+                      args = no_input.dup.push scope: resource_name
+                      warden.authenticate?(*args)
+                    else
+                      warden.authenticated?(resource_name)
+                    end
+
+    if authenticated && resource = warden.user(resource_name)
+      flash[:alert] = I18n.t("devise.failure.already_authenticated")
+      redirect_to managers_dashboard_path
+    end
+  end
 end

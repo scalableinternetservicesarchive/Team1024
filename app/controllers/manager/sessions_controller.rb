@@ -13,7 +13,7 @@ class Manager::SessionsController < Devise::SessionsController
     sign_in(resource_name, resource)
     yield resource if block_given?
     respond_to do |format|
-      format.html { render '/managers/manager_dashboard' }
+      format.html { render '/managers/manager_dashboard', layout: '/manager/manager_dashboard' }
     end
   end
 
