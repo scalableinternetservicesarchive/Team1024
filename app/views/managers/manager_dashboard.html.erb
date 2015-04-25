@@ -1,0 +1,546 @@
+<div id="wrapper">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/managers/dashboard"><b>SingleFile</b></a>
+    </div>
+    <!-- /.navbar-header -->
+
+    <ul class="nav navbar-top-links navbar-right">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-user">
+          <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+          </li>
+          <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+          </li>
+          <li class="divider"></li>
+          <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+          </li>
+        </ul>
+        <!-- /.dropdown-users -->
+      </li>
+      <!-- /.dropdown -->
+    </ul>
+    <!-- /.navbar-top-links -->
+
+    <div class="navbar-default sidebar" role="navigation">
+      <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+          <li class="sidebar-search">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                  <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+            </div>
+            <!-- /input-group -->
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Line Dashboard <span class="label label-danger label-as-badge">2</span></a>
+          </li>
+          <li>
+            <%= link_to new_event_path do %>
+              <i class='fa fa-flash fa-fw'></i> Create Event
+            <% end %>
+          </li>
+
+
+          <!-- Not active yet
+          <li>
+              <a href="#"><i class="glyphicon glyphicon-earphone fa-fw"></i> Support</a>
+          </li>
+          -->
+        </ul>
+      </div>
+      <!-- /.sidebar-collapse -->
+    </div>
+    <!-- /.navbar-static-side -->
+  </nav>
+
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Dashboard</h1>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <!-- Progress bar -->
+    <ul class="nav nav-tabs" role="tablist" id="tabs-customcss">
+
+      <li role="presentation" ><a href="#" aria-controls="1" role="tab" data-toggle="tab"><span style="color:black;">Line 1</span></a></li>
+      <li role="presentation" ><a href="#" aria-controls="2" role="tab" data-toggle="tab"><span style="color:black;">Line 2</span></a></li>
+
+    </ul>
+
+    <div class="tab-content">
+
+      <div role="tabpanel" class="tab-pane" id="line_panel1">
+        <a href="#">
+          <div>
+            <p>
+              </br>
+              <strong>Line 1: Event 1</strong>
+            </p>
+            <p id="timing_info1">
+              <span id="past-time1" class="pull-left text-muted"></span>
+              <span id="total-time1" class="pull-right text-muted"></span>
+            </p>
+            </br>
+            <div id="line1-bar-control" class="progress progress-striped active">
+              <div id="line1-bar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                <span class="sr-only">80% Complete (danger)</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- /progressbar -->
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <i class="fa fa-user fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                    <div class="huge" id="number_of_fake_user1">1</div>
+                    <div>Total People in Line!</div>
+
+                  </div>
+                </div>
+              </div>
+              <!-- <a href="#">
+                  <div class="panel-footer">
+                      <span class="pull-left">View Details</span>
+                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                      <div class="clearfix"></div>
+                  </div>
+              </a> -->
+            </div>
+          </div>
+          <!--
+          <div class="col-lg-4 col-md-4">
+              <div class="panel panel-green">
+                  <div class="panel-heading">
+                      <div class="row">
+                          <div class="col-xs-3">
+                              <i class="glyphicon glyphicon-time fa-5x"></i>
+                          </div>
+                          <div class="col-xs-9 text-right">
+                              <div class="huge" id="timeleft">10</div>
+                              <div>Minutes Left!</div>
+                          </div>
+                      </div>
+                  </div>
+
+
+              </div>
+          </div>
+          -->
+          <div class="col-lg-6 col-md-6">
+            <div class="panel panel-green">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <i class="glyphicon glyphicon-envelope fa-5x"></i>
+                  </div>
+                  <div class="col-xs-9 text-right">
+                    <div class="huge" id="notifs_sent1">1 </div>
+                    <div>Push Notifications Sent!</div>
+                  </div>
+                </div>
+              </div>
+              <!-- <a href="#">
+                   <div class="panel-footer">
+                       <span class="pull-left">View Details</span>
+                       <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                       <div class="clearfix"></div>
+                   </div>
+               </a> -->
+            </div>
+          </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> Checkin Statics Visualization
+              </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                <div id="chart1" width="100%"></div>
+              </div>
+              <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+            <div class="panel panel-default">
+              <div class="col-lg-12">
+                <div class="panel-heading">
+                  <i class="fa fa-bar-chart-o fa-fw"></i> Check-in Statics
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="table-responsive">
+                      <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                        <tr>
+                          <th>Check-in Rounds</th>
+                          <th>Check-in Period</th>
+                          <th>Succssful Checkins</th>
+                          <th>Total People in Line</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbody1">
+
+                        <tr>
+                          <td>#1}</td>
+                          <td>1 </td>
+                          <td>1 </td>
+                          <td>1 </td>
+                        </tr>
+
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                  </div>
+                  <!-- /.col-lg-4 (nested) -->
+
+                  <!-- /.col-lg-8 (nested) -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.panel-body -->
+            </div>
+
+            <!-- /.panel -->
+          </div>
+          <!-- /.col-lg-8 -->
+          <div class="col-lg-4">
+            <!-- /.panel -->
+            <div class="chat-panel panel panel-default">
+              <div class="panel-heading">
+                <i class="fa fa-comments fa-fw"></i>
+                Shout - Communicate with attendees
+
+              </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                <ul class="chat">
+                  <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                    <div class="chat-body clearfix">
+                      <div class="header">
+                        <strong class="primary-font">Event Organizer </strong>
+                        <small class="pull-right text-muted">
+                          <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+                        </small>
+                      </div>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                    <div class="chat-body clearfix">
+                      <div class="header">
+                        <small class=" text-muted">
+                          <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
+                        <strong class="pull-right primary-font">Attendee </strong>
+                      </div>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                    <div class="chat-body clearfix">
+                      <div class="header">
+                        <strong class="primary-font">Event Organizer</strong>
+                        <small class="pull-right text-muted">
+                          <i class="fa fa-clock-o fa-fw"></i> 14 mins ago</small>
+                      </div>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                    <div class="chat-body clearfix">
+                      <div class="header">
+                        <small class=" text-muted">
+                          <i class="fa fa-clock-o fa-fw"></i> 15 mins ago</small>
+                        <strong class="pull-right primary-font">Attendee</strong>
+                      </div>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!-- /.panel-body -->
+              <div class="panel-footer">
+                <div class="input-group">
+                  <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning btn-sm" id="btn-chat">
+                                      Send
+                                    </button>
+                                </span>
+                </div>
+              </div>
+              <!-- /.panel-footer -->
+            </div>
+            <!-- /.panel .chat-panel -->
+          </div>
+          <!-- /.col-lg-4 -->
+        </div>
+        <!-- /.row -->
+
+      </div>
+      <!-- /#page-wrapper -->
+    </div>
+
+  </div>
+</div>
+
+<!-- /#wrapper -->
+
+<!-- jQuery Version 1.11.0 -->
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => true %>
+
+<!-- Metis Menu Plugin JavaScript -->
+<%= javascript_include_tag 'plugins/metisMenu/metisMenu.min', 'data-turbolinks-track' => true %>
+
+<!-- Custom Theme JavaScript -->
+<%= javascript_include_tag 'sb-admin-2', 'data-turbolinks-track' => true %>
+
+<!-- Pusher -->
+<script src="//js.pusher.com/2.2/pusher.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  $("#line_panel1").attr("class","tab-pane active");
+
+  Pusher.log = function(message) {
+    if (window.console && window.console.log) {
+      window.console.log(message);
+    }
+  };
+  var pusher = new Pusher('799c983b11e50404169d');
+  var channel = pusher.subscribe('channel-manager');
+
+  //--- helper function --//
+  function secondsToTime(secs)
+  {
+    var hours = Math.floor(secs / (60 * 60));
+
+    var divisor_for_minutes = secs % (60 * 60);
+    var minutes = Math.floor(divisor_for_minutes / 60);
+
+    var divisor_for_seconds = divisor_for_minutes % 60;
+    var seconds = Math.ceil(divisor_for_seconds);
+
+    var obj = {
+      "h": hours,
+      "m": minutes,
+      "s": seconds
+    };
+    return obj;
+  }
+
+  //--update progress bar every second--//
+  function progress_bar_update(){
+      if ('O'=='O'){
+        var start_time, end_time;
+        start_time =new Date();
+        end_time   =new Date();
+        var time_now = new Date();
+        var total_length_in_sec = (end_time-start_time)/1000;
+        var past_time_in_sec = (time_now - start_time)/1000;
+
+        var past_percentage = Math.round(100*(past_time_in_sec/total_length_in_sec));
+        if (past_percentage>100){
+          past_percentage=100;
+        }
+        var total_time = secondsToTime(total_length_in_sec);
+        var past_time = secondsToTime(past_time_in_sec);
+        if (time_now > end_time){
+          past_time = total_time;
+          $("#line1-bar-control").attr("class","progress progress-striped");
+
+        }
+        if(past_time.h == 0){
+          $("#past-time1").text(" time passed: "+past_time.m+"mins"+past_time.s+"s");}
+        else{
+          $("#past-time1").text(" time passed: "+past_time.h+"hours "+past_time.m+"mins"+past_time.s+"s");
+        }
+        $("#total-time1").text("total line time: "+total_time.h+"hours "+total_time.m+"mins");
+        $("#line1-bar").attr("style","width: "+past_percentage+"%");
+        $("#line1-bar").text(past_percentage+"% Complete");
+      }
+      if ('{{event.line.status}}'=='R'){
+        var start_time =new Date("{{event.line.line_time.isoformat}}");
+        var time_now = new Date();
+        var time_before_start_in_sec = (start_time-time_now)/1000;
+        if (time_before_start_in_sec<=0){
+
+          time_before_start_in_sec = 0;
+        }
+        var time_before_start = secondsToTime(time_before_start_in_sec);
+        $("#line1-bar").attr("class","progress-bar progress-bar-info");
+        $("#line1-bar").attr("style","width: 100%");
+        $("#timing_info1").html("<span class='pull-left text-muted'>Will start at {{event.line.line_time}}</span>")
+        $("#line1-bar").text("Start in "+time_before_start.h+"hours"+time_before_start.m+"mins"+time_before_start.s+"s");
+      }
+      {%endfor%}
+    }
+    progress_bar_update();
+    var counter = setInterval(progress_bar_update, 1000);
+
+
+    //-----------make chart------------------//
+    // function generateChart(event_id, history){
+
+    //       google.load("visualization", "1", {packages:["corechart"]});
+    //       google.setOnLoadCallback(drawChart);
+    //       function drawChart() {
+    //         var data = new google.visualization.DataTable();
+    //         data.addColumn('string','Check-in');
+    //         data.addColumn('number','People in Line');
+    //         data.addColumn('number','Succssful Check-ins');
+    //         console.log(history);
+    //         if (history!=null){
+    //             console.log("I got called");
+
+    //               ['Beginning',0,0],
+    //               $.each(history, function (index, record){
+    //                 data.addRows([
+    //                 ['#'+record.num, record.number_of_fake_user, record.number_of_checkin],
+    //                 ]);
+    //             });
+    //           }
+
+    //         // if (data_update!=null){
+    //         //     console.log(data_update);
+    //         //     data.addRows([
+    //         //             ['#'+data_update.round_number.toString(),data_update.number_of_fake_user,data_update.number_of_checkin],
+    //         //         ]);
+    //         //}
+    //         var options = {
+    //           hAxis: {title: 'Checkin Rounds',  titleTextStyle: {color: '#333'}},
+    //           vAxis: {title: 'People',  titleTextStyle: {color: '#333'}, minValue: 0},
+    //           width: 710,
+    //           height: 200,
+    //         };
+
+    //         var chart = new google.visualization.AreaChart(document.getElementById('chart'+event_id));
+    //         chart.draw(data, options);
+    //       }
+    //     }
+
+    // //var history_lists = [];
+    // {%for event in current_events%}
+    //    //var history{{event.id}} = [];
+
+    //    {%for history in event.notif_history%}
+    //     //console.log('fuckyou');
+    //     var record{{event.id}}{{forloop.counter}} = new Object();
+    //         record{{event.id}}{{forloop.counter}}.num = {{history.num}};
+    //         record{{event.id}}{{forloop.counter}}.number_of_fake_user = {{history.number_of_fake_user}};
+    //         record{{event.id}}{{forloop.counter}}.number_of_checkin = {{history.number_of_checkin}};
+    //     //history{{event.id}}.push(record{{event.id}}{{forloop.counter}});
+
+    //    {%endfor%}
+
+    //    //history_lists.push(record{{event.id}}{{forloop.counter}})
+    //     //console.log("eventinfo "+history{{event.id}});
+    // generateChart({{event.id}},history{{event.id}});
+
+    // {%endfor%}
+
+      window.generateChart1 = function (data_update){
+
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string','Check-in');
+        data.addColumn('number','People in Line');
+        data.addColumn('number','Succssful Check-ins');
+        data.addRows([
+          ['Beginning',0,0],
+          ['1', 1, 1],
+  ]);
+    console.log("I got called");
+    if (data_update){
+      console.log(data_update);
+      data.addRows([
+        ['#'+data_update.round_number.toString(),data_update.number_of_fake_user,data_update.number_of_checkin],
+      ]);
+    }
+    var options = {
+      hAxis: {title: 'Checkin Rounds',  titleTextStyle: {color: '#333'}},
+      vAxis: {title: 'People',  titleTextStyle: {color: '#333'}, minValue: 0},
+      width: 700,
+      height: 200,
+    };
+
+    var chart = new google.visualization.AreaChart(document.getElementById('chart1'));
+    chart.draw(data, options);
+  }
+  }
+  generateChart1();
+  /* this test code for generateChart{{event.id}}() works.
+   datatest={"round_number":3,"notification_time":"March 4, 2015, 3:59 p.m.","number_of_checkin":19, "number_of_fake_user":21}
+   generateChart4(datatest);
+   */
+
+    channel.bind("people_in_line_update"+'1', function(data){
+    $("#number_of_fake_user1").text(data.number_of_fake_user);
+  });
+  channel.bind("checkin_phase_meta"+'1', function(data){
+    location.reload();
+    //would prefer this commented code if generateChart{{event.id}}() can work.
+    //generateChart({{event.id}},null,data);
+    $("#notifs_sent1").text(data.number_of_notification);
+    $("#tbody1}").prepend("<tr><td>"+'#'+data.round_number+"</td><td>"+data.notification_time+"</td><td>"+data.number_of_checkin+"</td><td>"+data.number_of_fake_user+"</td></tr>");
+
+  });
+
+  // var chat_channel = pusher.subscribe('private-chatChannel');
+  // {%for event in current_events%}
+  // channel.bind('pusher:subscription_succeeded', function() {
+  //     var triggered = channel.trigger('client-chatroom{{event.id}}', { message: "hey im talking" });
+  //     });
+  // {%endfor%}
+</script>
+}

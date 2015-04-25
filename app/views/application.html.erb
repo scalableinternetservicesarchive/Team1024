@@ -1,0 +1,326 @@
+<!-- Transplantation Note:
+     1. We need RoR ways to adding form validation.
+     2. We need to integrate "devise" into this template to achieve users authentication.
+        Currently, all django embedded "if registered"s are commented out.
+ -->
+
+<p id="notice"><%= notice %></p>
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><b>SingleFile</b></a>
+    </div>
+    <div class="navbar-collapse collapse" id="nav-color">
+      <ul class="nav pull-right">
+        <li class="dropdown" id="menuLogin">
+          <% if user_signed_in? %>
+            <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
+              <%= current_user.first_name %> <%= current_user.last_name %> <b class="caret"></b></a>
+            <ul class="dropdown-menu" id="account-login">
+              <li><a href="#">Account</a></li>
+              <li><a href="#"> Help</a></li>
+              <li class="divider"></li>
+              <li><a href="#" data-toggle="modal" data-target="#logout_modal">Logout</a></li>
+            </ul>
+          <% else %>
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Already a member?</a>
+          <div class="dropdown-menu" style="padding:17px;">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: 'login_form'}) do |f| %>
+              <div class="field">
+                <%= f.label :email, 'Username' %><br />
+                <%= f.email_field :email, autofocus: true %>
+              </div>
+
+              <div class="field">
+                <%= f.label :password %><br />
+                <%= f.password_field :password, autocomplete: "off" %>
+              </div>
+
+              <% if devise_mapping.rememberable? -%>
+                <div class="field">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                </div>
+              <% end -%>
+
+              <div class="actions">
+                <%= f.submit "Log in", class: 'btn btn-lrg', id: 'sign_in_button' %>
+              </div>
+            <% end %>
+            <!--<form id="login_form" method="post" action="/users/login/">
+              Username:<input name="username" id="username" type="text" placeholder="Username">
+              Password:<input name="password" id="password" type="password" placeholder="Password"><br>
+              <button type="submit" class="btn btn-lrg" id = "sign_in_button">Sign in</button>
+            </form>-->
+          </div>
+          <% end %>
+        </li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+<div id = "footer" class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      </button>
+    </div>
+    <div class="navbar-collapse collapse">
+      <div class="container">
+        <div class="row centered">
+          <div class="col-lg-6 col-lg-offset-3">
+            <form class="form-inline" role="form" action="" method="POST">
+              <span style="color:red;"></span>
+
+              <div class="form-group">
+
+                <span style="color:red;"></span>
+                <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter your email address">
+
+              </div>
+              <button type="submit" id = "email_button_1" class="btn btn-warning btn-lg">Learn More!</button>
+              <!--{%if registered%}-->
+              <!--<span style="color:red;">Success!</span>-->
+              <!--{%endif%}-->
+            </form>
+
+
+
+          </div>
+
+
+
+          <div class="col-lg-3"></div>
+        </div>
+      </div>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+<div id="headerwrap">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <h1>Eliminate physical lines and make your events smarter<br/>
+          using virtual lines.</h1>
+        <form class="form-inline" role="form" action="" method="POST">
+          <span style="color:red; position:relative;" ></span>
+          <div class="form-group">
+            <span style="color:red; position:relative;" ></span>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">
+          </div>
+          <button type="submit" id = "email_button_2" class="btn btn-warning btn-lg">Learn More!</button>
+        </form>
+        <!--{%if registered%}-->
+        <!--<span style="color:red;">Success! Please check your email to confirm.</span>-->
+        <!--{%endif%}-->
+      </div><!-- /col-lg-6 -->
+
+      <div class="col-lg-6">
+        <div class="dashboard-mobile_customcss">
+          <%= image_tag 'dashboard.png', class: 'img-responsive', alt: '' %>
+        </div><!-- /col-lg-6 -->
+
+      </div><!-- /row -->
+    </div>
+  </div><!-- /container -->
+</div><!-- /headerwrap -->
+
+
+<div class="container">
+  <div class="row mt centered">
+    <div class="col-lg-6 col-lg-offset-3">
+      <h1>Your events are cool.<br/>Your lines should be too.</h1>
+      <h3>Using SingleFile will reduce costs, increase revenue, and grow your popularity.</h3>
+    </div>
+  </div><!-- /row -->
+
+  <div class="row mt centered">
+    <div class="col-lg-4">
+      <%= image_tag 'idea14.png', width: '180', alt: '' %>
+      <h4>Detailed Analytics</h4>
+      <p>Understand your customer demographics like never before. Learn more than just your customer's favorite drink.</p>
+    </div><!--/col-lg-4 -->
+
+    <div class="col-lg-4">
+      <%= image_tag 'japanese5.png', width: '180', alt: '' %>
+      <h4>Direct Marketing</h4>
+      <p>Communicate with customers before, during, and after events so you'll never lose touch.</p>
+
+    </div><!--/col-lg-4 -->
+
+    <div class="col-lg-4">
+      <%= image_tag 'heart13.png', width: '180', alt: '' %>
+      <h4>Happier Customers</h4>
+      <p>Your event will be fuller than ever with old customers and new ones - all appreciative of your work to satisfy them. </p>
+
+    </div><!--/col-lg-4 -->
+  </div><!-- /row -->
+</div><!-- /container -->
+
+<div class="container">
+  <hr>
+  <div class="row centered">
+    <div class="col-lg-6 col-lg-offset-3">
+    </div>
+    <div class="col-lg-3"></div>
+  </div><!-- /row -->
+  <hr>
+</div><!-- /container -->
+
+<div class="container">
+  <div class="row mt centered">
+    <div class="col-lg-6 col-lg-offset-3">
+      <h1>SingleFile is for popular events.</h1>
+      <h3>We provide the most advanced technology for venues to prioritize, organize, and communicate with their customers. </h3>
+    </div>
+  </div><!-- /row -->
+
+  <!-- CAROUSEL -->
+  <div class="row mt centered">
+    <div class="col-lg-6 col-lg-offset-3">
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <%= image_tag 'p01.png', alt: '' %>
+          </div>
+          <div class="item">
+            <%= image_tag 'p02.png', alt: '' %>
+          </div>
+          <div class="item">
+            <%= image_tag 'p03.png', alt: '' %>
+          </div>
+        </div>
+      </div>
+    </div><!-- /col-lg-8 -->
+  </div><!-- /row -->
+</div><!--/container -->
+
+<div class="container">
+  <hr>
+  <div class="row centered">
+    <div class="col-lg-6 col-lg-offset-3">
+    </div>
+    <div class="col-lg-3"></div>
+  </div><!-- /row -->
+  <hr>
+</div><!-- /container -->
+
+
+<div class="container">
+  <div class="row mt centered">
+    <div class="col-lg-6 col-lg-offset-3">
+      <h1>Our Fearless Leaders</h1>
+    </div>
+  </div><!-- /row -->
+
+  <div class="row mt centered">
+    <div class="col-lg-3">
+      <%= image_tag 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/8/005/091/34b/04d8b97.jpg', class: 'img-circle', width: '140', alt: '' %>
+      <h4>Weijian Lin</h4>
+      <p></p>
+    </div>
+
+    <div class="col-lg-3">
+      <%= image_tag 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/046/323/3c9c38c.jpg', class: 'img-circle', width: '140', alt: '' %>
+      <h4>Yuanzhi Gao</h4>
+      <p></p>
+    </div>
+
+    <div class="col-lg-3">
+      <%= image_tag 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAOVAAAAJGU0NTU2MTQzLTZlOTAtNGE1ZS05ZDU5LTUxMzNmYTk4YmNkYg.jpg', class: 'img-circle', width: '140', alt: '' %>
+      <h4>Xi Han</h4>
+      <p></p>
+    </div>
+
+    <div class="col-lg-3">
+      <%= image_tag 'https://media.licdn.com/media/p/2/000/231/38a/1b6be44.jpg', class: 'img-circle', width: '140', alt: '' %>
+      <h4>Junda Zhu</h4>
+      <p></p>
+    </div>
+  </div><!-- /row -->
+</div><!-- /container -->
+
+
+
+<footer id="Contact" class="footer">
+  <div class="container">
+    <div class="row">
+      <!-- start top -->
+      <div class="footer-top">
+        <h4>Get in touch.</h4>
+        <h4>
+          Are you an event manager? <%= link_to "Sign in", new_manager_session_path %> as a manager or <%= link_to "Sign up", new_manager_registration_path %>.
+        </h4>
+      </div>
+      <!-- end top -->
+      <!-- start bottom -->
+      <!--
+      <div class="footer-bottom">
+          <div class="sixcol last">
+            <ul class="social">
+                <li class="fb"><a href="http://www.facebook.com/joinsinglefile" title="Facebook">Facebook</a></li>
+                  <li class="tw"><a href="#Insert-Link-Here" title="Twitter">Twitter</a></li>
+                  <li class="gp"><a href="#Insert-Link-Here" title="Google Plus">Google Plus</a></li>
+              </ul>
+          </div>
+      </div>
+    -->
+      <!-- end bottom -->
+    </div>
+  </div>
+</footer>
+
+<!-- Modal for logout  -->
+<div id="logout_modal" class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-body">
+            <center><h2>Are you sure you want to log out?</h2> <span style="color:blue; font-size: 12pt"> You'll still be able to receive SMS notification</span></center>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    <%= button_to "Log out", destroy_user_session_path, method: :delete, class: 'btn btn-danger', type: 'button' %>
+    <!--        <a href="/users/logout/" type="button" class="btn btn-danger">Log out</a>-->
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+</div>
+<!-- end footer -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => true %>
+
+
+<script>
+  $(document).ready(function(){
+    $("#footer").hide();
+
+    function testScroll(ev){
+      if(window.pageYOffset>365)
+        $("#footer").fadeIn('slow');
+
+      if(window.pageYOffset<365)
+        $("#footer").hide();
+
+    }
+    window.onscroll=testScroll;
+  });
+
+
+</script>
