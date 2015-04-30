@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'user/sessions', registrations: 'user/registrations' }
   devise_for :managers, controllers: { sessions: 'manager/sessions', registrations: 'manager/registrations' }
   resources :lines
+  get 'lines/:id/delete' => 'lines#delete', :as => :lines_delete
   resources :fake_users
-  resources :events
 
+  resources :events
+  get 'events/:id/delete' => 'events#delete', :as => :events_delete
   devise_scope :user do
     get '/' => 'user/sessions#new'
     get 'users/sign_out' => 'user/sessions#destroy'
