@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   devise_for :managers
   devise_for :users
   resources :lines
