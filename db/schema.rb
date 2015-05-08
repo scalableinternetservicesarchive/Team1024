@@ -11,16 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502052204) do
+ActiveRecord::Schema.define(version: 20150508232033) do
 
   create_table "events", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "name"
+    t.integer  "max_attendance"
+    t.datetime "start_time"
+    t.datetime "create_time"
+    t.text     "description"
   end
 
   create_table "lines", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "status"
+    t.boolean  "already_start"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "next_checkin_time"
+    t.integer  "number_of_fake_user"
+    t.integer  "min_score"
+    t.integer  "max_score"
   end
 
   create_table "managers", force: :cascade do |t|
@@ -36,6 +49,9 @@ ActiveRecord::Schema.define(version: 20150502052204) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
   end
 
   add_index "managers", ["email"], name: "index_managers_on_email", unique: true
