@@ -1,0 +1,20 @@
+<h1>Homepage</h1>
+<% if user_signed_in? %>
+  <%= link_to "User sign out", destroy_user_session_path, method: :delete %>
+  <br>
+<% else %>
+  <%= link_to "User sign in", new_user_session_path %>
+  <br>
+  <%= link_to "User sign up", new_user_registration_path %>
+  <br>
+<% end %>
+
+<% if manager_signed_in? %>
+  <%= link_to "Manager sign out", destroy_manager_session_path, method: :delete %>
+  <br>
+<% else %>
+  <%= link_to "Manager sign in", new_manager_session_path %>
+  <br>
+  <%= link_to "Manager sign up", new_manager_registration_path %>
+  <br>
+<% end %>
