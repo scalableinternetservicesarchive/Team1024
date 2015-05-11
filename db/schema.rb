@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508232033) do
+ActiveRecord::Schema.define(version: 20150511000628) do
 
   create_table "events", force: :cascade do |t|
     t.datetime "created_at",     null: false
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(version: 20150508232033) do
     t.datetime "start_time"
     t.datetime "create_time"
     t.text     "description"
+    t.integer  "manager_id"
   end
+
+  add_index "events", ["manager_id"], name: "index_events_on_manager_id"
 
   create_table "lines", force: :cascade do |t|
     t.datetime "created_at",          null: false
@@ -34,7 +37,10 @@ ActiveRecord::Schema.define(version: 20150508232033) do
     t.integer  "number_of_fake_user"
     t.integer  "min_score"
     t.integer  "max_score"
+    t.integer  "event_id"
   end
+
+  add_index "lines", ["event_id"], name: "index_lines_on_event_id"
 
   create_table "managers", force: :cascade do |t|
     t.datetime "created_at",                          null: false
@@ -77,5 +83,15 @@ ActiveRecord::Schema.define(version: 20150508232033) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "users_attend_events_relationships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "users_attend_events_relationships", ["event_id"], name: "index_users_attend_events_relationships_on_event_id"
+  add_index "users_attend_events_relationships", ["user_id"], name: "index_users_attend_events_relationships_on_user_id"
 
 end
