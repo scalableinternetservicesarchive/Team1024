@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_manager!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_either, only: [:show]
 
   # GET /events
   # GET /events.json
@@ -10,6 +12,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+
   end
 
   # GET /events/new
@@ -24,10 +27,12 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    event_params[:manager_id] = current_manager.id
     @event = Event.new(event_params)
+    current_manager.events << @event
 
     respond_to do |format|
-      if @event.save
+      if @event.save && current_manager.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
@@ -69,6 +74,14 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params[:event]
+      params[:event].permit(:name, :max_attendance, :create_time, :start_time, :description)
+    end
+
+    def authenticate_either
+      unless manager_signed_in?
+        authenticate_user!
+      else
+        true
+      end
     end
 end

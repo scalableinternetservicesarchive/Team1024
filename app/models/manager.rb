@@ -4,5 +4,5 @@ class Manager < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :events, inverse_of: :Manager
+  has_many :events, inverse_of: :manager
 end

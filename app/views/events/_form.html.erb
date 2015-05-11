@@ -11,7 +11,33 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :max_attendance %><br />
+    <%= f.text_field :max_attendance, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_time %><br />
+    <%= f.datetime_select :start_time, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :create_time %><br />
+    <%= f.datetime_select :create_time, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description, autocomplete: "off" %>
+  </div>
+
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Sign up" %>
   </div>
 <% end %>

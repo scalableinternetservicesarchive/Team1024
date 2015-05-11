@@ -1,4 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<p><%= @event.name %></p>
+<p><%= @event.max_attendance %></p>
+<p><%= @event.start_time %></p>
+<p><%= @event.create_time %></p>
+<p><%= @event.description %></p>
+<p><%= @event.manager_id %></p>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
