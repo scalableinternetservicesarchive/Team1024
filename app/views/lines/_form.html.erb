@@ -11,7 +11,18 @@
     </div>
   <% end %>
 
+
+  <div class="field">
+    <%= f.label :start_time %><br />
+    <%= f.datetime_select :start_time, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_time %><br />
+    <%= f.datetime_select :end_time, autocomplete: "off" %>
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Start Line"%>
   </div>
 <% end %>

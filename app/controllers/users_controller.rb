@@ -10,6 +10,15 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @search = Event.search do
+      fulltext params[:search]
+    end
+
+    if (params[:search].nil? || params[:search].empty? || params[:search].blank?)
+      @events = nil
+    else
+      @events = @search.results
+    end
   end
 
   # GET /users/new
@@ -59,6 +68,39 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def save
+    @fav_event = Event.find(params[:fav])
+    if current_user.favorited_events.include?(@fav_event) == false
+      current_user.favorited_events << @fav_event
+    end
+    redirect_to :back
+  end
+
+  def delete
+    @delete_event = Event.find(params[:delete_fav])
+    current_user.favorited_events.delete(@delete_event)
+    redirect_to :back
+  end
+
+  def quit
+    @quit_event = Event.find(params[:delete_att])
+    current_user.attended_events.delete(@quit_event)
+    redirect_to :back
+  end
+
+  def line
+    @attend_event = Event.find(params[:line_event])
+    if current_user.attended_events.include?(@attend_event) == false
+      current_user.attended_events << @attend_event
+
+      if @attend_event.line.nil? == false
+        current_user.lines << @attend_event.line
+        @attend_event.line.users << current_user
+      end
+    end
+    redirect_to :back
   end
 
   private

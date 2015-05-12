@@ -1,11 +1,31 @@
 <p id="notice"><%= notice %></p>
 
+<h2>Event Info</h2>
 <p><%= @event.name %></p>
 <p><%= @event.max_attendance %></p>
 <p><%= @event.start_time %></p>
 <p><%= @event.create_time %></p>
 <p><%= @event.description %></p>
-<p><%= @event.manager_id %></p>
+<h2>Line Info</h2>
+<% if @event.line.nil? == false %>
+<p><%= @event.line.start_time %></p>
+<p><%= @event.line.end_time %></p>
+<h4>current users in line:</h4>
+<% @event.line.users.each do |user|%>
+	<p><%= user.first_name %></p>
+<% end %>
+<% else %>
+<h4>line has not been started yet</h4>
+<% end %>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+
+
+<% if manager_signed_in? %>
+		<% if @event.line.nil? %>
+		<td><%= link_to 'Start Line', :controller => 'events', :action=>'createLine', :startevent => @event %></td>
+		<% end %>
+        <td><%= link_to 'Edit', edit_event_path(@event) %></td>
+        <td><%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
+
+<%= link_to 'Back', current_manager %>

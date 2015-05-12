@@ -15,6 +15,8 @@ class LinesController < ApplicationController
   # GET /lines/new
   def new
     @line = Line.new
+    @associated_event = Event.find(params[:belong_event])
+    @associated_event.line = @line
   end
 
   # GET /lines/1/edit
@@ -35,6 +37,8 @@ class LinesController < ApplicationController
         format.json { render json: @line.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # PATCH/PUT /lines/1
@@ -69,6 +73,6 @@ class LinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_params
-      params[:line]
+      params[:line].permit(:start_time, :end_time)
     end
 end

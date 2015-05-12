@@ -1,5 +1,6 @@
 class AddFavoriteAndAttendingRelationshipBetweenUsersAndEvents < ActiveRecord::Migration
   def change
+
     create_table :users_attend_events_relationships do |t|
       t.belongs_to :user, index: true
       t.belongs_to :event, index: true
@@ -13,5 +14,6 @@ class AddFavoriteAndAttendingRelationshipBetweenUsersAndEvents < ActiveRecord::M
 
       t.timestamps null: false
     end
+
   end
 end

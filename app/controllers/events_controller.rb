@@ -66,6 +66,12 @@ class EventsController < ApplicationController
     end
   end
 
+  def createLine
+    @event = Event.find(params[:startevent])
+    redirect_to url_for(:controller => :lines, :action => :new, :belong_event => @event)
+    # @event.line << @line
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
@@ -83,5 +89,9 @@ class EventsController < ApplicationController
       else
         true
       end
+    end
+
+    def line_params
+      params[:line]
     end
 end
