@@ -41,6 +41,11 @@ h4 {
 	font-size: 20px;
 }
 
+h5 {
+    color: #FFFFF0;
+    font-weight: bold;
+    font-size: 18px;
+}
 /* Paragraph & Typographic */
 p {
     line-height: 28px;

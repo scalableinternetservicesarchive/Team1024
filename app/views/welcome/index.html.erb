@@ -16,51 +16,51 @@
 
       <ul class="nav navbar-nav navbar-right">
          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">User <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><strong>User</strong> <span class="caret"></span></a>
+            <ul class="dropdown-menu profile-image" role="menu">
 
             <% if user_signed_in? %>
-              <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
-              <%= current_user.first_name %> <%= current_user.last_name %> <b class="caret"></b></a>
+              
+              <h4><strong> Hi, <%= current_user.first_name %> <%= current_user.last_name %> </strong></h4>
               <br>
             <% else %>
-              <%= link_to "User sign in", new_user_session_path %>
+              <%= link_to "User sign in", new_user_session_path, class: 'btn btn-warning', type: 'button' %>
               <br>
             <% end %>
 
             <li class="divider"></li>
               <% if user_signed_in? %>
-                <%= link_to "User sign out", destroy_user_session_path, method: :delete %>
+                <%= button_to "User sign out", destroy_user_session_path, method: :delete, class: 'btn btn-danger', type: 'button' %>
                 <br>
               <% else %>
-                <li><a href="#">Not a member?</a></li>
-                <%= link_to "User sign up", new_user_registration_path %>
+                <li><h4>Not a member?</h4></li>
+                <%= link_to "User sign up", new_user_registration_path, class: 'btn btn-warning', type: 'button' %>
                 <br>
               <% end %>
 
           </ul>
         </li>
 
-         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Manager <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><strong>Manager</strong> <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
 
             <% if manager_signed_in? %>
-              <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
-              <%= current_manager.first_name %> <%= current_manager.last_name %> <b class="caret"></b></a>
+              
+              <h4><strong> Hi, <%= current_manager.first_name %> <%= current_manager.last_name %> </strong></h4>
               <br>
             <% else %>
-              <%= link_to "Manager sign in", new_manager_session_path %>
+              <%= link_to "Manager sign in", new_manager_session_path, class: 'btn btn-warning', type: 'button' %>
               <br>
             <% end %>
 
             <li class="divider"></li>
-              <% if user_signed_in? %>
-                <%= link_to "Manager sign out", destroy_manager_session_path, method: :delete %>
+              <% if manager_signed_in? %>
+                <%= button_to "Manager sign out", destroy_manager_session_path, method: :delete, class: 'btn btn-danger', type: 'button' %>
                 <br>
               <% else %>
-                <li><a href="#">Not a member?</a></li>
-                <%= link_to "Manager sign up", new_manager_registration_path %>
+                <li><h4>Not a member?</h4></li>
+                <%= link_to "Manager sign up", new_manager_registration_path, class: 'btn btn-warning', type: 'button' %>
                 <br>
               <% end %>
 
@@ -92,10 +92,10 @@
               <div class="form-group">
 
                 <span style="color:red;"></span>
-                <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter your email address">
+                <!--<input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter your email address">-->
 
               </div>
-              <button type="submit" id = "email_button_1" class="btn btn-warning btn-lg">Learn More!</button>
+              <!--<button type="submit" id = "email_button_1" class="btn btn-warning btn-lg">Learn More!</button>-->
               <!--{%if registered%}-->
               <!--<span style="color:red;">Success!</span>-->
               <!--{%endif%}-->
@@ -123,9 +123,9 @@
           <span style="color:red; position:relative;" ></span>
           <div class="form-group">
             <span style="color:red; position:relative;" ></span>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">
+            <!--<input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email address">-->
           </div>
-          <button type="submit" id = "email_button_2" class="btn btn-warning btn-lg">Learn More!</button>
+          <!--<button type="submit" id = "email_button_2" class="btn btn-warning btn-lg">Learn More!</button>-->
         </form>
         <!--{%if registered%}-->
         <!--<span style="color:red;">Success! Please check your email to confirm.</span>-->
@@ -273,9 +273,6 @@
       <!-- start top -->
       <div class="footer-top">
         <h4>Get in touch.</h4>
-        <h4>
-          Are you an event manager? <%= link_to "Sign in", new_manager_session_path %> as a manager or <%= link_to "Sign up", new_manager_registration_path %>.
-        </h4>
       </div>
       <!-- end top -->
       <!-- start bottom -->
