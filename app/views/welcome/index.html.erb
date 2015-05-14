@@ -11,54 +11,70 @@
       </button>
       <a class="navbar-brand" href="#"><b>SingleFile</b></a>
     </div>
+
     <div class="navbar-collapse collapse" id="nav-color">
-      <ul class="nav pull-right">
-        <li class="dropdown" id="menuLogin">
-          <% if user_signed_in? %>
-            <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
+
+      <ul class="nav navbar-nav navbar-right">
+         <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">User <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+
+            <% if user_signed_in? %>
+              <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
               <%= current_user.first_name %> <%= current_user.last_name %> <b class="caret"></b></a>
-            <ul class="dropdown-menu" id="account-login">
-              <li><a href="#">Account</a></li>
-              <li><a href="#"> Help</a></li>
-              <li class="divider"></li>
-              <li><a href="#" data-toggle="modal" data-target="#logout_modal">Logout</a></li>
-            </ul>
-          <% else %>
-          <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Already a member?</a>
-          <div class="dropdown-menu" style="padding:17px;">
-            <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: 'login_form'}) do |f| %>
-              <div class="field">
-                <%= f.label :email, 'Username' %><br />
-                <%= f.email_field :email, autofocus: true %>
-              </div>
-
-              <div class="field">
-                <%= f.label :password %><br />
-                <%= f.password_field :password, autocomplete: "off" %>
-              </div>
-
-              <% if devise_mapping.rememberable? -%>
-                <div class="field">
-                  <%= f.check_box :remember_me %>
-                  <%= f.label :remember_me %>
-                </div>
-              <% end -%>
-
-              <div class="actions">
-                <%= f.submit "Log in", class: 'btn btn-lrg', id: 'sign_in_button' %>
-              </div>
+              <br>
+            <% else %>
+              <%= link_to "User sign in", new_user_session_path %>
+              <br>
             <% end %>
-            <!--<form id="login_form" method="post" action="/users/login/">
-              Username:<input name="username" id="username" type="text" placeholder="Username">
-              Password:<input name="password" id="password" type="password" placeholder="Password"><br>
-              <button type="submit" class="btn btn-lrg" id = "sign_in_button">Sign in</button>
-            </form>-->
-          </div>
-          <% end %>
+
+            <li class="divider"></li>
+              <% if user_signed_in? %>
+                <%= link_to "User sign out", destroy_user_session_path, method: :delete %>
+                <br>
+              <% else %>
+                <li><a href="#">Not a member?</a></li>
+                <%= link_to "User sign up", new_user_registration_path %>
+                <br>
+              <% end %>
+
+          </ul>
+        </li>
+
+         <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Manager <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+
+            <% if manager_signed_in? %>
+              <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
+              <%= current_manager.first_name %> <%= current_manager.last_name %> <b class="caret"></b></a>
+              <br>
+            <% else %>
+              <%= link_to "Manager sign in", new_manager_session_path %>
+              <br>
+            <% end %>
+
+            <li class="divider"></li>
+              <% if user_signed_in? %>
+                <%= link_to "Manager sign out", destroy_manager_session_path, method: :delete %>
+                <br>
+              <% else %>
+                <li><a href="#">Not a member?</a></li>
+                <%= link_to "Manager sign up", new_manager_registration_path %>
+                <br>
+              <% end %>
+
+          </ul>
         </li>
       </ul>
-    </div><!--/.nav-collapse -->
+
+
+    </div>
+
+
   </div>
+
+
 </div>
 <div id = "footer" class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">
