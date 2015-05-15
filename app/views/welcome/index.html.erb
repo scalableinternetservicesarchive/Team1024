@@ -86,20 +86,21 @@
       <div class="container">
         <div class="row centered">
           <div class="col-lg-6 col-lg-offset-3">
-            <form class="form-inline" role="form" action="" method="POST">
+<!--             <form class="form-inline" role="form" action="" method="POST">
               <span style="color:red;"></span>
 
               <div class="form-group">
 
-                <span style="color:red;"></span>
+                <span style="color:red;"></span> -->
+                <h5>Join us today</h5>
                 <!--<input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter your email address">-->
 
-              </div>
+<!--               </div> -->
               <!--<button type="submit" id = "email_button_1" class="btn btn-warning btn-lg">Learn More!</button>-->
               <!--{%if registered%}-->
               <!--<span style="color:red;">Success!</span>-->
               <!--{%endif%}-->
-            </form>
+<!--             </form> -->
 
 
 
@@ -272,7 +273,7 @@
     <div class="row">
       <!-- start top -->
       <div class="footer-top">
-        <h4>Get in touch.</h4>
+        <!-- <h4>Get in touch.</h4> -->
       </div>
       <!-- end top -->
       <!-- start bottom -->
@@ -319,9 +320,9 @@
   $(document).ready(function(){
     $("#footer").hide();
     function testScroll(ev){
-      if(window.pageYOffset>365)
+      if(window.pageYOffset>1700)
         $("#footer").fadeIn('slow');
-      if(window.pageYOffset<365)
+      if(window.pageYOffset<1700)
         $("#footer").hide();
     }
     window.onscroll=testScroll;
