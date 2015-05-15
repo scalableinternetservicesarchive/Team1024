@@ -16,3 +16,10 @@
 !/log/.keep
 /tmp
 .DS_STORE
+
+solr/data
+solr/test
+solr/development
+solr/default/data
+/log/*.log.lck
+solr/pids
