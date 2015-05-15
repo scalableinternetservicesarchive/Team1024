@@ -25,7 +25,8 @@
 </div>
 
 <div class="container">
-
+  <div class="row mt centered">
+    <div class="col-lg-4">
 <h1>Search Events</h1>
 <table>
   
@@ -38,7 +39,7 @@
   <tbody>
 
      <%= form_tag user_path, method: :get do %>
-     <%= text_field_tag :search, params[:search], size: 60 %>
+     <%= text_field_tag :search, params[:search], size: 30 %>
      <%= submit_tag "Search", name: nil %>
      <% end %>
 
@@ -61,6 +62,9 @@
 
 </table>
 
+    </div>
+
+    <div class="col-lg-4">
 <h1>Favorite Events</h1>
 <table>
   <thead>
@@ -79,7 +83,9 @@
     <% end %>
   </tbody>
 </table>
+    </div>
 
+    <div class="col-lg-4">
 <h1>Current Events</h1>
 <table>
   <thead>
@@ -98,6 +104,22 @@
     <% end %>
   </tbody>
 </table>
+    </div>
+
+
+  </div><!-- /row -->
+</div><!-- /container -->
+
+
+
+
+
+
+
+
+
+
+
 </div>
 
 
