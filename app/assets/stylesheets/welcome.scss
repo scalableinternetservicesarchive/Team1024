@@ -1,0 +1,22 @@
+h4 {
+  font-size: 1em;
+}
+
+#user-sign-in-dropdown {
+  min-width: 137px;
+  padding-left: 4px; // balance the whitespace to the left and to the right of the heading.
+
+  .btn {
+    min-width: 120px;
+    margin: 0 auto;
+  }
+}
+
+#manager-sign-in-dropdown {
+  min-width: 167px;
+  padding-left: 4px; // balance the whitespace to the left and to the right of the heading.
+  .btn {
+    min-width: 150px;
+    margin: 0 auto;
+  }
+}

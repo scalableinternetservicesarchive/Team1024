@@ -1,3 +1,67 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  padding : 10px ;
+  
+}
+
+nav-tabs > li.active > a,
+        .nav-tabs > li.active > a:hover,
+        .nav-tabs > li.active > a:focus {
+          color: #111111;
+          cursor: default;
+          background-color: rgb(76, 174, 211);;
+          border: 1px solid #dddddd;
+          border-bottom-color: transparent;
+          } 
+
+#exTab1 .tab-content {
+  color : black;
+  background-color: #ffffff;
+  padding : 5px 15px;
+  border: 1px rgb(211, 211, 211) solid;
+  border-top: 0;
+}
+
+#exTab2 h3 {
+  color : white;
+  background-color: #428bca;
+  padding : 5px 15px;
+}
+
+/* remove border radius for the tab */
+
+#exTab1 .nav-pills > li > a {
+  border-radius: 0;
+}
+
+/* change border radius for the tab , apply corners on top*/
+
+#exTab3 .nav-pills > li > a {
+  border-radius: 4px 4px 0 0 ;
+}
+
+#exTab3 .tab-content {
+  color : white;
+  background-color: #428bca;
+  padding : 5px 15px;
+}
+
+table.table-in-tabs {
+  tbody {
+    tr {
+      td:first-child {
+        min-width: 253px;
+      }
+    }
+  }
+
+
+}
+
+.nav-tabs {
+  
+  font-size: 1.2em;
+}

@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><b>SingleFile</b></a>
+      <a class="navbar-brand" href="<%= root_path %>"><b>SingleFile</b></a>
     </div>
 
     <div class="navbar-collapse collapse" id="nav-color">
@@ -17,14 +17,14 @@
       <ul class="nav navbar-nav navbar-right">
          <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><strong>User</strong> <span class="caret"></span></a>
-            <ul class="dropdown-menu profile-image" role="menu">
+            <ul id="user-sign-in-dropdown" class="dropdown-menu profile-image centered" role="menu">
 
             <% if user_signed_in? %>
               
               <h4><strong> Hi, <%= current_user.first_name %> <%= current_user.last_name %> </strong></h4>
               <br>
             <% else %>
-              <%= link_to "User sign in", new_user_session_path, class: 'btn btn-warning', type: 'button' %>
+              <%= link_to "User sign in", new_user_session_path, class: 'btn btn-default', type: 'button' %>
               <br>
             <% end %>
 
@@ -34,7 +34,7 @@
                 <br>
               <% else %>
                 <li><h4>Not a member?</h4></li>
-                <%= link_to "User sign up", new_user_registration_path, class: 'btn btn-warning', type: 'button' %>
+                <%= link_to "User sign up", new_user_registration_path, class: 'btn btn-default', type: 'button' %>
                 <br>
               <% end %>
 
@@ -43,14 +43,14 @@
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><strong>Manager</strong> <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
+          <ul id="manager-sign-in-dropdown" class="dropdown-menu centered" role="menu">
 
             <% if manager_signed_in? %>
               
               <h4><strong> Hi, <%= current_manager.first_name %> <%= current_manager.last_name %> </strong></h4>
               <br>
             <% else %>
-              <%= link_to "Manager sign in", new_manager_session_path, class: 'btn btn-warning', type: 'button' %>
+              <%= link_to "Manager sign in", new_manager_session_path, class: 'btn btn-default', type: 'button' %>
               <br>
             <% end %>
 
@@ -60,7 +60,7 @@
                 <br>
               <% else %>
                 <li><h4>Not a member?</h4></li>
-                <%= link_to "Manager sign up", new_manager_registration_path, class: 'btn btn-warning', type: 'button' %>
+                <%= link_to "Manager sign up", new_manager_registration_path, class: 'btn btn-default', type: 'button' %>
                 <br>
               <% end %>
 
