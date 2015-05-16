@@ -50,6 +50,7 @@ nav-tabs > li.active > a,
 }
 
 table.table-in-tabs {
+  margin-top: 5px;
   tbody {
     tr {
       td:first-child {
@@ -64,4 +65,13 @@ table.table-in-tabs {
 .nav-tabs {
   
   font-size: 1.2em;
+}
+
+input#search-button {
+  margin-left: 2px;
+  margin-bottom: 3px;
+  padding: 0 1px 1px 1px;
+  border: 1px rgb(204, 204, 204) solid;
+  height: 26px;
+  min-width: 97px;
 }

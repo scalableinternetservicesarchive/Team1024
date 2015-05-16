@@ -55,8 +55,8 @@
             <% current_user.attended_events.each do |event| %>
             <tr>
               <td><%= event.name%></td>
-              <td><%= link_to 'Show', event %></td>
-              <td><%= link_to 'Quit', :controller => 'users', :action=>'quit', :delete_att => event %></td>
+              <td><%= link_to 'Show', event , class: 'btn btn-info', type: 'button'%></td>
+              <td><%= link_to 'Quit', {:controller => 'users', :action=>'quit', :delete_att => event} ,{class: 'btn btn-danger', type: 'button'}%></td>
             </tr>
             <% end %>
           </tbody>
@@ -73,8 +73,8 @@
             <% current_user.favorited_events.each do |event| %>
               <tr>
                 <td><%= event.name%></td>
-                <td><%= link_to 'Show', event %></td>
-                <td><%= link_to 'Delete', :controller => 'users', :action=>'delete', :delete_fav => event %></td>
+                <td><%= link_to 'Show', event, class: 'btn btn-info', type: 'button' %></td>
+                <td><%= link_to 'Delete', {:controller => 'users', :action=>'delete', :delete_fav => event} ,{class: 'btn btn-danger', type: 'button'}%></td>
               </tr>
             <% end %>
           </tbody>
@@ -90,7 +90,7 @@
               <tbody>
                  <%= form_tag user_path, method: :get do %>
                   <%= text_field_tag :search, params[:search], size: 30 %>
-                  <%= submit_tag "Search", name: nil %>
+                  <%= submit_tag "Search", name: nil, class: "btn btn-default", id: "search-button" %>
                  <% end %>
 
                  <% if @events.nil? %>
@@ -99,7 +99,7 @@
                  <%else%>
                  <% @events.each do |event| %>
                     <tr>
-                    <td><%= event.name%></td>
+                    <td><%= event.name %></td>
                     <td><%= link_to 'Show', event, class: 'btn btn-info', type: 'button'%></td>
                     <td><%= link_to 'Save', {:controller => 'users', :action=>'save', :fav => event}, {class: 'btn btn-success', type: 'button'} %></td>
                     <td><%= link_to 'Line', {:controller => 'users', :action=>'line', :line_event => event}, {class: 'btn btn-warning', type: 'button'} %></td>
