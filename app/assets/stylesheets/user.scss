@@ -1,25 +1,30 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+//rgb(76, 174, 211)
 body {
-  padding : 10px ;
+  padding : 80px ;
   
+}
+
+a:hover { 
+    color: #FF9966;
 }
 
 nav-tabs > li.active > a,
         .nav-tabs > li.active > a:hover,
         .nav-tabs > li.active > a:focus {
-          color: #111111;
+          color: #CC3300;
           cursor: default;
-          background-color: rgb(76, 174, 211);;
+          background-color: #FAFAFA;
           border: 1px solid #dddddd;
           border-bottom-color: transparent;
+          
           } 
 
 #exTab1 .tab-content {
   color : black;
-  background-color: #ffffff;
+  background-color: #FAFAFA;
   padding : 5px 15px;
   border: 1px rgb(211, 211, 211) solid;
   border-top: 0;
@@ -54,7 +59,8 @@ table.table-in-tabs {
   tbody {
     tr {
       td:first-child {
-        min-width: 253px;
+        min-width:750px;
+        font-size: 1.4em;
       }
     }
   }
@@ -64,10 +70,11 @@ table.table-in-tabs {
 
 .nav-tabs {
   
-  font-size: 1.2em;
+  font-size: 1.5em;
+  font-weight: bold; 
 }
 
-input#search-button {
+input#search-button{
   margin-left: 2px;
   margin-bottom: 3px;
   padding: 0 1px 1px 1px;

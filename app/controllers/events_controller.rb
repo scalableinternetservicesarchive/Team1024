@@ -61,7 +61,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -80,7 +80,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params[:event].permit(:name, :max_attendance, :create_time, :start_time, :description)
+      params[:event].permit(:name, :max_attendance, :create_time, :start_time, :description, :event_photo)
     end
 
     def authenticate_either

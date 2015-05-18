@@ -1,0 +1,20 @@
+div.navbar-placeholder {
+  height: 50px;
+  width: 100%;
+}
+
+.btn {
+  min-width: 80px;
+}
+
+.row {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.event-name {
+  font-size: 1.5em;
+  position: relative;
+  top: 50%;
+  transform: translateY(50%);
+}

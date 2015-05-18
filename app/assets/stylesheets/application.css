@@ -12,8 +12,19 @@
  *
  *= require_tree .
  *= require_self
+ *= require owl.carousel
+ *= require owl.theme
  */
 
  #sign-out-button {
-  margin-top: 8px;
+  margin-top:22px;
 }
+
+
+
+.navbar-brand{
+	margin-top:13px;
+	font-size: 2.5em;
+}
+
+.navbar {min-height:80px !important;}

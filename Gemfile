@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'owlcarousel-rails'
+
+gem "paperclip", "~> 4.2"
+
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem "sunspot_autocomplete", ">= 0.0.3", :git => "https://github.com/xponrails/sunspot_autocomplete.git"

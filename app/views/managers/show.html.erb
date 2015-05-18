@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <!-- Fixed navbar -->
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -22,9 +21,46 @@
   </div>
 </div>
 
+<div class="navbar-placeholder"></div>
 <div class="container">
+  <p id="notice"><%= notice %></p>
+</div>
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a href="#tab-pane-1" data-toggle="tab">All Events</a>
+    </li>
+    <li>
+      <a href="#tab-pane-2" data-toggle="tab">Monitor Events</a>
+    </li>
+    <li>
+      <a href="#tab-pane-3" data-toggle="tab">Past Events</a>
+    </li>
+  </ul>
 
-<table>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab-pane-1">
+
+      <div class="create-event-button">
+      <%= link_to 'Create Event', new_event_path(@event), class: "btn btn-success" %> 
+      </div>
+      <% @events.each do |event| %>
+        <div class="row">
+          <div class="col-xs-3 event-name">
+            <%= event.name %>
+          </div>
+          <div class="col-xs-6 col-xs-offset-3">
+            <%= link_to 'Show', event, class: "btn btn-info" %>
+            <%= link_to 'Start Line', {:controller => 'events', :action=>'createLine', :startevent => event},  class: "btn btn-success"%>
+            <%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning" %>
+            <%= link_to 'Destroy', event, method: :delete, class: "btn btn-danger" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+<!-- <table>
   <thead>
     <tr>
       <th colspan="3"></th>
@@ -35,7 +71,7 @@
     <% @events.each do |event| %>
       <tr>
       	<% if event.manager_id == current_manager.id %>
-        <td><%= event.name%></td>
+        <td><%= event.name %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -44,7 +80,6 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'Create Event', new_event_path(@event) %>
+-->
 
 </div>

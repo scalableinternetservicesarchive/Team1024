@@ -1,31 +1,114 @@
-<p id="notice"><%= notice %></p>
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= root_path %>"><b>SingleFile</b></a>
+    </div>
+    <div class="navbar-collapse collapse" id="nav-color">
 
-<h2>Event Info</h2>
-<p><%= @event.name %></p>
-<p><%= @event.max_attendance %></p>
-<p><%= @event.start_time %></p>
-<p><%= @event.create_time %></p>
-<p><%= @event.description %></p>
-<h2>Line Info</h2>
-<% if @event.line.nil? == false %>
-<p><%= @event.line.start_time %></p>
-<p><%= @event.line.end_time %></p>
-<h4>current users in line:</h4>
-<% @event.line.users.each do |user|%>
-	<p><%= user.first_name %></p>
-<% end %>
-<% else %>
-<h4>line has not been started yet</h4>
-<% end %>
+      <ul id="sign-out-button" class="nav navbar-nav navbar-right">
+
+        <%= button_to "Manager sign out", destroy_manager_session_path, method: :delete, class: 'btn btn-warning', type: 'button' %>
+      </ul>
 
 
+    </div>
+  </div>
+</div>
 
-<% if manager_signed_in? %>
-		<% if @event.line.nil? %>
-		<td><%= link_to 'Start Line', :controller => 'events', :action=>'createLine', :startevent => @event %></td>
-		<% end %>
-        <td><%= link_to 'Edit', edit_event_path(@event) %></td>
-        <td><%= link_to 'Destroy', @event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-<% end %>
+<div class="navbar-placeholder"></div>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+</div>
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a href="#tab-pane-1" data-toggle="tab">Event Info</a>
+    </li>
+    <li>
+      <a href="#tab-pane-2" data-toggle="tab">Line Info</a>
+    </li>
+  </ul>
 
-<%= link_to 'Back', current_manager %>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab-pane-1">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6">
+            <%= image_tag @event.event_photo.url(:medium) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3" id="event-title">
+            <%= @event.name %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">
+            Max attendance
+          </div>
+          <div class="col-xs-3">
+            <%= @event.max_attendance %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">
+            Start time
+          </div>
+          <div class="col-xs-3">
+            <%= @event.start_time %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">
+            Create time
+          </div>
+          <div class="col-xs-3">
+            <%= @event.create_time %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">
+            Description
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <%= @event.description %>
+          </div>
+        </div>
+        <% if manager_signed_in? %>
+          <div class="row">
+            <div class="col-xs-1">
+              <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-warning" %>
+            </div>
+            <div class="col-xs-1">
+              <%= link_to 'Destroy', @event, method: :delete, class: "btn btn-danger"%>
+            </div>
+            <div class="col-xs-1">
+              <%= link_to 'Back', current_manager, class: "btn btn-default" %>
+            </div>
+            
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane" id="tab-pane-2">
+      <% if @event.line.nil? == false %>
+        <p><%= @event.line.start_time %></p>
+        <p><%= @event.line.end_time %></p>
+        <h4>current users in line:</h4>
+        <% @event.line.users.each do |user|%>
+          <p><%= user.first_name %></p>
+        <% end %>
+      <% else %>
+        <h4>Line has not been started yet.</h4>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -5,7 +5,9 @@ h4 {
 #user-sign-in-dropdown {
   min-width: 137px;
   padding-left: 4px; // balance the whitespace to the left and to the right of the heading.
-
+  -webkit-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  -moz-border-radius: 8px;
   .btn {
     min-width: 120px;
     margin: 0 auto;
@@ -15,8 +17,16 @@ h4 {
 #manager-sign-in-dropdown {
   min-width: 167px;
   padding-left: 4px; // balance the whitespace to the left and to the right of the heading.
+  -webkit-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  -moz-border-radius: 8px;
   .btn {
     min-width: 150px;
     margin: 0 auto;
   }
+}
+
+.dropdown-toggle{
+  margin-top: 10px;
+  font-size: 1.2em;
 }

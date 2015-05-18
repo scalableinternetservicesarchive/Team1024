@@ -49,6 +49,10 @@ GEM
     builder (3.2.2)
     byebug (4.0.5)
       columnize (= 0.9.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.7)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -89,6 +93,13 @@ GEM
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
+    owlcarousel-rails (1.1.3.3)
+      jquery-rails
+    paperclip (4.2.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pr_geohash (1.0.0)
     rack (1.6.0)
     rack-test (0.6.3)
@@ -152,8 +163,6 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
-    turbolinks (2.5.3)
-      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.1)
@@ -176,6 +185,8 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.0)
   jquery-rails
+  owlcarousel-rails
+  paperclip (~> 4.2)
   rails (= 4.2.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
@@ -184,6 +195,5 @@ DEPENDENCIES
   sunspot_autocomplete (>= 0.0.3)!
   sunspot_rails
   sunspot_solr
-  turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
