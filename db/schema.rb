@@ -11,21 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518024343) do
+ActiveRecord::Schema.define(version: 20150518124303) do
+
+  create_table "event_pictures", force: :cascade do |t|
+    t.integer  "event_id"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "events", force: :cascade do |t|
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "name"
     t.integer  "max_attendance"
     t.datetime "start_time"
     t.datetime "create_time"
     t.text     "description"
     t.integer  "manager_id"
-    t.string   "event_photo_file_name"
-    t.string   "event_photo_content_type"
-    t.integer  "event_photo_file_size"
-    t.datetime "event_photo_updated_at"
   end
 
   add_index "events", ["manager_id"], name: "index_events_on_manager_id"
@@ -83,10 +86,6 @@ ActiveRecord::Schema.define(version: 20150518024343) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone_number"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

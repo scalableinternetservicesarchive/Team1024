@@ -46,10 +46,10 @@
       </div>
       <% @events.each do |event| %>
         <div class="row">
-          <div class="col-xs-3 event-name">
+          <div class="col-xs-6 event-name">
             <%= event.name %>
           </div>
-          <div class="col-xs-6 col-xs-offset-3">
+          <div class="col-xs-6">
             <%= link_to 'Show', event, class: "btn btn-info" %>
             <%= link_to 'Start Line', {:controller => 'events', :action=>'createLine', :startevent => event},  class: "btn btn-success"%>
             <%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning" %>

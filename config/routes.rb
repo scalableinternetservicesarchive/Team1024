@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :event_pictures
+  resources :event_pictures
   get 'welcome/index'
 
   devise_for :managers, controllers: {

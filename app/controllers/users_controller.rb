@@ -96,7 +96,11 @@ class UsersController < ApplicationController
       current_user.attended_events << @attend_event
 
       if @attend_event.line.nil? == false
-        current_user.lines << @attend_event.line
+        if current_user.lines.nil? == true
+          current_user.lines = @attend_event.line
+        else
+          current_user.lines << @attend_event.line
+        end
         @attend_event.line.users << current_user
       end
     end

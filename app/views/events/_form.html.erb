@@ -37,8 +37,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :event_photo %><br />
-    <%= f.file_field :event_photo%>
+    <%= f.label :image, "Upload Pictures:" %>
+  <%= f.file_field :image, multiple: true, name: "event_pictures[image][]" %>
   </div>
 
 

@@ -10,7 +10,7 @@ class ManagersController < ApplicationController
   # GET /managers/1
   # GET /managers/1.json
   def show
-    @events = Event.all
+    @events = current_manager.events
   end
 
   # GET /managers/new

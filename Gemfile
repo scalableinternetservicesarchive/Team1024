@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
+gem 'jquery.fileupload-rails'
+
 gem 'owlcarousel-rails'
 
-gem "paperclip", "~> 4.2"
+gem 'carrierwave'
+
+gem 'rmagick', :require => 'RMagick'
 
 gem 'sunspot_rails'
 gem 'sunspot_solr'

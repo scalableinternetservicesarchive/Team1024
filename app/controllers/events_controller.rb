@@ -12,12 +12,13 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-
+  @event_pictures = @event.event_pictures
   end
 
   # GET /events/new
   def new
     @event = Event.new
+    @event_picture = @event.event_pictures.build
   end
 
   # GET /events/1/edit
@@ -33,6 +34,9 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save && current_manager.save
+        params[:event_pictures]['image'].each do |picture|
+          @event_picture = @event.event_pictures.create!(:image => picture, :event_id => @event.id)
+       end
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
@@ -45,6 +49,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
@@ -61,7 +66,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to manager_path(current_manager), notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -80,7 +85,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params[:event].permit(:name, :max_attendance, :create_time, :start_time, :description, :event_photo)
+      params[:event].permit(:name, :max_attendance, :create_time, :start_time, :description, post_attachments_attributes: [:id, :event_id, :image])
     end
 
     def authenticate_either

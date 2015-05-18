@@ -39,15 +39,22 @@
     <div class="tab-pane active" id="tab-pane-1">
       <div class="container">
         <div class="row">
-          <div class="col-xs-6">
-            <%= image_tag @event.event_photo.url(:medium) %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-3" id="event-title">
+          <div class="col-xs-12" id="event-title">
             <%= @event.name %>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div id="owl-demo" class="owl-carousel owl-theme">
+                <%@event_pictures.each do |event_picture|%>
+                  <div class="item"><img class="clip" <%= image_tag event_picture.image_url.to_s%> /></div>
+                <%end%>
+            </div>
+
+          </div>
+        </div>
+    
         <div class="row">
           <div class="col-xs-3">
             Max attendance
@@ -89,26 +96,29 @@
             </div>
             <div class="col-xs-1">
               <%= link_to 'Destroy', @event, method: :delete, class: "btn btn-danger"%>
+
             </div>
             <div class="col-xs-1">
               <%= link_to 'Back', current_manager, class: "btn btn-default" %>
             </div>
-            
+          </div>
           <% end %>
+
+          
         </div>
       </div>
-    </div>
-    <div class="tab-pane" id="tab-pane-2">
-      <% if @event.line.nil? == false %>
-        <p><%= @event.line.start_time %></p>
-        <p><%= @event.line.end_time %></p>
-        <h4>current users in line:</h4>
-        <% @event.line.users.each do |user|%>
-          <p><%= user.first_name %></p>
+      <div class="tab-pane" id="tab-pane-2">
+        <% if @event.line.nil? == false %>
+          <p><%= @event.line.start_time %></p>
+          <p><%= @event.line.end_time %></p>
+          <h4>current users in line:</h4>
+          <% @event.line.users.each do |user|%>
+            <p><%= user.first_name %></p>
+          <% end %>
+        <% else %>
+          <h4>Line has not been started yet.</h4>
         <% end %>
-      <% else %>
-        <h4>Line has not been started yet.</h4>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
