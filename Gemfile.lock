@@ -1,9 +1,3 @@
-GIT
-  remote: https://github.com/xponrails/sunspot_autocomplete.git
-  revision: 68e127e9880a17d99cf2f67b1a0436ec04fe7784
-  specs:
-    sunspot_autocomplete (0.0.4)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -196,7 +190,6 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   spring (~> 1.3.6)
   sqlite3
-  sunspot_autocomplete (>= 0.0.3)!
   sunspot_rails
   sunspot_solr
   uglifier (>= 1.3.0)

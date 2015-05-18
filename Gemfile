@@ -10,7 +10,6 @@ gem 'rmagick', :require => 'RMagick'
 
 gem 'sunspot_rails'
 gem 'sunspot_solr'
-gem "sunspot_autocomplete", ">= 0.0.3", :git => "https://github.com/xponrails/sunspot_autocomplete.git"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
