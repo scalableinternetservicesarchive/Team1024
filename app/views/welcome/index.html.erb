@@ -1,3 +1,60 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href={% static "assets/img/favicon.png" %}>
+
+    <title>Smarter Events</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/cerulean/bootstrap.min.css">
+
+<style>
+/*.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  text-align: left;
+  background-color: white;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+}    */
+#sign-in-dropdown {
+
+  padding-left: 26px; // balance the whitespace to the left and to the right of the heading.
+}
+
+#sign-in-dropdown-m {
+
+  padding-left: 1px; // balance the whitespace to the left and to the right of the heading.
+
+}
+
+.btn btn-default {
+	color: #EEEEEE;
+
+}
+</style>
+
+
+</head>
+
 
 <p id="notice"><%= notice %></p>
 <!-- Fixed navbar -->
@@ -15,67 +72,47 @@
     <div class="navbar-collapse collapse" id="nav-color">
 
       <ul class="nav navbar-nav navbar-right">
-         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><strong>User</strong> <span class="caret"></span></a>
-            <ul id="user-sign-in-dropdown" class="dropdown-menu profile-image centered" role="menu">
 
-            <% if user_signed_in? %>
-              
-              <h4><strong> Hi, <%= current_user.first_name %> <%= current_user.last_name %> </strong></h4>
-              <br>
-            <% else %>
-              <%= link_to "User sign in", new_user_session_path, class: 'btn btn-default', type: 'button' %>
-              <br>
-            <% end %>
+      	<% if user_signed_in? %>
+      		<li><%= link_to 'Go to user dashboard', user_session_path, class: 'btn btn-primary' %></li>
+      		<li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-primary' %></li>
 
-            <li class="divider"></li>
-              <% if user_signed_in? %>
-                <%= button_to "User sign out", destroy_user_session_path, method: :delete, class: 'btn btn-danger', type: 'button' %>
-                <br>
-              <% else %>
-                <li><h4>Not a member?</h4></li>
-                <%= link_to "User sign up", new_user_registration_path, class: 'btn btn-default', type: 'button' %>
-                <br>
-              <% end %>
+      	<% elsif manager_signed_in? %>
+      		<li><%= link_to 'Go to manager dashboard', manager_session_path, class: 'btn btn-primary' %></li>
+      		<li><%= link_to "Sign out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary' %></li>
 
-          </ul>
-        </li>
+      	<% else %>
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><strong>User</strong> <span class="caret"></span></a>
+	          <ul class="dropdown-menu" role="menu">
+<!-- 	          	<li id="sign-in-dropdown-m"><h4><strong>Already a member?</strong></h4></li> -->
+              <li><%= link_to "User sign in", new_user_session_path, class: 'btn btn-default' %></li>
 
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><strong>Manager</strong> <span class="caret"></span></a>
-          <ul id="manager-sign-in-dropdown" class="dropdown-menu centered" role="menu">
+            	<li class="divider"></li>
+              <li id="sign-in-dropdown"><h4><strong>First Time?</strong></h4></li>
+              <li><%= link_to "User sign up", new_user_registration_path, class: 'btn btn-default' %></li>
 
-            <% if manager_signed_in? %>
-              
-              <h4><strong> Hi, <%= current_manager.first_name %> <%= current_manager.last_name %> </strong></h4>
-              <br>
-            <% else %>
-              <%= link_to "Manager sign in", new_manager_session_path, class: 'btn btn-default', type: 'button' %>
-              <br>
-            <% end %>
+          	</ul>
+        	</li>
 
-            <li class="divider"></li>
-              <% if manager_signed_in? %>
-                <%= button_to "Manager sign out", destroy_manager_session_path, method: :delete, class: 'btn btn-danger', type: 'button' %>
-                <br>
-              <% else %>
-                <li><h4>Not a member?</h4></li>
-                <%= link_to "Manager sign up", new_manager_registration_path, class: 'btn btn-default', type: 'button' %>
-                <br>
-              <% end %>
+        	<li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><strong>Manager</strong> <span class="caret"></span></a>
+	          <ul class="dropdown-menu" role="menu">
+<!-- 	          	<li id="sign-in-dropdown-m"><h4><strong>Already a member?</strong></h4></li> -->
+	            <li><%= link_to "Manager sign in", new_manager_session_path, class: 'btn btn-default' %></li>
 
-          </ul>
-        </li>
+	            <li class="divider"></li>
+	            <li id="sign-in-dropdown"><h4><strong>First Time?</strong></h4></li>
+	            <li><%= link_to "Manager sign up", new_manager_registration_path, class: 'btn btn-default' %></li>
+	          </ul>
+        	</li>
+        <% end %>
       </ul>
 
-
     </div>
-
-
   </div>
-
-
 </div>
+
 <div id = "footer" class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">
     <div class="navbar-header">
@@ -92,7 +129,7 @@
               <div class="form-group">
 
                 <span style="color:red;"></span> -->
-                <h5>Join us today</h5>
+                <h3><strong>Join us today</strong></h3>
                 <!--<input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter your email address">-->
 
 <!--               </div> -->

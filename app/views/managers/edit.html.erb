@@ -1,3 +1,23 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href={% static "assets/img/favicon.png" %}>
+
+    <title>Smarter Events</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/cerulean/bootstrap.min.css">
+
+
+</head>
+
+
+
+
 <p id="notice"><%= notice %></p>
 <!-- Fixed navbar -->
 <div class="navbar navbar-default navbar-fixed-top">
@@ -10,15 +30,29 @@
       </button>
       <a class="navbar-brand" href="<%= root_path %>"><b>SingleFile</b></a>
     </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Back to dashboard', @manager, class: 'btn btn-primary' %></li>
+        <li><%= link_to "Sign Out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary' %></li>
+        
+
+      </ul>
+    </div>
   </div>
 </div>
 
 <div class="container">
+  <div class="row mt centered">
+    <div class="col-lg-6 col-lg-offset-3">
 
-<h1>Editing Manager</h1>
+        <h1>Editing Manager</h1>
 
-<%= render 'form' %>
+        <%= render 'form' %>
 
-<%= link_to 'Show', @manager %> |
-<%= link_to 'Back', managers_path %>
+    </div>
+  </div>
 </div>
+

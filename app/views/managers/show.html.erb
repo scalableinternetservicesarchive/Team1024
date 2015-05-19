@@ -1,3 +1,20 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href={% static "assets/img/favicon.png" %}>
+
+    <title>Smarter Events</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/cerulean/bootstrap.min.css">
+
+
+
+<p id="notice"><%= notice %></p>
 <!-- Fixed navbar -->
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -9,34 +26,40 @@
       </button>
       <a class="navbar-brand" href="<%= root_path %>"><b>SingleFile</b></a>
     </div>
+
     <div class="navbar-collapse collapse" id="nav-color">
 
-      <ul id="sign-out-button" class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Edit Profile", edit_manager_path, class: 'btn btn-primary' %></li>
+        <li><%= link_to "Sign Out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary' %></li>
+        
 
-        <%= button_to "Manager sign out", destroy_manager_session_path, method: :delete, class: 'btn btn-warning', type: 'button' %>
       </ul>
-
-
     </div>
   </div>
 </div>
+
+
+<br></br>
 
 <div class="navbar-placeholder"></div>
 <div class="container">
   <p id="notice"><%= notice %></p>
 </div>
 <div class="container">
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-tabs" id="tabs-customcss">
     <li class="active">
       <a href="#tab-pane-1" data-toggle="tab">All Events</a>
     </li>
     <li>
-      <a href="#tab-pane-2" data-toggle="tab">Monitor Events</a>
+      <a href="#tab-pane-1" data-toggle="tab">Monitor Events</a>
     </li>
     <li>
-      <a href="#tab-pane-3" data-toggle="tab">Past Events</a>
+      <a href="#tab-pane-1" data-toggle="tab">Past Events</a>
     </li>
-  </ul>
+  </ul> 
+
+
 
   <div class="tab-content">
     <div class="tab-pane active" id="tab-pane-1">

@@ -1,3 +1,11 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/cerulean/bootstrap.min.css">
+</head>
+
+
+
 
 <p id="notice"><%= notice %></p>
 <!-- Fixed navbar -->
@@ -11,27 +19,30 @@
       </button>
       <a class="navbar-brand" href="<%= root_path %>"><b>SingleFile</b></a>
     </div>
-    <div class="navbar-collapse collapse" id="nav-color">
 
-      <ul id="sign-out-button" class="nav navbar-nav navbar-right">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-        <%= button_to "User sign out", destroy_user_session_path, method: :delete, class: 'btn btn-warning', type: 'button' %>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Edit Profile", edit_user_path, class: 'btn btn-primary' %></li>
+        <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-primary' %></li>
+        
+
       </ul>
-
-
     </div>
-
-
   </div>
 </div>
 
 
 <br></br>
+<br></br>
 
-<div class="container"></div>
-
-<div id="exTab1" class="container"> 
-<ul class="nav nav-tabs">
+<div class="navbar-placeholder"></div>
+  <div class="container">
+    <p id="notice"><%= notice %></p>
+  </div>
+  <div class="container">
+    <ul class="nav nav-tabs">
       <li class="<%= "active" if params[:search] == nil %>">
         <a  href="#1" data-toggle="tab">Current Events</a>
       </li>
@@ -51,11 +62,15 @@
             </thead>
           <tbody>
             <% current_user.attended_events.each do |event| %>
-            <tr>
-              <td><%= event.name%></td>
-              <td><%= link_to 'Show', event , class: 'btn btn-info', type: 'button'%></td>
-              <td><%= link_to 'Quit', {:controller => 'users', :action=>'quit', :delete_att => event} ,{class: 'btn btn-danger', type: 'button'}%></td>
-            </tr>
+              <div class="row">
+                <div class="col-xs-6 event-name">
+                  <%= event.name %>
+                </div>
+                <div class="col-xs-6">
+                  <%= link_to 'Show', event, class: "btn btn-info" %>
+                  <%= link_to 'Delete', {:controller => 'users', :action=>'delete', :delete_fav => event} ,{class: 'btn btn-danger', type: 'button'}%>
+                </div>
+              </div>
             <% end %>
           </tbody>
           </table>
@@ -69,12 +84,18 @@
           </thead>
           <tbody>
             <% current_user.favorited_events.each do |event| %>
-              <tr>
-                <td><%= event.name%></td>
-                <td><%= link_to 'Show', event, class: 'btn btn-info', type: 'button' %></td>
-                <td><%= link_to 'Delete', {:controller => 'users', :action=>'delete', :delete_fav => event} ,{class: 'btn btn-danger', type: 'button'}%></td>
-              </tr>
+              <div class="row">
+                <div class="col-xs-6 event-name">
+                  <%= event.name %>
+                </div>
+                <div class="col-xs-6">
+                  <%= link_to 'Show', event, class: "btn btn-info" %>
+                  <%= link_to 'Delete', {:controller => 'users', :action=>'delete', :delete_fav => event} ,{class: 'btn btn-danger', type: 'button'}%>
+                </div>
+              </div>
             <% end %>
+
+
           </tbody>
         </table>
         </div>
@@ -106,8 +127,8 @@
                  <% end %>
               </tbody>
         </table>
-        </div>
       </div>
+    </div>
   </div>
 
 

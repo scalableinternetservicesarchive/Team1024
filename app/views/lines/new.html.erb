@@ -1,3 +1,12 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/cerulean/bootstrap.min.css">
+</head>
+
+
+
+
 <p id="notice"><%= notice %></p>
 <!-- Fixed navbar -->
 <div class="navbar navbar-default navbar-fixed-top">
@@ -10,19 +19,31 @@
       </button>
       <a class="navbar-brand" href="<%= root_path %>"><b>SingleFile</b></a>
     </div>
-    <div class="navbar-collapse collapse" id="nav-color">
 
-      <ul id="sign-out-button" class="nav navbar-nav navbar-right">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-        <%= button_to "User sign out", destroy_user_session_path, method: :delete, class: 'btn btn-warning', type: 'button' %>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Go to manager dashboard', manager_session_path, class: 'btn btn-primary' %></li>
+        <li><%= link_to "Sign Out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary' %></li>
+        
+
       </ul>
-
-
     </div>
-
-
   </div>
 </div>
-<div class="content">
-	<%= render 'form' %>
+
+<br></br>
+<br></br>
+
+<div class="container">
+  <div class="row mt centered">
+    <div class="col-lg-6 col-lg-offset-3">
+
+    <h1>Let's start this line!</h1>
+
+      <div class="content">
+     <%= render 'form' %>
+     <br></br>
+     <%= link_to 'Back to event', @event, class: 'btn btn-primary' %>
 </div>
