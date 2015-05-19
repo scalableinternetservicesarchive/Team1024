@@ -1,0 +1,4 @@
+rake db:migrate
+rake db:seed
+rake sunspot:solr:start
+rake sunspot:solr:reindex

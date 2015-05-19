@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :lines, through: :attended_events, source: :lines
+  has_many :lines, through: :attended_events, source: :line, class_name: "Event"
   has_many :users_attend_events_relationships
   has_many :users_favorite_events_relationships
   has_many :attended_events, through: :users_attend_events_relationships, source: :event
