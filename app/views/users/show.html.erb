@@ -61,6 +61,7 @@
                </tr>
             </thead>
           <tbody>
+            <%if current_user.attended_events != nil%>
             <% current_user.attended_events.each do |event| %>
               <div class="row">
                 <div class="col-xs-6 event-name">
@@ -71,6 +72,7 @@
                   <%= link_to 'Quit', {:controller => 'users', :action=> 'quit', :delete_att => event} ,{class: 'btn btn-danger', type: 'button'}%>
                 </div>
               </div>
+            <% end %>
             <% end %>
           </tbody>
           </table>
@@ -83,6 +85,7 @@
           </tr>
           </thead>
           <tbody>
+            <%if current_user.favorited_events != nil%>
             <% current_user.favorited_events.each do |event| %>
               <div class="row">
                 <div class="col-xs-6 event-name">
@@ -93,6 +96,7 @@
                   <%= link_to 'Delete', {:controller => 'users', :action=>'delete', :delete_fav => event} ,{class: 'btn btn-danger', type: 'button'}%>
                 </div>
               </div>
+            <% end %>
             <% end %>
 
 
