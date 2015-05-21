@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/home/ec2-user/opt/tsung-1.5.0/share/tsung/tsung-1.0.dtd">
+<tsung loglevel="notice" version="1.0">
+
+  <!-- Client side setup -->
+  <clients>
+    <client host="localhost" use_controller_vm="true" maxusers='15000'/>
+  </clients>
+
+  <!-- Server side setup -->
+  <servers>
+    <server host="ec2-52-24-226-72.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+  </servers>
+
+
+  <load>
+    <arrivalphase phase="1" duration="30" unit="second">
+      <users arrivalrate="1" unit="second"></users>
+    </arrivalphase>   
+    <arrivalphase phase="2" duration="30" unit="second">
+      <users arrivalrate="2" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="3" duration="30" unit="second">
+      <users arrivalrate="4" unit="second"></users>
+    </arrivalphase>
+
+  </load>
+
+  <options>
+    <!-- Set connection timeout to 2 seconds -->
+    <option name="glocal_ack_timeout" value="2000"></option>
+
+    <option type="ts_http" name="user_agent">
+      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
+    </option>
+  </options>
+
+  <sessions>
+    <session name="http-example" probability="100" type="ts_http">
+
+      <!-- start out at the homepage. -->
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user is looking for the sign up button at the first page -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- visit the sign up page, as a user would do.  -->
+      <request>
+        <http url='/user/sign_up' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user is looking for the correct professor -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- create a random number to make a unique first name -->
+      <setdynvars sourcetype="random_number" start="1000" end="9999999">
+        <var name="random_first_name" />
+      </setdynvars>
+
+      <!-- create a random number to make a unique last name -->
+      <setdynvars sourcetype="random_number" start="1000" end="9999999">
+        <var name="random_last_name" />
+      </setdynvars>
+
+      <!-- post to /communities to create a community.
+           remember the url of the created community so we can delete it later -->
+      <request subst="true">
+        <http
+          url='/'
+          version='1.1'
+          method='POST'
+          contents='user%5Bfirst_name%5D=first_name%%_random_first_name%%&amp;user%5Blast_name%5D=last_name%%_random_last_name%%&amp;user%5Bemail%5D=%%_random_first_name%%%40gmail.com&amp;user%5Bpassword%5D=00000000&amp;user%5Bpassword_confirmation%5D=00000000&amp;commit=Sign+up'>
+        </http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user decides to delete account -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- Uncomment the following to debug print your dynamic variables  --> 
+      <!--
+      <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
+        io:format([126, $p, 126, $n, 126, $n], [DynVars]),
+        ok end.">
+        <var name="dump" />
+      </setdynvars>
+      -->
+
+      <!-- delete the community we created -->
+
+      <request subst="true">
+        <http url="/user" method="DELETE">
+        </http>
+      </request>
+
+    </session>
+  </sessions>
+</tsung>
