@@ -418,7 +418,10 @@ ul.social li.gp:hover {
 }
 
 .row{
-    margin-top: 5px;
+    margin-top: 1px;
     font-size: 1.1em;
 }
 
+.col-xs-6{
+    margin-bottom: 2px;
+}
