@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/home/ec2-user/opt/tsung-1.5.0/share/tsung/tsung-1.0.dtd">
+<tsung loglevel="notice" version="1.0">
+
+  <!-- Client side setup -->
+  <clients>
+    <client host="localhost" use_controller_vm="true" maxusers='1'/>
+  </clients>
+
+  <!-- Server side setup -->
+  <servers>
+    <server host="ec2-52-24-226-72.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+  </servers>
+
+
+  <load>
+    <arrivalphase phase="1" duration="30" unit="second">
+      <users arrivalrate="1" unit="second"></users>
+    </arrivalphase>   
+  </load>
+
+  <options>
+    <!-- Set connection timeout to 2 seconds -->
+    <option name="glocal_ack_timeout" value="2000"></option>
+
+    <option type="ts_http" name="user_agent">
+      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
+    </option>
+  </options>
+
+  <sessions>
+    <session name="http-example" probability="100" type="ts_http">
+
+      <!-- start out at the homepage. -->
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user is looking for the sign up button at the first page -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- visit the sign up page, as a user would do.  -->
+      <request>
+        <http url='/users/sign_in' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user is typing names -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- create a random number to make a unique first name -->
+      <setdynvars sourcetype="random_number" start="1" end="100">
+        <var name="random_num" />
+      </setdynvars>
+
+      <!-- user log in -->
+      <request subst="true">
+        <http
+          url='/'
+          version='1.1'
+          method='GET'
+          contents='user%5Bemail%5D=test%%_random_num%%%40test.com&amp;user%5Bpassword%5D=password&amp;commit=Sign+in'>
+        </http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user decides to delete account -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- perform a search on "event_1" -->
+      <request>
+        <http url='/search?=event_1' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 1 seconds, user view the search result -->
+      <thinktime value="1" random="true"></thinktime>
+
+      <!-- click to show the event page -->
+      <request>
+        <http url='/events/1' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user view the event -->
+      <thinktime value="2" random="true"></thinktime>
+
+
+      <!-- user sign out -->     
+      <request>
+        <http url="/users/sign_out" version='1.1' method="POST">
+        </http>
+      </request>
+
+    </session>
+  </sessions>
+</tsung>
