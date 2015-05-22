@@ -55,42 +55,43 @@
       <thinktime value="2" random="true"></thinktime>
 
       <!-- create a random number to make a unique first name -->
-<!--       <setdynvars sourcetype="random_number" start="1000" end="9999999">
-        <var name="random_first_name" />
+      <setdynvars sourcetype="random_number" start="1" end="100">
+        <var name="random_num" />
       </setdynvars>
 
-      create a random number to make a unique last name
-      <setdynvars sourcetype="random_number" start="1000" end="9999999">
-        <var name="random_last_name" />
-      </setdynvars> -->
-
-      <!-- post to /communities to create a community.
-           remember the url of the created community so we can delete it later -->
+      <!-- user log in -->
       <request subst="true">
         <http
           url='/'
           version='1.1'
-          method='POST'
-          contents='user%5Bfirst_name%5D=first_name%%_random_first_name%%&amp;user%5Blast_name%5D=last_name%%_random_last_name%%&amp;user%5Bemail%5D=%%_random_first_name%%%40gmail.com&amp;user%5Bpassword%5D=00000000&amp;user%5Bpassword_confirmation%5D=00000000&amp;commit=Sign+up'>
+          method='GET'
+          contents='user%5Bemail%5D=test%%_random_num%%%40test.com&amp;user%5Bpassword%5D=11111111&amp;commit=Sign+in'>
         </http>
       </request>
 
       <!-- wait for up to 2 seconds, user decides to delete account -->
       <thinktime value="2" random="true"></thinktime>
 
-      <!-- Uncomment the following to debug print your dynamic variables  --> 
-      <!--
-      <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
-        io:format([126, $p, 126, $n, 126, $n], [DynVars]),
-        ok end.">
-        <var name="dump" />
-      </setdynvars>
-      -->
+      <!-- perform a search on "event_1" -->
+      <request>
+        <http url='/search?=event_1' version='1.1' method='GET'></http>
+      </request>
 
-      <!-- delete the community we created -->
+      <!-- wait for up to 1 seconds, user view the search result -->
+      <thinktime value="1" random="true"></thinktime>
 
-      <request subst="true">
-        <http url="/users" method="DELETE">
+      <!-- click to show the event page -->
+      <request>
+        <http url='/events/1' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user view the event -->
+      <thinktime value="2" random="true"></thinktime>
+
+
+      <!-- user sign out -->     
+      <request>
+        <http url="/users/sign_out" version='1.1' method="POST">
         </http>
       </request>
 
