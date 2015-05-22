@@ -11,6 +11,12 @@ class ManagersController < ApplicationController
   # GET /managers/1.json
   def show
     @events = current_manager.events
+    @active_events = [] unless @active_events
+    @events.each do |line_started_event|
+      if line_started_event.line != nil && line_started_event.line.end_time >= DateTime.now
+         @active_events << line_started_event
+      end
+    end
   end
 
   # GET /managers/new
