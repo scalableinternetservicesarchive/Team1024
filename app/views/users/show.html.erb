@@ -125,7 +125,11 @@
                     <td><%= event.name %></td>
                     <td><%= link_to 'Show', event, class: 'btn btn-info', type: 'button'%></td>
                     <td><%= link_to 'Save', {:controller => 'users', :action=>'save', :fav => event}, {class: 'btn btn-success', type: 'button'} %></td>
-                    <td><%= link_to 'Line', {:controller => 'users', :action=>'line', :line_event => event}, {class: 'btn btn-warning', type: 'button'} %></td>
+                    <% if event.line == nil %>
+                      <td><%= link_to 'Line', {:controller => 'users', :action=>'line', :line_event => event}, {class: 'btn btn-warning disabled', type: 'button'} %></td>
+                    <% else %>
+                      <td><%= link_to 'Line', {:controller => 'users', :action=>'line', :line_event => event}, {class: 'btn btn-warning', type: 'button'} %></td>
+                    <% end %>
                     </tr>
                     <%end%>
                  <% end %>

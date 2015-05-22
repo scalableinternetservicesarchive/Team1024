@@ -91,14 +91,18 @@ class UsersController < ApplicationController
   end
 
   def line
+
+    if @attend_event.line.nil?
+      redirect_to :back, notice: "The line has not yet been started."
+      return
+    end
+    
     @attend_event = Event.find(params[:line_event])
     if current_user.attended_events.include?(@attend_event) == false
       current_user.attended_events << @attend_event
 
-      if @attend_event.line.nil? == false
-        current_user.lines << @attend_event.line
-        @attend_event.line.users << current_user
-      end
+      ## xih: the original code is not needed because we get the user-line relation through events.
+
     end
     redirect_to :back
   end
