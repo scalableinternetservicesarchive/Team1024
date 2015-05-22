@@ -67,10 +67,14 @@
         </div>
 
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-xs-9">
             <div id="owl-demo" class="owl-carousel owl-theme">
-                <%@event_pictures.each do |event_picture|%>
-                  <div class="item"><img class="clip" <%= image_tag event_picture.image_url.to_s%></div>
+                <%if @event_pictures.empty? == false%>
+                  <%@event_pictures.each do |event_picture|%>
+                    <div class="item"><img class="clip" <%= image_tag event_picture.image_url.to_s%></div>
+                  <%end%>
+                <%else%>
+                  <p><%= "No picture uploaded for this event"%></p>
                 <%end%>
             </div>
 

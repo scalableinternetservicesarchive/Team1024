@@ -7,6 +7,12 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    if params[:rollbackevent] != nil
+      @event_to_rollback = Event.find(params[:rollbackevent])
+      @event_to_rollback.line = nil
+      @event_to_rollback.save
+      redirect_to current_manager
+    end
   end
 
   # GET /events/1
