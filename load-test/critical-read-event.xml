@@ -70,7 +70,7 @@
           url='/'
           version='1.1'
           method='GET'
-          contents='user%5Bemail%5D=test%%_random_num%%%40test.com&amp;user%5Bpassword%5D=11111111&amp;commit=Sign+in'>
+          contents='user%5Bemail%5D=test%%_random_num%%%40test.com&amp;user%5Bpassword%5D=password&amp;commit=Sign+in'>
         </http>
       </request>
 
