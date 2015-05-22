@@ -34,9 +34,9 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save && current_manager.save
-        params[:event_pictures]['image'].each do |picture|
+        params[:event_pictures] && params[:event_pictures]['image'].each do |picture|
           @event_picture = @event.event_pictures.create!(:image => picture, :event_id => @event.id)
-       end
+        end
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
