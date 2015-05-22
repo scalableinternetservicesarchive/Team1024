@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_manager!, only: [:new, :create, :edit, :update, :destroy]
   before_action :authenticate_either, only: [:show]
-
+  
   # GET /events
   # GET /events.json
   def index
