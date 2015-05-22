@@ -22,6 +22,15 @@ class ManagersController < ApplicationController
   # GET /managers/new
   def new
     @manager = Manager.new
+    if params[:rollbackevent] != nil
+      @event_to_rollback = Event.find(params[:rollbackevent])
+      @event_to_rollback.line = nil
+      @event_to_rollback.save
+      puts "GOOOOOOD"
+      redirect_to current_manager_path
+    end
+    
+  
   end
 
   # GET /managers/1/edit
