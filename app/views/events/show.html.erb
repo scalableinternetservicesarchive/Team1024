@@ -71,7 +71,7 @@
             <div id="owl-demo" class="owl-carousel owl-theme">
                 <%if @event_pictures.empty? == false%>
                   <%@event_pictures.each do |event_picture|%>
-                    <div class="item"><img class="clip" <%= image_tag event_picture.image_url.to_s%></div>
+                    <div class="item"><%= image_tag event_picture.image_url.to_s, class: "clip" %></div>
                   <%end%>
                 <%else%>
                   <p><%= "No picture uploaded for this event"%></p>
