@@ -360,3 +360,68 @@ ul.social li.gp:hover {
     background-color: #fff;
 }
 
+#event-title{
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.1em;
+    margin-left: 15em;
+}
+
+  #owl-demo .item img{
+    display: block;
+    width: 67%;
+    height: 330px;
+    margin-left: 150px;
+  }
+
+  /* Rounded avatars */
+  .clip {
+    float: left;
+    margin-top: 1em;
+    margin-right: 1em;
+    position: relative;
+
+/*    -webkit-border-radius: 10%;
+    -moz-border-radius: 10%;
+    border-radius: 10%;*/
+
+    -webkit-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.2);
+    box-shadow: 0 0 0 3px #fff, 0 0 0 4px #999, 0 2px 5px 4px rgba(0,0,0,.2);
+}
+
+.tab-pane {
+    color : black;
+    background-color: #EBEBEB;
+    padding : 5px 15px;
+    border: 1px rgb(211, 211, 211) solid;
+    border-top: 0;
+} 
+
+.nav-tabs{
+  font-size: 1.1em;
+}
+
+.nav-tabs > li.active > a{
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #CC3300;
+  cursor: default;
+  background-color: #FAFAFA;
+  border: 1px solid #dddddd;
+}
+
+.create-event-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.row{
+    margin-top: 1px;
+    font-size: 1.1em;
+}
+
+.col-xs-6{
+    margin-bottom: 2px;
+}

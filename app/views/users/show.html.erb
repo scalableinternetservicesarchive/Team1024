@@ -25,7 +25,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Edit Profile", edit_user_path, class: 'btn btn-primary' %></li>
-        <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-primary' %></li>
+        <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-primary', data: { confirm: 'Are you sure?' } %></li>
         
 
       </ul>
@@ -124,8 +124,19 @@
                     <tr>
                     <td><%= event.name %></td>
                     <td><%= link_to 'Show', event, class: 'btn btn-info', type: 'button'%></td>
-                    <td><%= link_to 'Save', {:controller => 'users', :action=>'save', :fav => event}, {class: 'btn btn-success', type: 'button'} %></td>
-                    <td><%= link_to 'Line', {:controller => 'users', :action=>'line', :line_event => event}, {class: 'btn btn-warning', type: 'button'} %></td>
+
+                    <%if current_user.favorited_events.include?(event) == false%>
+                       <td><%= link_to 'Save', {:controller => 'users', :action=>'save', :fav => event}, {class: 'btn btn-success', type: 'button'} %></td>
+                    <%else%>
+                        <td><button class="btn btn-grey">Saved!</button></td>
+                    <%end%>
+                    <% if event.line == nil %>
+                      <td><%= link_to 'Line', {:controller => 'users', :action=>'line', :line_event => event}, {class: 'btn btn-warning disabled', type: 'button'} %></td>
+                    <% elsif event.line.users.include?(current_user)%>
+                      <td><button class="btn btn-grey">In line!</button></td>
+                    <%else%>
+                        <td><%= link_to 'Line', {:controller => 'users', :action=>'line', :line_event => event}, {class: 'btn btn-warning', type: 'button'} %></td>
+                    <% end %>
                     </tr>
                     <%end%>
                  <% end %>

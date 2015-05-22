@@ -27,18 +27,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :create_time %><br />
-    <%= f.datetime_select :create_time, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
     <%= f.label :description %><br />
     <%= f.text_field :description, autocomplete: "off" %>
   </div>
 
   <div class="field">
     <%= f.label :image, "Upload Pictures:" %>
-  <%= f.file_field :image, multiple: true, name: "event_pictures[image][]" %>
+    <%= f.file_field :image, multiple: true, name: "event_pictures[image][]" %>
   </div>
 
 

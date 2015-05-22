@@ -25,7 +25,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Go to manager dashboard', manager_session_path, class: 'btn btn-primary' %></li>
-        <li><%= link_to "Sign Out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary' %></li>
+        <li><%= link_to "Sign Out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary', data: { confirm: 'Are you sure?' } %></li>
         
 
       </ul>
@@ -36,6 +36,7 @@
 <div class="container">
   <div class="row mt centered">
     <div class="col-lg-6 col-lg-offset-3">
+      <br></br>
       <h1>Let's create an event!</h1>
 
       <div class="new-content">
