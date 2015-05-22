@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @search = Event.search do
-      fulltext params[:search]
+      keywords params[:search]
     end
 
     if (params[:search].nil? || params[:search].empty? || params[:search].blank?)

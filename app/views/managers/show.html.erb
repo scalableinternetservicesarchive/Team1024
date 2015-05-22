@@ -70,7 +70,7 @@
       </div>
       <div class="row">
       <% @events.each do |event| %>
-            <%if event.line != nil%>
+            <%if event.line != nil && event.line.end_time != nil%>
               <%if event.line.end_time > DateTime.now%>
                 <div class="col-xs-6 event-name">
                   <%= event.name %>
@@ -101,7 +101,8 @@
                 <%= link_to 'Destroy', event, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
                 </div>
             <%end %>
-         <% end %>
+        
+           <% end %>
       </div>
     </div>
 
@@ -133,7 +134,8 @@
       </div>
       <% @events.each do |event| %>
         <div class="row">
-          <%if event.line != nil%>
+          
+          <%if event.line != nil && event.line.end_time != nil%>
             <%if event.line.end_time < DateTime.now%>
                 <div class="col-xs-6 event-name">
                   <%= event.name %>
