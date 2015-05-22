@@ -25,7 +25,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Go to manager dashboard', manager_session_path, class: 'btn btn-primary' %></li>
-        <li><%= link_to "Sign Out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary' %></li>
+        <li><%= link_to "Sign Out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary', data: { confirm: 'Are you sure?' } %></li>
         
 
       </ul>
@@ -50,7 +50,7 @@
 
       <ul id="sign-out-button" class="nav navbar-nav navbar-right">
 
-        <%= button_to "User sign out", destroy_user_session_path, method: :delete, class: 'btn btn-warning', type: 'button' %>
+        <%= button_to "User sign out", destroy_user_session_path, method: :delete, class: 'btn btn-warning', type: 'button', data: { confirm: 'Are you sure?' } %>
       </ul>
 
 

@@ -75,11 +75,11 @@
 
       	<% if user_signed_in? %>
       		<li><%= link_to 'Go to user dashboard', user_session_path, class: 'btn btn-primary' %></li>
-      		<li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-primary' %></li>
+      		<li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-primary', data: { confirm: 'Are you sure?' } %></li>
 
       	<% elsif manager_signed_in? %>
       		<li><%= link_to 'Go to manager dashboard', manager_session_path, class: 'btn btn-primary' %></li>
-      		<li><%= link_to "Sign out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary' %></li>
+      		<li><%= link_to "Sign out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary', data: { confirm: 'Are you sure?' } %></li>
 
       	<% else %>
 	        <li class="dropdown">

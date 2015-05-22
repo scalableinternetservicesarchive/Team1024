@@ -31,7 +31,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Edit Profile", edit_manager_path, class: 'btn btn-primary' %></li>
-        <li><%= link_to "Sign Out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary' %></li>
+        <li><%= link_to "Sign Out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary', data: { confirm: 'Are you sure?' } %></li>
         
 
       </ul>
@@ -52,57 +52,108 @@
       <a href="#tab-pane-1" data-toggle="tab">All Events</a>
     </li>
     <li>
-      <a href="#tab-pane-1" data-toggle="tab">Monitor Events</a>
+      <a href="#tab-pane-2" data-toggle="tab">Monitor Events</a>
     </li>
     <li>
-      <a href="#tab-pane-1" data-toggle="tab">Past Events</a>
+      <a href="#tab-pane-3" data-toggle="tab">Past Events</a>
     </li>
   </ul> 
 
 
 
-  <div class="tab-content">
+<div class="tab-content">
+    
     <div class="tab-pane active" id="tab-pane-1">
+
+      <div class="create-event-button">
+      <%= link_to 'Create Event', new_event_path(@event), class: "btn btn-success" %> 
+      </div>
+      <div class="row">
+      <% @events.each do |event| %>
+            <%if event.line != nil%>
+              <%if event.line.end_time > DateTime.now%>
+                <div class="col-xs-6 event-name">
+                  <%= event.name %>
+                </div>
+                <div class="col-xs-6">
+                  <%= link_to 'Show', event, class: "btn btn-info" %>
+                  <%if @active_events.include?(event)%>
+                      <button class="btn btn-grey">Line already started</button>
+                  <%else%>
+                      <%= link_to 'Start Line', {:controller => 'events', :action=>'createLine', :startevent => event},  class: "btn btn-success"%>
+                  <%end%>
+                  <%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning" %>
+                  <%= link_to 'Destroy', event, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+                  </div>
+              <%end%>
+            <%else %>
+              <div class="col-xs-6 event-name">
+                <%= event.name %>
+              </div>
+              <div class="col-xs-6">
+                <%= link_to 'Show', event, class: "btn btn-info" %>
+                <%if @active_events.include?(event)%>
+                    <button class="btn btn-grey">Line already started</button>
+                <%else%>
+                    <%= link_to 'Start Line', {:controller => 'events', :action=>'createLine', :startevent => event},  class: "btn btn-success"%>
+                <%end%>
+                <%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning" %>
+                <%= link_to 'Destroy', event, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+                </div>
+            <%end %>
+         <% end %>
+      </div>
+    </div>
+
+
+    <div class="tab-pane" id="tab-pane-2">
+
+      <div class="create-event-button">
+      <%= link_to 'Create Event', new_event_path(@event), class: "btn btn-success" %> 
+      </div>
+      <div class="row">
+      <% @active_events.each do |event| %>
+          <div class="col-xs-6 event-name">
+            <%= event.name %>
+          </div>
+          <div class="col-xs-6">
+            <%= link_to 'Show', event, class: "btn btn-info" %>
+            <button class="btn btn-grey">Line already started</button>
+            <%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning" %>
+            <%= link_to 'Destroy', event, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="tab-pane-3">
 
       <div class="create-event-button">
       <%= link_to 'Create Event', new_event_path(@event), class: "btn btn-success" %> 
       </div>
       <% @events.each do |event| %>
         <div class="row">
-          <div class="col-xs-6 event-name">
-            <%= event.name %>
-          </div>
-          <div class="col-xs-6">
-            <%= link_to 'Show', event, class: "btn btn-info" %>
-            <%= link_to 'Start Line', {:controller => 'events', :action=>'createLine', :startevent => event},  class: "btn btn-success"%>
-            <%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning" %>
-            <%= link_to 'Destroy', event, method: :delete, class: "btn btn-danger" %>
-          </div>
+          <%if event.line != nil%>
+            <%if event.line.end_time < DateTime.now%>
+                <div class="col-xs-6 event-name">
+                  <%= event.name %>
+                </div>
+                <div class="col-xs-6">
+                  <%= link_to 'Show', event, class: "btn btn-info" %>
+                  <%= link_to 'Destroy', event, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+                </div>
+            <%end%>
+          <%end%>
         </div>
-      <% end %>
+      <%end%>
     </div>
 
-  </div>
-<!-- <table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-      	<% if event.manager_id == current_manager.id %>
-        <td><%= event.name %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
--->
-
 </div>
+
+
+
+
+
+
+
+

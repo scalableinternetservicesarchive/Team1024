@@ -25,7 +25,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Go to manager dashboard', manager_session_path, class: 'btn btn-primary' %></li>
-        <li><%= link_to "Sign Out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary' %></li>
+        <li><%= link_to "Sign Out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary', data: { confirm: 'Are you sure?' } %></li>
         
 
       </ul>
@@ -45,5 +45,8 @@
       <div class="content">
      <%= render 'form' %>
      <br></br>
-     <%= link_to 'Back to event', @event, class: 'btn btn-primary' %>
+     <%= link_to 'Back to event', events_path(:rollbackevent => @associated_event),class: 'btn btn-primary'%>
+</div>
+</div>
+</div>
 </div>

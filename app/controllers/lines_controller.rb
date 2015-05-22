@@ -5,6 +5,12 @@ class LinesController < ApplicationController
   # GET /lines.json
   def index
     @lines = Line.all
+    if params[:rollbackevent] != nil
+      @event_to_rollback = Event.find(params[:rollbackevent])
+      @event_to_rollback.line = nil
+      @event_to_rollback.save
+      redirect_to current_manager_path
+    end
   end
 
   # GET /lines/1
@@ -17,6 +23,7 @@ class LinesController < ApplicationController
     @line = Line.new
     @associated_event = Event.find(params[:belong_event])
     @associated_event.line = @line
+    @associated_event.save
   end
 
   # GET /lines/1/edit

@@ -7,6 +7,12 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    if params[:rollbackevent] != nil
+      @event_to_rollback = Event.find(params[:rollbackevent])
+      @event_to_rollback.line = nil
+      @event_to_rollback.save
+      redirect_to current_manager
+    end
   end
 
   # GET /events/1
@@ -34,9 +40,9 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save && current_manager.save
-        params[:event_pictures]['image'].each do |picture|
+        params[:event_pictures] && params[:event_pictures]['image'].each do |picture|
           @event_picture = @event.event_pictures.create!(:image => picture, :event_id => @event.id)
-       end
+        end
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
