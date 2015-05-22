@@ -11,7 +11,23 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number, autocomplete: "off" %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+  
 <% end %>

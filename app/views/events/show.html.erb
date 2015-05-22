@@ -31,7 +31,7 @@
         <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-primary' %></li>
       <% else %>
         <li><%= link_to 'Go to manager dashboard', manager_session_path, class: 'btn btn-primary' %></li>
-        <li><%= link_to "Sign Out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary' %></li>
+        <li><%= link_to "Sign Out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary', data: { confirm: 'Are you sure?' } %></li>
       <% end %>
         
 
@@ -117,7 +117,7 @@
               <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-warning" %>
             </div>
             <div class="col-xs-1">
-              <%= link_to 'Destroy', @event, method: :delete, class: "btn btn-danger"%>
+              <%= link_to 'Destroy', @event, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
 
             </div>
             <div class="col-xs-1">

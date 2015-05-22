@@ -31,7 +31,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Edit Profile", edit_manager_path, class: 'btn btn-primary' %></li>
-        <li><%= link_to "Sign Out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary' %></li>
+        <li><%= link_to "Sign Out", destroy_manager_session_path, method: :delete, class: 'btn btn-primary', data: { confirm: 'Are you sure?' } %></li>
         
 
       </ul>
@@ -76,7 +76,7 @@
             <%= link_to 'Show', event, class: "btn btn-info" %>
             <%= link_to 'Start Line', {:controller => 'events', :action=>'createLine', :startevent => event},  class: "btn btn-success"%>
             <%= link_to 'Edit', edit_event_path(event), class: "btn btn-warning" %>
-            <%= link_to 'Destroy', event, method: :delete, class: "btn btn-danger" %>
+            <%= link_to 'Destroy', event, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
           </div>
         </div>
       <% end %>
