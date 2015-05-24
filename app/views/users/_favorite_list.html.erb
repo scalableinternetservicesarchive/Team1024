@@ -1,0 +1,13 @@
+<% if current_user.favorited_events != nil %>
+  <% current_user.favorited_events.each do |event| %>
+    <div class="row">
+      <div class="col-xs-6 event-name">
+        <%= event.name %>
+      </div>
+      <div class="col-xs-6">
+        <%= link_to 'Show', event, class: "btn btn-info" %>
+        <%= link_to 'Delete', {:controller => 'users', :action=>'delete', :delete_fav => event, remote: true} ,{class: 'btn btn-danger', type: 'button'}%>
+      </div>
+    </div>
+  <% end %>
+<% end %>

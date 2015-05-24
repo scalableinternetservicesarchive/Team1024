@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @pane_1_status = "active"
+    @pane_3_status = ""
     @search = Event.search do
       keywords params[:search]
     end
@@ -18,6 +20,25 @@ class UsersController < ApplicationController
       @events = nil
     else
       @events = @search.results
+    end
+  end
+
+  def search
+    @search = Event.search do
+      fulltext params[:search]
+    end
+
+    if (params[:search].nil? || params[:search].empty? || params[:search].blank?)
+      @events = nil
+    else
+      @events = @search.results
+    end
+
+    respond_to do |format| 
+      @pane_1_status = ""
+      @pane_3_status = "active"
+      format.html { render :show }
+      format.js
     end
   end
 
@@ -75,19 +96,27 @@ class UsersController < ApplicationController
     if current_user.favorited_events.include?(@fav_event) == false
       current_user.favorited_events << @fav_event
     end
-    redirect_to :back
+
+    respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+    end
   end
 
   def delete
     @delete_event = Event.find(params[:delete_fav])
+    @eid = @delete_event.id
     current_user.favorited_events.delete(@delete_event)
-    redirect_to :back
+    respond_to do |format|
+        format.html { redirect_to :back }
+        format.js { render "delete" }
+    end
   end
 
   def quit
     @quit_event = Event.find(params[:delete_att])
     current_user.attended_events.delete(@quit_event)
-    redirect_to :back
+    format.html { redirect_to :back }
   end
 
   def line
@@ -102,10 +131,14 @@ class UsersController < ApplicationController
     if current_user.attended_events.include?(@attend_event) == false
       current_user.attended_events << @attend_event
 
+      current_user.lines << @attend_event.line
       ## xih: the original code is not needed because we get the user-line relation through events.
 
     end
-    redirect_to :back
+    respond_to do |format|
+        format.html { redirect_to :back }
+        format.js { render "search" }
+    end
   end
 
   private
@@ -116,6 +149,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params[:user]
+      params[:user].permit(:first_name, :last_name, :phone_number)
     end
 end
