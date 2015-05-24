@@ -96,7 +96,11 @@ class UsersController < ApplicationController
     if current_user.favorited_events.include?(@fav_event) == false
       current_user.favorited_events << @fav_event
     end
-    redirect_to :back
+
+    respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+    end
   end
 
   def delete
@@ -108,7 +112,10 @@ class UsersController < ApplicationController
   def quit
     @quit_event = Event.find(params[:delete_att])
     current_user.attended_events.delete(@quit_event)
-    redirect_to :back
+    respond_to do |format|
+        format.html { redirect_to :back }
+        format.js { render "quit" }
+    end
   end
 
   def line
@@ -126,7 +133,10 @@ class UsersController < ApplicationController
       ## xih: the original code is not needed because we get the user-line relation through events.
 
     end
-    redirect_to :back
+    respond_to do |format|
+        format.html { redirect_to :back }
+        format.js { render "search" }
+    end
   end
 
   private
