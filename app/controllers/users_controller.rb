@@ -131,6 +131,7 @@ class UsersController < ApplicationController
     if current_user.attended_events.include?(@attend_event) == false
       current_user.attended_events << @attend_event
 
+      current_user.lines << @attend_event.line
       ## xih: the original code is not needed because we get the user-line relation through events.
 
     end

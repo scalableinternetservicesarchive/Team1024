@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518124303) do
+ActiveRecord::Schema.define(version: 20150524000408) do
 
   create_table "event_pictures", force: :cascade do |t|
     t.integer  "event_id"
@@ -90,6 +90,28 @@ ActiveRecord::Schema.define(version: 20150518124303) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "users_and_lines_relationships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "line_id"
+    t.integer  "score",                              default: 0
+    t.integer  "position",                           default: 0
+    t.integer  "checkin_count",                      default: 0
+    t.integer  "continuous_checkin_count",           default: 0
+    t.integer  "delta_value",                        default: 0
+    t.integer  "missed_checkin_count",               default: 0
+    t.boolean  "checkin_current_period",             default: false
+    t.boolean  "first_try",                          default: false
+    t.boolean  "robot",                              default: false
+    t.boolean  "send_period_notification",           default: true
+    t.datetime "send_notification_time",             default: '2015-05-24 00:45:52'
+    t.datetime "deadline_receive_notification_time", default: '2015-05-24 00:45:52'
+    t.datetime "created_at",                                                         null: false
+    t.datetime "updated_at",                                                         null: false
+  end
+
+  add_index "users_and_lines_relationships", ["line_id"], name: "index_users_and_lines_relationships_on_line_id"
+  add_index "users_and_lines_relationships", ["user_id"], name: "index_users_and_lines_relationships_on_user_id"
 
   create_table "users_attend_events_relationships", force: :cascade do |t|
     t.integer  "user_id"
