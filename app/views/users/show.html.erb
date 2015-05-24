@@ -43,17 +43,17 @@
   </div>
   <div class="container">
     <ul class="nav nav-tabs">
-      <li class="<%= "active" if params[:search] == nil %>">
+      <li class="<%= @pane_1_status %>">
         <a  href="#1" data-toggle="tab">Current Events</a>
       </li>
       <li><a href="#2" data-toggle="tab">Favorite Events</a>
       </li>
-      <li class="<%= "active" if params[:search] != nil %>"><a href="#3" data-toggle="tab">Search Events</a>
+      <li class="<%= @pane_3_status %>"><a href="#3" data-toggle="tab">Search Events</a>
       </li>
     </ul>
 
       <div class="tab-content ">
-        <div class="tab-pane <%= "active" if params[:search] == nil %>" id="1">
+        <div class="tab-pane <%= @pane_1_status %>" id="1">
           <table class="table-in-tabs">
             <thead>
               <tr>
@@ -103,44 +103,24 @@
           </tbody>
         </table>
         </div>
-        <div class="tab-pane <%= "active" if params[:search] != nil %>" id="3">
+        <div class="tab-pane <%= @pane_3_status %>" id="3">
           <table class="table-in-tabs">
             <thead>
               <tr>
                 <th colspan="3"></th>
               </tr>
             </thead>
-              <tbody>
-                 <%= form_tag user_path, method: :get do %>
-                  <%= text_field_tag :search, params[:search], size: 30 %>
-                  <%= submit_tag "Search", name: nil, class: "btn btn-default", id: "search-button" %>
-                 <% end %>
-
-                 <% if @events.nil? %>
-                 <% elsif @events.length == 0%>
-                 <p>No relative events found</p>
-                 <%else%>
-                 <% @events.each do |event| %>
-                    <tr>
-                    <td><%= event.name %></td>
-                    <td><%= link_to 'Show', event, class: 'btn btn-info', type: 'button'%></td>
-
-                    <%if current_user.favorited_events.include?(event) == false%>
-                       <td><%= link_to 'Save', {:controller => 'users', :action=>'save', :fav => event}, {class: 'btn btn-success', type: 'button'} %></td>
-                    <%else%>
-                        <td><button class="btn btn-grey">Saved!</button></td>
-                    <%end%>
-                    <% if event.line == nil %>
-                      <td><%= link_to 'Line', {:controller => 'users', :action=>'line', :line_event => event}, {class: 'btn btn-warning disabled', type: 'button'} %></td>
-                    <% elsif event.line.users.include?(current_user)%>
-                      <td><button class="btn btn-grey">In line!</button></td>
-                    <%else%>
-                        <td><%= link_to 'Line', {:controller => 'users', :action=>'line', :line_event => event}, {class: 'btn btn-warning', type: 'button'} %></td>
-                    <% end %>
-                    </tr>
-                    <%end%>
-                 <% end %>
-              </tbody>
+            <tbody>
+              <%= form_tag user_search_path, method: :get, remote: true do %>
+              <%= text_field_tag :search, params[:search], size: 30 %>
+              <%= submit_tag "Search", name: nil, class: "btn btn-default", id: "search-button" %>
+              <% end %>
+            </tbody>
+            <tbody id="search-result">
+              <%= render "search_result" %>
+            </tbody>
+                
+            
         </table>
       </div>
     </div>
