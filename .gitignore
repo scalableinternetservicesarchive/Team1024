@@ -20,7 +20,7 @@
 solr/data
 solr/test
 solr/development
-solr/pids
+
 solr/default/data
 /log/*.log.lck
 solr/pids

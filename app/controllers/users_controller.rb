@@ -116,7 +116,10 @@ class UsersController < ApplicationController
   def quit
     @quit_event = Event.find(params[:delete_att])
     current_user.attended_events.delete(@quit_event)
-    format.html { redirect_to :back }
+    respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+    end
   end
 
   def line
