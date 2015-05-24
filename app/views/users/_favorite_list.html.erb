@@ -6,7 +6,7 @@
       </div>
       <div class="col-xs-6">
         <%= link_to 'Show', event, class: "btn btn-info" %>
-        <%= link_to 'Delete', {:controller => 'users', :action=>'delete', :delete_fav => event} ,{class: 'btn btn-danger', type: 'button'}%>
+        <%= link_to 'Delete', {:controller => 'users', :action=>'delete', :delete_fav => event, remote: true} ,{class: 'btn btn-danger', type: 'button'}%>
       </div>
     </div>
   <% end %>
