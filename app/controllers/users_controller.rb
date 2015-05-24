@@ -105,17 +105,18 @@ class UsersController < ApplicationController
 
   def delete
     @delete_event = Event.find(params[:delete_fav])
+    @eid = @delete_event.id
     current_user.favorited_events.delete(@delete_event)
-    redirect_to :back
+    respond_to do |format|
+        format.html { redirect_to :back }
+        format.js { render "delete" }
+    end
   end
 
   def quit
     @quit_event = Event.find(params[:delete_att])
     current_user.attended_events.delete(@quit_event)
-    respond_to do |format|
-        format.html { redirect_to :back }
-        format.js { render "quit" }
-    end
+    format.html { redirect_to :back }
   end
 
   def line
