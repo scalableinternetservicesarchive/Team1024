@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   # Example of regular route:
   get 'users/save/:id' => 'users#save'
   get 'users/delete/:id' => 'users#delete'
-  get 'users/search/:id' => 'users#search'
+  get 'users/search/:id' => 'users#search', as: :user_search
   get 'users/line/:id' => 'users#line'
   get 'users/quit/:id' => 'users#quit'
   get 'events/createLine/:id' => 'events#createLine'

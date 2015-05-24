@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @pane_1_status = "active"
+    @pane_3_status = ""
     @search = Event.search do
       fulltext params[:search]
     end
@@ -18,6 +20,25 @@ class UsersController < ApplicationController
       @events = nil
     else
       @events = @search.results
+    end
+  end
+
+  def search
+    @search = Event.search do
+      fulltext params[:search]
+    end
+
+    if (params[:search].nil? || params[:search].empty? || params[:search].blank?)
+      @events = nil
+    else
+      @events = @search.results
+    end
+
+    respond_to do |format| 
+      @pane_1_status = ""
+      @pane_3_status = "active"
+      format.html { render :show }
+      format.js
     end
   end
 
