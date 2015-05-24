@@ -115,8 +115,10 @@ class UsersController < ApplicationController
 
   def quit
     @quit_event = Event.find(params[:delete_att])
+    @quit_line = @quit_event.line
     current_user.attended_events.delete(@quit_event)
-    format.html { redirect_to :back }
+    current_user.lines.delete(@quit_line)
+    redirect_to :back
   end
 
   def line
