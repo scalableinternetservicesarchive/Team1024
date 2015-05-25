@@ -8,7 +8,7 @@
 
 # create 100 users
 100.times do |n|
-  User.create!(id: n, email: "test#{n}@test.com", password: 'password', password_confirmation: 'password')
+  User.create!(id: n+100, email: "test#{n}@test.com", password: 'password', password_confirmation: 'password')
   #puts "Created user: test#{n}@test.com"
 end
 puts "Number of users: #{User.count}"
