@@ -14,11 +14,11 @@
         <td><button class="btn btn-grey disabled save-button">Saved!</button></td>
       <% end %>
       <% if event.line == nil %>
-        <td><button class="btn btn-grey disabled">Line not started</button></td>
+        <td><button class="btn btn-grey disabled attend-button">Line not started</button></td>
       <% elsif event.line.users.include?(current_user)%>
-        <td><button class="btn btn-grey">In line!</button></td>
+        <td><button class="btn btn-grey attend-button disabled">In line!</button></td>
       <% else %>
-        <td><%= link_to 'Line', {:controller => 'users', :action=>'line', :line_event => event, remote: true}, {class: 'btn btn-warning', type: 'button'} %></td>
+        <td><%= link_to 'Line', {:controller => 'users', :action=>'line', :line_event => event, remote: true}, {class: 'btn btn-warning attend-button', type: 'button'} %></td>
       <% end %>
     </tr>
   <% end %>

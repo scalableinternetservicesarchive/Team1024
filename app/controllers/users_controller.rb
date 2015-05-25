@@ -93,6 +93,7 @@ class UsersController < ApplicationController
 
   def save
     @fav_event = Event.find(params[:fav])
+    @eid = @fav_event.id
     if current_user.favorited_events.include?(@fav_event) == false
       current_user.favorited_events << @fav_event
     end
@@ -116,15 +117,19 @@ class UsersController < ApplicationController
   def quit
     @quit_event = Event.find(params[:delete_att])
     @quit_line = @quit_event.line
+    @eid = @quit_event.id
     current_user.attended_events.delete(@quit_event)
     current_user.lines.delete(@quit_line)
-    redirect_to :back
+    respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+    end
   end
 
   def line
     
     @attend_event = Event.find(params[:line_event])
-
+    @eid = @attend_event.id
     if @attend_event.line == nil
       redirect_to :back, notice: "The line has not yet been started."
       return
@@ -139,7 +144,7 @@ class UsersController < ApplicationController
     end
     respond_to do |format|
         format.html { redirect_to :back }
-        format.js { render "search" }
+        format.js
     end
   end
 

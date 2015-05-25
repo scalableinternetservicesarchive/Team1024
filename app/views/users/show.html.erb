@@ -54,28 +54,9 @@
 
       <div class="tab-content ">
         <div class="tab-pane <%= @pane_1_status %>" id="1">
-          <table class="table-in-tabs">
-            <thead>
-              <tr>
-              <th colspan="3"></th>
-               </tr>
-            </thead>
-          <tbody>
-            <%if current_user.attended_events != nil%>
-            <% current_user.attended_events.each do |event| %>
-              <div class="row">
-                <div class="col-xs-6 event-name">
-                  <%= event.name %>
-                </div>
-                <div class="col-xs-6">
-                  <%= link_to 'Show', event, class: "btn btn-info" %>
-                  <%= link_to 'Quit', {:controller => 'users', :action=> 'quit', :delete_att => event} ,{class: 'btn btn-danger', type: 'button'}%>
-                </div>
-              </div>
-            <% end %>
-            <% end %>
-          </tbody>
-          </table>
+          <div id="attending-list">
+            <%= render "attending_list" %>
+          </div>
         </div>
         <div class="tab-pane" id="2">
           <div id="favorite-list">
