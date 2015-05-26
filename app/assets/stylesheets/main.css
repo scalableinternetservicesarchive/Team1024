@@ -425,3 +425,39 @@ ul.social li.gp:hover {
 .col-xs-6{
     margin-bottom: 2px;
 }
+
+.list_event{
+
+    width: 220%;
+    height: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px
+
+}
+
+.event-name{
+    margin-top: 35px;
+    margin-left: 66px;
+    font-size: 2em;
+}
+
+.event-time{
+    margin-top: 20px;
+    margin-left: 66px;
+}
+
+.event-action-buttons{
+    margin-bottom: 20px;
+}
+
+.border{
+    border-bottom: solid thin;
+    border-color: #6B747D;
+}
+
+.event-description{
+
+    margin-bottom: 10px;
+}
+
+
