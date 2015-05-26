@@ -104,8 +104,8 @@ ActiveRecord::Schema.define(version: 20150524000408) do
     t.boolean  "first_try",                          default: false
     t.boolean  "robot",                              default: false
     t.boolean  "send_period_notification",           default: true
-    t.datetime "send_notification_time",             default: '2015-05-24 18:31:25'
-    t.datetime "deadline_receive_notification_time", default: '2015-05-24 18:31:25'
+    t.datetime "send_notification_time",             default: '2015-05-25 02:52:10'
+    t.datetime "deadline_receive_notification_time", default: '2015-05-25 02:52:10'
     t.datetime "created_at",                                                         null: false
     t.datetime "updated_at",                                                         null: false
   end

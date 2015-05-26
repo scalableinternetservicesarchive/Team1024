@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="ec2-52-24-226-72.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+    <server host="ec2-172-31-28-235.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
 
@@ -77,14 +77,6 @@
       <!-- wait for up to 2 seconds, user decides to delete account -->
       <thinktime value="2" random="true"></thinktime>
 
-      <!-- perform a search on "event_1" -->
-      <request>
-        <http url='/search?=event_1' version='1.1' method='GET'></http>
-      </request>
-
-      <!-- wait for up to 1 seconds, user view the search result -->
-      <thinktime value="1" random="true"></thinktime>
-
       <!-- click to show the event page -->
       <request>
         <http url='/events/1' version='1.1' method='GET'></http>
@@ -96,7 +88,7 @@
 
       <!-- user sign out -->     
       <request>
-        <http url="/users/sign_out" version='1.1' method="POST">
+        <http url="/users/sign_out" version='1.1' method="DELETE">
         </http>
       </request>
 

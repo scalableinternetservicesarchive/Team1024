@@ -1,5 +1,5 @@
-<% if current_user.favorited_events != nil %>
-  <% current_user.favorited_events.each do |event| %>
+<%if current_user.attended_events != nil%>
+  <% current_user.attended_events.each do |event| %>
     <div class="row border">
 
       <div class="col-xs-1">
@@ -28,17 +28,11 @@
         <%= event.description %>
       </div>
 
-      <div class="col-xs-6 event-action-buttons">
+
+        
+      <div class="col-xs-12 event-action-buttons">
         <%= link_to 'Show', event, class: "btn btn-info" %>
-        <%= link_to 'Unsave', {:controller => 'users', :action=>'delete', :delete_fav => event, remote: true} ,{class: 'btn btn-danger', type: 'button'}%>
-        <% if event.line == nil %>
-           <td><button class="btn btn-grey disabled">Line not started</button></td>
-      <% elsif event.line.users.include?(current_user)%>
-        <td><button class="btn btn-grey">In line!</button></td>
-      <% else %>
-        <td><%= link_to 'Line', {:controller => 'users', :action=>'line', :line_event => event, remote: true}, {class: 'btn btn-warning', type: 'button'} %></td>
-      <% end %>
-    
+        <%= link_to 'Quit', {:controller => 'users', :action=> 'quit', :delete_att => event, remote: true} ,{class: 'btn btn-danger', type: 'button'}%>
       </div>
     </div>
   <% end %>

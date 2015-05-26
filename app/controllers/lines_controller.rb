@@ -34,9 +34,8 @@ class LinesController < ApplicationController
   # POST /lines.json
   def create
     @line = Line.new(line_params)
-
     respond_to do |format|
-      if @line.save
+      if @associated_event.save && @line.save
         format.html { redirect_to @line, notice: 'Line was successfully created.' }
         format.json { render :show, status: :created, location: @line }
       else

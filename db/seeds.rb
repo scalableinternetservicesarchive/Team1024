@@ -8,7 +8,7 @@
 
 # create 100 users
 100.times do |n|
-  User.create!(id: n, email: "test#{n}@test.com", password: 'password', password_confirmation: 'password')
+  User.create!(id: n+100, email: "test#{n}@test.com", password: 'password', password_confirmation: 'password')
   #puts "Created user: test#{n}@test.com"
 end
 puts "Number of users: #{User.count}"
@@ -16,4 +16,19 @@ puts "Number of users: #{User.count}"
 
 manager_a = Manager.create(email: 'a@b.c', password: 'password', password_confirmation: 'password')
 
-event_1 = Event.create(name: 'event_1', max_attendance: 100, start_time: DateTime.new(2015,6,1), create_time: DateTime.new(2015,4,1), description: "text seed event 1")
+event_1 = manager_a.events.create(name: 'event_1', max_attendance: 100, start_time: DateTime.new(2015,6,1), create_time: DateTime.new(2015,4,1), description: "text seed event 1")
+
+
+# create a test event with two pictures
+#event_1 = Event.create(name: 'event_1', max_attendance: 100, start_time: DateTime.new(2015,6,1), create_time: DateTime.new(2015,4,1), description: "text seed event 1")
+event_1_pic_1 = EventPicture.create!(:event => event_1)
+event_1_pic_1.image.store!(File.open("#{Rails.root}/public/uploads/seed_pic/jm1.jpg"))
+event_1.event_pictures << event_1_pic_1
+event_1.save!
+event_1_pic_2 = EventPicture.create!(:event => event_1)
+event_1_pic_2.image.store!(File.open("#{Rails.root}/public/uploads/seed_pic/jm2.jpg"))
+event_1.event_pictures << event_1_pic_2
+event_1.save!
+
+# create a test event with no pictures
+event_2 = manager_a.events.create(name: 'event_2', max_attendance: 100, start_time: DateTime.new(2015,5,25), create_time: DateTime.new(2015,4,1), description: "text seed event 2")

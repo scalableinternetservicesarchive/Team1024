@@ -4,18 +4,18 @@
 
   <!-- Client side setup -->
   <clients>
-    <client host="localhost" use_controller_vm="true" maxusers='1'/>
+    <client host="localhost" use_controller_vm="true" maxusers='10000'/>
   </clients>
 
   <!-- Server side setup -->
   <servers>
-    <server host="ec2-52-24-226-72.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+    <server host="ec2-172-31-28-235.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
 
   <load>
     <arrivalphase phase="1" duration="30" unit="second">
-      <users arrivalrate="1" unit="second"></users>
+      <users maxnumber="1" arrivalrate="1" unit="second"></users>
     </arrivalphase>   
   </load>
 
