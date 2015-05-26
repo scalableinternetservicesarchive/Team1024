@@ -10,6 +10,8 @@
         <%if event.event_pictures.empty? == false%>
         <% event_picture = event.event_pictures[0] %>
         <%= image_tag event_picture.image_url.to_s, class: "list_event" %>
+        <%else%>
+        <%= image_tag 'default_picture.png', class: "list_event" %>
         <%end%>
       </div>
 
