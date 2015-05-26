@@ -54,3 +54,4 @@ end
 gem 'devise'
 gem 'sidekiq'
 gem 'pusher' 
+gem 'redis-rails'

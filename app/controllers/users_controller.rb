@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   def search
+  
     @search = Event.search do
       fulltext params[:search]
     end
@@ -102,6 +103,8 @@ class UsersController < ApplicationController
         format.js
     end
   end
+  
+  
 
   def delete
     @delete_event = Event.find(params[:delete_fav])
@@ -137,9 +140,12 @@ class UsersController < ApplicationController
       current_user.attended_events << @attend_event
 
       current_user.lines << @attend_event.line
+      
+
       ## xih: the original code is not needed because we get the user-line relation through events.
 
     end
+    LineProcess.perform_async(@attend_event.id,@attend_event.line.id)
     respond_to do |format|
         format.html { redirect_to :back }
         format.js { render "search" }
