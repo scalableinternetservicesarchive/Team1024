@@ -1,7 +1,5 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
   resources :event_pictures
   
   get 'welcome/index'
@@ -10,10 +8,12 @@ Rails.application.routes.draw do
     sessions: 'managers/sessions',
     registrations: 'managers/registrations'
   }
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  
   resources :lines
   resources :events
   resources :managers
