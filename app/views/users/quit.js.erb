@@ -1,6 +1,6 @@
 $('#attending-list').html("<%= escape_javascript render 'attending_list' %>");
-$("tr#event-<%= @eid.to_s %> .attend-button").removeClass('disabled')
-                                             .removeClass('btn-grey')
-                                             .addClass('btn-warning')
-                                             .html('Line')
-                                             .blur();
+$("#event-<%= @eid.to_s %> .attend-button").removeClass('disabled')
+                                           .removeClass('btn-grey')
+                                           .addClass('btn-warning')
+                                           .html('Line')
+                                           .blur();

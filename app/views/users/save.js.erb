@@ -1,7 +1,7 @@
-$('tr#event-<%= @eid.to_s %> .save-button').removeClass('btn-success')
-                                           .addClass('disabled')
-                                           .addClass('btn-grey')
-                                           .html('Saved!')
-                                           .blur();
+$('#event-<%= @eid.to_s %> .save-button').removeClass('btn-success')
+                                         .addClass('disabled')
+                                         .addClass('btn-grey')
+                                         .html('Saved!')
+                                         .blur();
                                            
 $('#favorite-list').html("<%= escape_javascript render 'favorite_list' %>");
