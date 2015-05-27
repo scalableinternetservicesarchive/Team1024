@@ -48,16 +48,16 @@
       <thinktime value="2" random="true"></thinktime>
 
       <!-- create a random number to make a unique first name -->
-      <setdynvars sourcetype="random_number" start="1" end="100">
+      <setdynvars sourcetype="random_number" start="101" end="200">
         <var name="random_num" />
       </setdynvars>
 
       <!-- user log in -->
       <request subst="true">
         <http
-          url='/'
+          url='/users/sign_in'
           version='1.1'
-          method='GET'
+          method='POST'
           contents='user%5Bemail%5D=test%%_random_num%%%40test.com&amp;user%5Bpassword%5D=password&amp;commit=Sign+in'>
         </http>
       </request>
@@ -66,12 +66,12 @@
       <thinktime value="2" random="true"></thinktime>
 
       <!-- perform a search on "event_1" -->
-      <request>
+<!--       <request>
         <http url='/search?=event_1' version='1.1' method='GET'></http>
-      </request>
+      </request> -->
 
       <!-- wait for up to 1 seconds, user view the search result -->
-      <thinktime value="1" random="true"></thinktime>
+<!--       <thinktime value="1" random="true"></thinktime> -->
 
       <!-- click to show the event page -->
       <request>
@@ -81,10 +81,18 @@
       <!-- wait for up to 2 seconds, user view the event -->
       <thinktime value="2" random="true"></thinktime>
 
+      <!-- click to show the event page -->
+      <request>
+        <http url='/events/2' version='1.1' method='GET'></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user view the event -->
+      <thinktime value="2" random="true"></thinktime>
+
 
       <!-- user sign out -->     
       <request>
-        <http url="/users/sign_out" version='1.1' method="POST">
+        <http url="/users/sign_out" version='1.1' method="DELETE">
         </http>
       </request>
 

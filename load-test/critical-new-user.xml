@@ -68,10 +68,10 @@
            remember the url of the created community so we can delete it later -->
       <request subst="true">
         <http
-          url='/'
+          url='/users'
           version='1.1'
           method='POST'
-          contents='user%5Bfirst_name%5D=first_name%%_random_first_name%%&amp;user%5Blast_name%5D=last_name%%_random_last_name%%&amp;user%5Bemail%5D=%%_random_first_name%%%40gmail.com&amp;user%5Bpassword%5D=00000000&amp;user%5Bpassword_confirmation%5D=00000000&amp;commit=Sign+up'>
+          contents='user%5Bfirst_name%5D=%%_random_first_name%%&amp;user%5Blast_name%5D=%%_random_last_name%%&amp;user%5Bemail%5D=%%_random_first_name%%%40gmail.com&amp;user%5Bpassword%5D=00000000&amp;user%5Bpassword_confirmation%5D=00000000&amp;commit=Sign+up'>
         </http>
       </request>
 
