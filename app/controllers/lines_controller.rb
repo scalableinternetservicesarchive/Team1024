@@ -21,6 +21,7 @@ class LinesController < ApplicationController
   # GET /lines/new
   def new
     @line = Line.new
+    @line.save
     @associated_event = Event.find(params[:belong_event])
     @associated_event.line = @line
     @associated_event.save

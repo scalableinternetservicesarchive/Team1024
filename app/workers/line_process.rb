@@ -3,13 +3,22 @@ $pusher = Pusher::Client.new app_id: '121522', key: '028a87de58f9d41e6158', secr
 
 class LineProcess
   include Sidekiq::Worker
-	  def perform(event_id,line_id)
+	  def perform(event_id)
 	      @event = Event.find(event_id)
-          @line = Line.find(line_id)
-          @user  = User.find(3)
-          puts "i am here."
+          @line = @event.line
+          @user  = User.find(1)
           puts @user.phone_number
-          puts @user.users_and_lines_relationships.where("line =  ?", @line).score
+          puts @event.name
+          puts @event.id
+          puts @line.id
+          if @user.users_and_lines_relationships != nil 
+            puts "we have relationships."
+          else
+            puts "sorry we have not."
+          end
+          puts @user.users_and_lines_relationships.find(@line)
+          puts "i am here."
+      #    puts @user.users_and_lines_relationships.where("line =  ?", @line).score
 	    #  update_score(3)
     	  $pusher.trigger('notification', 'new_notification', {
             message: 'hello fff!! You are attending '+@event.name+' right now!'

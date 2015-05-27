@@ -137,17 +137,13 @@ class UsersController < ApplicationController
       redirect_to :back, notice: "The line has not yet been started."
       return
     end
-
+    
     if current_user.attended_events.include?(@attend_event) == false
       current_user.attended_events << @attend_event
-
       current_user.lines << @attend_event.line
-      
-
       ## xih: the original code is not needed because we get the user-line relation through events.
-
     end
-    LineProcess.perform_async(@attend_event.id,@attend_event.line.id)
+    LineProcess.perform_async(@attend_event.id)
     respond_to do |format|
         format.html { redirect_to :back }
         format.js
