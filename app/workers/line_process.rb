@@ -14,17 +14,18 @@ class LineProcess
       @line.already_start = true
       @line.save
       puts 'Line started!'
-      puts 'Build 100 robots now'
-      build_robots(100)
       while Line.find(@line_id).users_and_lines_relationships.size == 0
       end
       puts 'We have user!'
+      puts 'Build 100 robots now'
+      build_robots(event_id)
+      puts 'Robots build finish'
       @line.next_checkin_time = Time.current() + 60
       @line.save
       puts @line.next_checkin_time
       @line.users_and_lines_relationships.each do |relation|
-        puts 'robot '+relation.robot.to_s
-        if relation.robot == false
+        puts 'robot '+ relation.robot.to_s
+        if relation.user.first_name != nil
           $pusher.trigger('notification', 'new_notification', {
             message: 'Hello '+relation.user.first_name+ '!! Welcome to join event "'+@event.name+'"!'
           })
@@ -40,7 +41,7 @@ class LineProcess
           @line.next_checkin_time += 60
           @line.users_and_lines_relationships.each do |relation|
             update_score(relation)
-            if relation.robot == false
+            if relation.user.first_name != nil
               $pusher.trigger('notification', 'new_notification', {
                 message: 'Hello '+relation.user.first_name+ '!! Please confirm within next 30 seconds!'
               })
@@ -97,7 +98,21 @@ class LineProcess
       return delta
     end
     
-    def build_robots(num)
+    def build_robots(event_id)
+      @attend_event = Event.find(event_id)
+      for id in 100..199
+        robot = User.find(id)
+        robot.attended_events << @attend_event
+        robot.lines << @attend_event.line
+        robot.users_and_lines_relationships.where(line: @attend_event.line).take.robot = true
+        robot.save
+        puts '1 '+@attend_event.line.users_and_lines_relationships.where(user: robot).take.robot.to_s
+        puts '2 '+robot.users_and_lines_relationships.where(line: @attend_event.line).take.robot.to_s
+         
+        robot.save
+      end
     end
+
+    
     
 end
