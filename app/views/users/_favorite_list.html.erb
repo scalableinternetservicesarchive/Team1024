@@ -30,6 +30,15 @@
 
       <div class="col-xs-6 event-action-buttons">
         <%= link_to 'Show', event, class: "btn btn-info" %>
+        <% if event.line == nil || event.line.start_time == nil%>
+        <button class="btn btn-grey disabled attend-button">Line not started</button>
+        <% elsif event.line.end_time < DateTime.now%>
+          <button class="btn btn-grey disabled">Line already ended</button>
+        <% elsif event.line.users.include?(current_user)%>
+          <button class="btn btn-grey attend-button disabled">In line!</button>
+        <% else %>
+          <%= link_to 'Line', {:controller => 'users', :action=>'line', :line_event => event, remote: true}, {class: 'btn btn-warning attend-button', type: 'button'} %>
+        <% end %>
         <%= link_to 'Delete', {:controller => 'users', :action=>'delete', :delete_fav => event, remote: true} ,{class: 'btn btn-danger', type: 'button'}%>
       </div>
     </div>
