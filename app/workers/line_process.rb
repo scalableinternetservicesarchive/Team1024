@@ -99,17 +99,17 @@ class LineProcess
     end
     
     def build_robots(event_id)
-      @attend_event = Event.find(event_id)
+      attend_event = Event.find(event_id)
+      line_id = attend_event.line.id
       for id in 100..199
         robot = User.find(id)
-        robot.attended_events << @attend_event
-        robot.lines << @attend_event.line
-        robot.users_and_lines_relationships.where(line: @attend_event.line).take.robot = true
-        robot.save
-        puts '1 '+@attend_event.line.users_and_lines_relationships.where(user: robot).take.robot.to_s
-        puts '2 '+robot.users_and_lines_relationships.where(line: @attend_event.line).take.robot.to_s
-         
-        robot.save
+        robot.attended_events << attend_event
+        robot.lines << attend_event.line
+        relation = UsersAndLinesRelationships.find_by(user: id.to_s , line: line_id.to_s)
+        relation.robot = true      
+        relation.save  
+
+        puts relation.robot
       end
     end
 
