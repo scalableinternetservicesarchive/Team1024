@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   if ($("body").attr("id") == "events") {
     $("#owl-demo").owlCarousel({
  

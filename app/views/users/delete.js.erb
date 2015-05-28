@@ -1,6 +1,6 @@
 $('#favorite-list').html("<%= escape_javascript render 'favorite_list' %>");
-$("tr#event-<%= @eid.to_s %> .save-button").removeClass('disabled')
-                                           .removeClass('btn-grey')
-                                           .addClass('btn-success')
-                                           .html('Save')
-                                           .blur();
+$("#event-<%= @eid.to_s %> .save-button").removeClass('disabled')
+                                         .removeClass('btn-grey')
+                                         .addClass('btn-success')
+                                         .html('Save')
+                                         .blur();
