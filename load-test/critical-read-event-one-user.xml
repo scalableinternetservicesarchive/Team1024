@@ -9,14 +9,41 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="ec2-172-31-28-235.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+    <server host="ec2-52-25-231-104.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
   </servers>
-
 
   <load>
     <arrivalphase phase="1" duration="30" unit="second">
-      <users maxnumber="1" arrivalrate="1" unit="second"></users>
-    </arrivalphase>   
+      <users arrivalrate="1" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="2" duration="30" unit="second">
+      <users arrivalrate="2" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="3" duration="30" unit="second">
+      <users arrivalrate="4" unit="second"></users>
+    </arrivalphase>
+   <arrivalphase phase="4" duration="30" unit="second">
+     <users arrivalrate="8" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="5" duration="30" unit="second">
+     <users arrivalrate="16" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="6" duration="30" unit="second">
+     <users arrivalrate="32" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="7" duration="30" unit="second">
+     <users arrivalrate="64" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="8" duration="30" unit="second">
+     <users arrivalrate="128" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="9" duration="30" unit="second">
+     <users arrivalrate="256" unit="second"></users>
+   </arrivalphase>
+   <arrivalphase phase="10" duration="30" unit="second">
+     <users arrivalrate="512" unit="second"></users>
+   </arrivalphase>
+
   </load>
 
   <options>
@@ -30,6 +57,7 @@
 
   <sessions>
     <session name="http-example" probability="100" type="ts_http">
+
 
       <!-- start out at the homepage. -->
       <request>
@@ -59,6 +87,7 @@
           version='1.1'
           method='POST'
           contents='user%5Bemail%5D=test%%_random_num%%%40test.com&amp;user%5Bpassword%5D=password&amp;commit=Sign+in'>
+<!-- contents='user%5Bemail%5D=test%%_random_num%%%40test.com&amp;user%5Bpassword%5D=password&amp;commit=Sign+in'> -->
         </http>
       </request>
 
@@ -66,14 +95,31 @@
       <thinktime value="2" random="true"></thinktime>
 
       <!-- perform a search on "event_1" -->
-<!--       <request>
-        <http url='/search?=event_1' version='1.1' method='GET'></http>
-      </request> -->
+      <request subst="true">
+        <http 
+                url='/users/search/%%_random_num%%?search=event_1&amp;utf8=%E2%9C%93'
+                version='1.1'
+                method='GET'></http>
+      </request>
 
       <!-- wait for up to 1 seconds, user view the search result -->
-<!--       <thinktime value="1" random="true"></thinktime> -->
+      <thinktime value="1" random="true"></thinktime>
 
       <!-- click to show the event page -->
+      <request subst="true">
+        <http               
+                url='/users/save/%%_random_num%%?fav=1'
+                version='1.1'
+                method='GET'
+                >
+        <http_header name="Referer" value="/users/%%_random_num%%"/>
+        </http>
+      </request>
+
+
+      <!-- wait for up to 2 seconds, user view the event -->
+      <thinktime value="2" random="true"></thinktime>
+
       <request>
         <http url='/events/1' version='1.1' method='GET'></http>
       </request>
@@ -81,16 +127,19 @@
       <!-- wait for up to 2 seconds, user view the event -->
       <thinktime value="2" random="true"></thinktime>
 
-      <!-- click to show the event page -->
-      <request>
-        <http url='/events/2' version='1.1' method='GET'></http>
+      <request subst="true">
+        <http url='/users/delete/%%_random_num%%?delete_fav=1' version='1.1' method='GET'>
+        <http_header name="Referer" value="/users/%%_random_num%%"/></http>
       </request>
 
       <!-- wait for up to 2 seconds, user view the event -->
       <thinktime value="2" random="true"></thinktime>
 
 
-      <!-- user sign out -->     
+
+
+
+      <!-- user sign out -->
       <request>
         <http url="/users/sign_out" version='1.1' method="DELETE">
         </http>
