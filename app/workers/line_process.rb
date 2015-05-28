@@ -4,6 +4,9 @@ $pusher = Pusher::Client.new app_id: '121522', key: '028a87de58f9d41e6158', secr
 class LineProcess
   include Sidekiq::Worker
 	  def perform(event_id)
+      $pusher.trigger('notification', 'new_notification', {
+        message: 'Hello ' + '!! Welcome to join event "' + '"!'
+      })
       @event = Event.find(event_id)
       @line = @event.line
       @line_id = @line.id
