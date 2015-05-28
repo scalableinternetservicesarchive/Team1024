@@ -25,6 +25,7 @@ class LinesController < ApplicationController
     @associated_event = Event.find(params[:belong_event])
     @associated_event.line = @line
     @associated_event.save
+   
   end
 
   # GET /lines/1/edit
@@ -51,8 +52,12 @@ class LinesController < ApplicationController
   # PATCH/PUT /lines/1
   # PATCH/PUT /lines/1.json
   def update
+   
     respond_to do |format|
       if @line.update(line_params)
+
+        LineProcess.perform_async(@line.event.id)
+
         format.html { redirect_to @line, notice: 'Line was successfully updated.' }
         format.json { render :show, status: :ok, location: @line }
       else
