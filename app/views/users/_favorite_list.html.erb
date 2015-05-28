@@ -30,7 +30,7 @@
 
       <div class="col-xs-6 event-action-buttons">
         <%= link_to 'Show', event, class: "btn btn-info" %>
-        <% if event.line == nil || event.line.start_time == nil%>
+        <% if event.line == nil || event.line.start_time == nil || event.line.start_time > DateTime.now%>
         <button class="btn btn-grey disabled attend-button">Line not started</button>
         <% elsif event.line.end_time < DateTime.now%>
           <button class="btn btn-grey disabled">Line already ended</button>
