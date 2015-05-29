@@ -95,14 +95,3 @@
       </div>
     </div>
   </div>
-      
-  <script>
-    var pusher = new Pusher('028a87de58f9d41e6158');
-    var channel = pusher.subscribe('notification');
-    channel.bind('new_notification', function(data) {
-      $('#myModal .modal-body').html(data.message);
-      $('#myModal').modal('show');
-      setTimeout(function() { $('#myModal').modal('hide'); }, 10000);
-    });
-    
-  </script>
