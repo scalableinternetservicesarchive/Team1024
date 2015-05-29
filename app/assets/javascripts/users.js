@@ -27,9 +27,10 @@ function modal_dismiss_timeout_handler(modal_id, timeout, dismiss_text) {
   if (timeout >= 1000) {
     $('#' + modal_id + ' .modal-footer button[data-dismiss]').html(dismiss_text + ' (' + (timeout / 1000 - 1) + ')');
       setTimeout(function() { 
-        modal_dismiss_timeout_handler(modal_id, timeout - 1000, dismiss_text)
+        modal_dismiss_timeout_handler(modal_id, timeout - 1000, dismiss_text);
       }, 1000);
   } else {
     $('#myModal').modal('hide');
+    $('#' + modal_id + ' .modal-footer button[data-dismiss]').html(dismiss_text);
   }
 }
