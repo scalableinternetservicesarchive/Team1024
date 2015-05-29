@@ -17,6 +17,7 @@
 /tmp
 .DS_STORE
 
+/solr
 solr/data
 solr/test
 solr/development
