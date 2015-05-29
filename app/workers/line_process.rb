@@ -4,9 +4,6 @@ $pusher = Pusher::Client.new app_id: '121522', key: '028a87de58f9d41e6158', secr
 class LineProcess
   include Sidekiq::Worker
 	  def perform(event_id)
-      $pusher.trigger('notification', 'new_notification', {
-        message: 'Hello ' + '!! Welcome to join event "' + '"!'
-      })
       @event = Event.find(event_id)
       @line = @event.line
       @line_id = @line.id
@@ -17,6 +14,7 @@ class LineProcess
       @line.already_start = true
       @line.save
       puts 'Line started!'
+      puts 'Line end time will be '+ @line.end_time.to_s
       while Line.find(@line_id).users_and_lines_relationships.size == 0
       end
       puts 'We have user!'
@@ -25,12 +23,11 @@ class LineProcess
       puts 'Robots build finish'
       @line.next_checkin_time = Time.current() + 60
       @line.save
-      puts @line.next_checkin_time
+      puts 'next_checkin_time '+ @line.next_checkin_time.to_s
       @line.users_and_lines_relationships.each do |relation|
-        puts 'robot '+ relation.robot.to_s
-        if relation.user.first_name != nil
-          $pusher.trigger('notification', 'new_notification', {
-            message: 'Hello '+relation.user.first_name+ '!! Welcome to join event "'+@event.name+'"!'
+        if relation.robot == false
+          $pusher.trigger('notification', 'greeting', {
+            message: 'Hello'+relation.user.first_name+ '!! Welcome to join event "'+@event.name+'"!'
           })
         end
       end   
@@ -42,21 +39,34 @@ class LineProcess
         if Time.current() < @line.end_time
           puts 'New checkin phase.'
           @line.next_checkin_time += 60
+          puts 'next_checkin_time '+ @line.next_checkin_time.to_s
+
           @line.users_and_lines_relationships.each do |relation|
             update_score(relation)
-            if relation.user.first_name != nil
-              $pusher.trigger('notification', 'new_notification', {
+            if relation.robot == false
+              $pusher.trigger('notification', 'checkin_notification', {
                 message: 'Hello '+relation.user.first_name+ '!! Please confirm within next 30 seconds!'
               })
               relation.send_period_notification = true
+              puts 'position '+relation.position.to_s
+            
             end    
-            puts 'score '+relation.score.to_s
-            puts 'position '+relation.position.to_s
+          #  puts 'score '+relation.score.to_s
              
           end
         end      
       end
       puts "Line is finished."
+      @line.users_and_lines_relationships.each do |relation|
+        if relation.robot == false
+          $pusher.trigger('notification', 'ticket', {
+            message: 'Congratulations '+relation.user.first_name+ '!! You got the ticket!'
+          })
+          puts 'ticket sended '
+        end    
+      #  puts 'score '+relation.score.to_s
+         
+      end
     #end  
   end   
 
@@ -64,17 +74,23 @@ class LineProcess
     def update_score(relation)
 
       if relation.checkin_current_period == false
-          puts 'no checkin this time.'
+          if relation.robot == false
+            puts 'no checkin this time.'
+          end
           relation.score -= 1
       else
           relation.score += 1
-          puts 'got your checkin.'
+          if relation.robot == false
+            puts 'got your checkin.'
+          end
       end    
       relation.delta_value = update_delta(relation.delta_value, relation.checkin_current_period, relation.continuous_checkin_count)     
       relation.score += relation.delta_value
       relation.save
-    #  puts 'score '+relation.score.to_s
-      puts 'delta '+relation.delta_value.to_s
+      if relation.robot == false
+        puts 'score '+relation.score.to_s
+        puts 'delta '+relation.delta_value.to_s
+      end
     end
     
     def update_delta(delta, checkin_current_period , continuous_checkin_conut)
@@ -112,7 +128,7 @@ class LineProcess
         relation.robot = true      
         relation.save  
 
-        puts relation.robot
+       # puts relation.robot
       end
     end
 

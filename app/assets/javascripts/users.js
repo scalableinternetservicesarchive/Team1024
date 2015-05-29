@@ -2,7 +2,7 @@ $(document).ready(function() {
   if ($("body").attr("id") == "users") {
     var pusher = new Pusher('028a87de58f9d41e6158');
     var channel = pusher.subscribe('notification');
-    channel.bind('new_notification', function(data) {
+    channel.bind('checkin_notification', function(data) {
       prompt_user('myModal', data.message, 30000);
     });
   }
