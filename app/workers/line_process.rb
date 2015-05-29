@@ -108,7 +108,7 @@ class LineProcess
         robot = User.find(id)
         robot.attended_events << attend_event
         robot.lines << attend_event.line
-        relation = UsersAndLinesRelationships.find_by(user: id.to_s , line: line_id.to_s)
+        relation = UsersAndLinesRelationship.find_by(user: id.to_s , line: line_id.to_s)
         relation.robot = true      
         relation.save  
 
