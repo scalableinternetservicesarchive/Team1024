@@ -41,10 +41,12 @@
       <% else %>
         <button class="btn btn-grey disabled save-button">Saved!</button>
       <% end %>
-      <% if event.line == nil || event.line.start_time == nil%>
+      <% if event.line == nil || event.line.start_time == nil || event.line.start_time > DateTime.now%>
         <button class="btn btn-grey disabled attend-button">Line not started</button>
       <% elsif event.line.end_time < DateTime.now%>
         <button class="btn btn-grey disabled">Line already ended</button>
+      <% elsif event.line.users.length >= event.max_attendance %>
+        <button class="btn btn-grey disabled">Line already full</button>
       <% elsif event.line.users.include?(current_user)%>
         <button class="btn btn-grey attend-button disabled">In line!</button>
       <% else %>

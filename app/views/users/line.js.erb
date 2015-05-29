@@ -1,7 +1,7 @@
-$('tr#event-<%= @eid.to_s %> .attend-button').removeClass('btn-warning')
-                                             .addClass('disabled')
-                                             .addClass('btn-grey')
-                                             .html('In line!')
-                                             .blur();
+$('#event-<%= @eid.to_s %> .attend-button').removeClass('btn-warning')
+                                           .addClass('disabled')
+                                           .addClass('btn-grey')
+                                           .html('In line!')
+                                           .blur();
                                            
 $('#attending-list').html("<%= escape_javascript render 'attending_list' %>");
