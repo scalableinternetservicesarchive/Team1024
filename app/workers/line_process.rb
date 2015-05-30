@@ -86,6 +86,7 @@ class LineProcess
       end    
       relation.delta_value = update_delta(relation.delta_value, relation.checkin_current_period, relation.continuous_checkin_count)     
       relation.score += relation.delta_value
+      relation.checkin_current_period = false
       relation.save
       if relation.robot == false
         puts 'score '+relation.score.to_s

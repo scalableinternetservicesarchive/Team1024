@@ -129,8 +129,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def line
-    
+  def line  
     @attend_event = Event.find(params[:line_event])
     @eid = @attend_event.id
     if @attend_event.line == nil
@@ -150,6 +149,15 @@ class UsersController < ApplicationController
         format.js
     end
   end
+
+  def checkin
+    user_id = params[:user_id]
+    line_id = params[:line_id]
+    relation = UsersAndLinesRelationship.find_by(user: user_id.to_s , line: line_id.to_s)  
+    relation.checkin_current_period = true
+    relation.save
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
