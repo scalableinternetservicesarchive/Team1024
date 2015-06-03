@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'daemons'
+
+gem 'delayed_job_active_record'
+
 gem 'jquery.fileupload-rails'
 
 gem 'owlcarousel-rails'

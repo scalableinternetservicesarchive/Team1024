@@ -2,3 +2,4 @@ RAILS_ENV=production rake db:migrate
 RAILS_ENV=production rake db:reset
 RAILS_ENV=production rake db:seed
 RAILS_ENV=production rake sunspot:solr:start
+RAILS_ENV=production bin/delayed_job start
