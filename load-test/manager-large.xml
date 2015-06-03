@@ -74,14 +74,14 @@
       <thinktime value="2" random="true"></thinktime>
 
       <!-- create a random number to make a unique first name -->
-      <setdynvars sourcetype="random_number" start="201" end="300">
+      <setdynvars sourcetype="random_number" start="301" end="10000">
         <var name="random_num" />
       </setdynvars>
 
       <!-- user log in -->
       <request subst="true">
         <http
-          url='/managers/sign_in'
+          url='/managers/sign_up'
           version='1.1'
           method='POST'
           contents='manager%5Bemail%5D=test%%_random_num%%%40test.com&amp;manager%5Bpassword%5D=password&amp;commit=Sign+in'>
@@ -138,7 +138,7 @@
     
       <!-- manager sign out -->
       <request>
-        <http url="/managers/sign_out" version='1.1' method="DELETE">
+        <http url="/managers" version='1.1' method="DELETE">
         </http>
       </request>
 

@@ -9,10 +9,11 @@
 # create 100 users
 100.times do |n|
   User.create!(id: n+101, email: "test#{n+101}@test.com", password: 'password', password_confirmation: 'password')
+  Manager.create!(email: "test#{n+201}@test.com", password: 'password', password_confirmation: 'password')
   #puts "Created user: test#{n}@test.com"
 end
 puts "Number of users: #{User.count}"
-
+puts "Number of managers: #{Manager.count}"
 
 manager_a = Manager.create(email: 'a@b.c', password: 'password', password_confirmation: 'password')
 
