@@ -24,6 +24,7 @@ class LinesController < ApplicationController
     @associated_event = Event.find(params[:belong_event])
     @associated_event.line = @line
     @associated_event.save
+
   end
 
   # GET /lines/1/edit
@@ -50,6 +51,9 @@ class LinesController < ApplicationController
   # PATCH/PUT /lines/1
   # PATCH/PUT /lines/1.json
   def update
+    @line.event.favoriting_users.each do |user|
+          UserMailer.delay.line_start_email(user)
+    end
     respond_to do |format|
       if @line.update(line_params)
         format.html { redirect_to @line, notice: 'Line was successfully updated.' }
