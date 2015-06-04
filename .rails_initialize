@@ -2,7 +2,8 @@ RAILS_ENV=production rake db:migrate
 RAILS_ENV=production rake db:reset
 RAILS_ENV=production rake db:seed
 RAILS_ENV=production rake sunspot:solr:start
-RAILS_ENV=production redis-server
+RAILS_ENV=production (cd redis-stable && make)
+RAILS_ENV=production redis-stable/src/redis-server
 RAILS_ENV=production bundle exec sidekiq
 
 
