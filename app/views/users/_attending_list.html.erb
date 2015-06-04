@@ -1,5 +1,6 @@
 <%if current_user.attended_events != nil%>
   <% current_user.attended_events.each do |event| %>
+  <% cache(cache_key_for_attending_event(event)) do %>
     <div class="row border">
 
       <div class="col-xs-1">
@@ -27,6 +28,7 @@
       <div class="col-xs-12 event-description">
         <%= event.description %>
       </div>
+  <% end %>
 
 
         

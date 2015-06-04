@@ -4,6 +4,7 @@
   <p>No relative events found</p>
 <% else %>
   <% @events.each do |event| %>
+  <% cache(cache_key_for_search_event(event)) do %>
     <div class = "row border", id="event-<%= event.id.to_s %>">
 
       <div class="col-xs-1">
@@ -35,6 +36,7 @@
       <div class="col-xs-6 event-action-buttons">
 
       <%= link_to 'Show', event, class: 'btn btn-info', type: 'button'%>
+  <% end %>
 
       <% if current_user.favorited_events.include?(event) == false %>
         <%= link_to 'Save', {:controller => 'users', :action=>'save', :fav => event, remote: true}, {class: 'btn btn-success save-button', type: 'button'} %>
