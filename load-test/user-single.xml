@@ -93,6 +93,20 @@
       <!-- wait for up to 2 seconds, user view the event -->
       <thinktime value="2" random="true"></thinktime>
 
+      <request subst="true">
+        <http               
+                url='/users/line/%%_random_num%%?line_event=1'
+                version='1.1'
+                method='GET'
+                >
+        <http_header name="Referer" value="/users/%%_random_num%%"/>
+        </http>
+      </request>
+
+
+      <!-- wait for up to 2 seconds, user view the event -->
+      <thinktime value="2" random="true"></thinktime>
+
       <request>
         <http url='/events/1' version='1.1' method='GET'></http>
       </request>
@@ -108,7 +122,13 @@
       <!-- wait for up to 2 seconds, user view the event -->
       <thinktime value="2" random="true"></thinktime>
 
+      <request subst="true">
+        <http url='/users/quit/%%_random_num%%?delete_att=1' version='1.1' method='GET'>
+        <http_header name="Referer" value="/users/%%_random_num%%"/></http>
+      </request>
 
+      <!-- wait for up to 2 seconds, user view the event -->
+      <thinktime value="2" random="true"></thinktime>
 
 
 

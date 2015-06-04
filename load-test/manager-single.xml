@@ -42,7 +42,7 @@
 
       <!-- visit the sign up page, as a user would do.  -->
       <request>
-        <http url='/managers/sign_in' version='1.1' method='GET'></http>
+        <http url='/managers/sign_up' version='1.1' method='GET'></http>
       </request>
 
       <!-- wait for up to 2 seconds, user is typing names -->
