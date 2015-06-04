@@ -76,7 +76,7 @@
       <thinktime value="2" random="true"></thinktime>
 
       <!-- create a random number to make a unique first name -->
-      <setdynvars sourcetype="random_number" start="101" end="200">
+      <setdynvars sourcetype="random_number" start="101" end="100100">
         <var name="random_num" />
       </setdynvars>
 
@@ -118,6 +118,21 @@
 
 
       <!-- wait for up to 2 seconds, user view the event -->
+      <!-- wait for up to 2 seconds, user view the event -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <request subst="true">
+        <http               
+                url='/users/line/%%_random_num%%?line_event=1'
+                version='1.1'
+                method='GET'
+                >
+        <http_header name="Referer" value="/users/%%_random_num%%"/>
+        </http>
+      </request>
+
+
+      <!-- wait for up to 2 seconds, user view the event -->
       <thinktime value="2" random="true"></thinktime>
 
       <request>
@@ -131,6 +146,18 @@
         <http url='/users/delete/%%_random_num%%?delete_fav=1' version='1.1' method='GET'>
         <http_header name="Referer" value="/users/%%_random_num%%"/></http>
       </request>
+
+      <!-- wait for up to 2 seconds, user view the event -->
+      <thinktime value="2" random="true"></thinktime>
+
+      <request subst="true">
+        <http url='/users/quit/%%_random_num%%?delete_att=1' version='1.1' method='GET'>
+        <http_header name="Referer" value="/users/%%_random_num%%"/></http>
+      </request>
+
+      <!-- wait for up to 2 seconds, user view the event -->
+      <thinktime value="2" random="true"></thinktime>
+
 
       <!-- wait for up to 2 seconds, user view the event -->
       <thinktime value="2" random="true"></thinktime>
