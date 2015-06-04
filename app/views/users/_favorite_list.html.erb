@@ -1,5 +1,5 @@
 <% if current_user.favorited_events != nil %>
-  <% current_user.favorited_events.each do |event| %>
+  <% current_user.favorited_events[20 * (@fav_pgno - 1), 20].each do |event| %>
     <% cache(cache_key_for_favorite_event(event)) do %>
       <div class="row border", id="event-<%= event.id.to_s %>">
 
@@ -45,4 +45,9 @@
         </div>
       </div>
   <% end %>
+
+  <ul class="pager <%= 'invisible' if @fav_pgno == 0 %>">
+    <li class="previous <%= 'disabled' if @fav_pgno == 1 %>"><%= link_to 'Previous', {:controller => 'users', :action=>'fav_page', :pgno => (@pgno + 1).to_s, remote: true} %></li>
+    <li class="next <%= 'disabled' if @fav_pgno == @fav_max_page %>"><%= link_to 'Previous', {:controller => 'users', :action=>'fav_page', :pgno => (@pgno + 1).to_s, remote: true} %></li>
+  </ul>
 <% end %>

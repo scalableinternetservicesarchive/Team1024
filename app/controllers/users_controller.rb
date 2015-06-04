@@ -21,6 +21,50 @@ class UsersController < ApplicationController
     else
       @events = @search.results
     end
+
+    @favorited_events = current_user.favorited_events
+    @fav_max_page = @favorited_events.length / 20 + 1
+    @fav_max_page = 0 if @favorited_events.length == 0
+    if (params[:pgno].nil?)
+      if (@fav_max_page != 0)
+        @fav_pgno = 1
+      else
+        @fav_pgno = 0
+      end
+    elsif
+      @fav_pgno = params[:pgno].to_i
+      if (@fav_pgno <= 0 || @fav_pgno > @fav_max_page)
+        if (@fav_max_page != 0)
+        @fav_pgno = 1
+      else
+        @fav_pgno = 0
+      end
+    end
+  end
+
+  def fav_page
+    @favorited_events = current_user.favorited_events
+    @fav_max_page = @favorited_events.length / 20 + 1
+    @fav_max_page = 0 if @favorited_events.length == 0
+    if (params[:pgno].nil?)
+      if (@fav_max_page != 0)
+        @fav_pgno = 1
+      else
+        @fav_pgno = 0
+      end
+    elsif
+      @fav_pgno = params[:pgno].to_i
+      if (@fav_pgno <= 0 || @fav_pgno > @fav_max_page)
+        if (@fav_max_page != 0)
+        @fav_pgno = 1
+      else
+        @fav_pgno = 0
+      end
+    end
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def search
