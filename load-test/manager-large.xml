@@ -9,15 +9,15 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="ec2-52-25-231-104.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
+    <server host="ec2-52-24-181-200.us-west-2.compute.amazonaws.com" port="80" type="tcp"></server>
   </servers>
 
   <load>
     <arrivalphase phase="1" duration="30" unit="second">
       <users arrivalrate="1" unit="second"></users>
     </arrivalphase>
-    <arrivalphase phase="2" duration="30" unit="second">
-      <users arrivalrate="2" unit="second"></users>
+     <arrivalphase phase="2" duration="30" unit="second">
+                        <users arrivalrate="2" unit="second"></users>
     </arrivalphase>
     <arrivalphase phase="3" duration="30" unit="second">
       <users arrivalrate="4" unit="second"></users>
@@ -43,6 +43,7 @@
    <arrivalphase phase="10" duration="30" unit="second">
      <users arrivalrate="512" unit="second"></users>
    </arrivalphase>
+
 
   </load>
 
@@ -74,24 +75,24 @@
       <thinktime value="2" random="true"></thinktime>
 
       <!-- create a random number to make a unique first name -->
-      <setdynvars sourcetype="random_number" start="301" end="10000">
+      <setdynvars sourcetype="random_number" start="201" end="10000">
         <var name="random_num" />
       </setdynvars>
 
       <!-- user log in -->
       <request subst="true">
         <http
-          url='/managers/sign_up'
+          url='/managers'
           version='1.1'
           method='POST'
-          contents='manager%5Bemail%5D=test%%_random_num%%%40test.com&amp;manager%5Bpassword%5D=password&amp;commit=Sign+in'>
+          contents='manager%5Bemail%5D=test%%_random_num%%%40test.com&amp;manager%5Bpassword%5D=password&amp;commit=Sign+up'>
 <!-- contents='user%5Bemail%5D=test%%_random_num%%%40test.com&amp;user%5Bpassword%5D=password&amp;commit=Sign+in'> -->
         </http>
       </request>
 
+
       <!-- wait for up to 2 seconds, user decides to delete account -->
       <thinktime value="2" random="true"></thinktime>
-
       <!-- perform a search on "event_1" -->
       <request subst="true">
         <http 
@@ -104,44 +105,86 @@
       <thinktime value="1" random="true"></thinktime>
 
  <!-- Content-Disposition: form-data; name="event_pictures[image][]"; filename="download (1).jpg"  Content-Type: image/jpeg -->
+      <setdynvars sourcetype="eval"
+        code='fun({Pid,DynVars})-> [[13, 10]] end.'>
+        <var name="nl" />
+      </setdynvars>
+
+
+      <setdynvars sourcetype="eval"
+        code='fun({Pid,DynVars})->
+          {ok, Bin} = file:read_file("jm1.jpg"),
+          Bin
+          end.'>
+        <var name="attached_file_1" />
+      </setdynvars>
+
+      <setdynvars sourcetype="eval"
+        code='fun({Pid,DynVars})->
+          {ok, Bin} = file:read_file("jm2.jpg"),
+          Bin
+          end.'>
+        <var name="attached_file_2" />
+      </setdynvars>
+
 
       <!-- click to show the event page -->
       <request subst="true">
-      <dyn_variable name="redirect" re="(http://.*)\r"/>
-          <http
+        <dyn_variable name="created_event_id" re="[Ll]ocation: http://.*/events/(.*)\r"/>
+         <http
           url='/events'
           version='1.1'
           method='POST'
           content_type='multipart/form-data; boundary=----FormBoundary'
-          contents='------FormBoundary%%_nl%%Content-Disposition: form-data; name="utf8"%%_nl%%%%_nl%E2%9C%93%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[name]"%%_nl%%%%_nl%%_random_num%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[max_attendance]"%%_nl%%%%_nl%%_random_num%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[start_time(1i)]"%%_nl%%%%_nl2015_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[start_time(2i)]"%%_nl%%%%_nl06_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[start_time(3i)]"%%_nl%%%%_nl15_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[start_time(4i)]"%%_nl%%%%_nl02_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[start_time(5i)]"%%_nl%%%%_nl02_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[description]"%%_nl%%%%_nl%%_random_num%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event_pictures[image][]"; filename="jm1.jpg"%%_nl%%Content-Type: image/png%%_nl%%%%_nl%%%%_attached_file_1%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event_pictures[image][]"; filename="jm2.jpg"%%_nl%%Content-Type: image/png%%_nl%%%%_nl%%%%_attached_file_2%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="commit"%%_nl%%%%_nl%%Submit%%_nl%%------FormBoundary--%%_nl%%%%_nl%%
-          '>
+             contents='------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[name]"%%_nl%%%%_nl%%Event%%_random_num%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[max_attendance]"%%_nl%%%%_nl%%%%_random_num%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[start_time(1i)]"%%_nl%%%%_nl%%2015%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[start_time(2i)]"%%_nl%%%%_nl%%6%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[start_time(3i)]"%%_nl%%%%_nl%%27%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[start_time(4i)]"%%_nl%%%%_nl%%02%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[start_time(5i)]"%%_nl%%%%_nl%%00%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[description]"%%_nl%%%%_nl%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[image]"; filename="jm1.jpg"%%_nl%%Content-Type: application/octet-stream%%_nl%%%%_nl%%%%_attached_file_1%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="event[image]"; filename="jm2.jpg"%%_nl%%Content-Type: application/octet-stream%%_nl%%%%_nl%%%%_attached_file_2%%%%_nl%%------FormBoundary%%_nl%%Content-Disposition: form-data; name="commit"%%_nl%%%%_nl%%Create Event%%_nl%%------FormBoundary--%%_nl%%%%_nl%%'>
+</http>
+      </request>
 
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request subst="true">
+        <http url="/events/createLine/%%_random_num%%?startevent=%%_created_event_id%%" version='1.1' method="GET">
         </http>
       </request>
-<!--       this will automatically jump to event show page -->
+
+      <thinktime value="2" random="true"></thinktime>
+
+      <request subst="true">
+        <http
+          url='/lines/%%_created_event_id%%'
+          version='1.1'
+          method='POST'
+          contents='utf8=%E2%9C%93&amp;line%5Bstart_time(1i)%5D=2015&amp;line%5Bstart_time(2i)%5D=06&amp;line%5Bstart_time(3i)%5D=29&amp;line%5Bstart_time(4i)%5D=02&amp;line%5Bstart_time(5i)%5D=02&amp;line%5Bend_time(1i)%5D=2015&amp;line%5Bend_time(2i)%5D=06&amp;line%5Bend_time(3i)%5D=30&amp;line%5Bend_time(4i)%5D=02&amp;line%5Bend_time(5i)%5D=02&amp;commit=Start+Event'>
+<!-- contents='user%5Bemail%5D=test%%_random_num%%%40test.com&amp;user%5Bpassword%5D=password&amp;commit=Sign+in'> -->
+        </http>
+      </request>
+<!--      
+
+  this will automatically jump to event show page -->
 
 
       <!-- wait for up to 2 seconds, user view the event -->
       <thinktime value="2" random="true"></thinktime>
 
-      <request subst="true">   
-        <http url="%%_redirect%%" version='1.1' method="DELETE">
+      <request subst="true">
+        <http url="/events/%%_created_event_id%%" version='1.1' method="DELETE">
         </http>
       </request>
-      
+
       <!-- wait for up to 2 seconds, user view the event -->
       <thinktime value="2" random="true"></thinktime> 
-    
+
 <!--       this will automatically jump to manager home page -->
 
-    
+
     
       <!-- manager sign out -->
       <request>
         <http url="/managers" version='1.1' method="DELETE">
         </http>
       </request>
-
+    
     </session>
   </sessions>
 </tsung>
