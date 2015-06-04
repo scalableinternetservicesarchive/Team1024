@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603185934) do
+ActiveRecord::Schema.define(version: 20150604090407) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -37,14 +37,17 @@ ActiveRecord::Schema.define(version: 20150603185934) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "name"
     t.integer  "max_attendance"
     t.datetime "start_time"
     t.datetime "create_time"
     t.text     "description"
     t.integer  "manager_id"
+    t.integer  "line_status",     default: 0
+    t.datetime "line_end_time"
+    t.datetime "line_start_time"
   end
 
   add_index "events", ["manager_id"], name: "index_events_on_manager_id"
@@ -120,8 +123,8 @@ ActiveRecord::Schema.define(version: 20150603185934) do
     t.boolean  "first_try",                          default: false
     t.boolean  "robot",                              default: false
     t.boolean  "send_period_notification",           default: true
-    t.datetime "send_notification_time",             default: '2015-05-24 00:45:52'
-    t.datetime "deadline_receive_notification_time", default: '2015-05-24 00:45:52'
+    t.datetime "send_notification_time",             default: '2015-06-04 07:38:08'
+    t.datetime "deadline_receive_notification_time", default: '2015-06-04 07:38:08'
     t.datetime "created_at",                                                         null: false
     t.datetime "updated_at",                                                         null: false
   end

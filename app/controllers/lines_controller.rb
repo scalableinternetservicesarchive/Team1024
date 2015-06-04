@@ -51,13 +51,27 @@ class LinesController < ApplicationController
   # PATCH/PUT /lines/1
   # PATCH/PUT /lines/1.json
   def update
+
+
     @line.event.favoriting_users.each do |user|
           UserMailer.delay.line_start_email(user)
     end
+    
     respond_to do |format|
       if @line.update(line_params)
-        format.html { redirect_to @line, notice: 'Line was successfully updated.' }
-        format.json { render :show, status: :ok, location: @line }
+        @line.event.line_status = 1 # 1 for line started
+
+        if @line.save
+          @line.event.line_start_time = @line.start_time
+          @line.event.line_end_time = @line.end_time
+          @line.save
+          @line.event.save
+          format.html { redirect_to @line, notice: 'Line was successfully updated.' }
+          format.json { render :show, status: :ok, location: @line }
+        else
+          format.html { render :edit }
+          format.json { render json: @line.errors, status: :unprocessable_entity }
+        end
       else
         format.html { render :edit }
         format.json { render json: @line.errors, status: :unprocessable_entity }

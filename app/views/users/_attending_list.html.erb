@@ -33,7 +33,7 @@
 
         
       <div class="col-xs-12 event-action-buttons">
-        <%if event.line.end_time < DateTime.now%>
+        <%if event.line_end_time < DateTime.now%>
           <button class="btn btn-success">Your Ticket</button>
         <%end%>
         <%= link_to 'Show', event, class: "btn btn-info" %>
