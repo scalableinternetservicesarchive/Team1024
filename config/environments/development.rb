@@ -5,7 +5,7 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-  config.cache_store = :redis_store, "redis://localhost:6379/1/ns"
+  config.cache_store = :redis_store, "redis://team1024-001.7erwlc.0001.usw2.cache.amazonaws.com:6379/1/ns"
 
   # Do not eager load code on boot.
   config.eager_load = false

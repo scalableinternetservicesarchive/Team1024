@@ -2,7 +2,8 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-  config.cache_classes = true
+  config.cache_classes = false
+  config.cache_store = :redis_store, "redis://team1024-001.7erwlc.0001.usw2.cache.amazonaws.com:6379/1/ns"
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
