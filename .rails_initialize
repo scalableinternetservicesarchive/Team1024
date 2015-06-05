@@ -1,5 +1,5 @@
 RAILS_ENV=production rake db:migrate
-RAILS_ENV=production rake db:seed
+RAILS_ENV=production rake db:data:load
 RAILS_ENV=production rake sunspot:solr:start
 mkdir ~/app/tmp
 mkdir ~/app/tmp/pids
