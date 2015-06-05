@@ -21,7 +21,7 @@ class LineProcess
       puts 'Build 100 robots now'
       build_robots(event_id)
       puts 'Robots build finish'
-      @line.next_checkin_time = Time.current() + 60
+      @line.next_checkin_time = Time.current() + 10
       @line.save
       puts 'next_checkin_time '+ @line.next_checkin_time.to_s
       @line.users_and_lines_relationships.each do |relation|
