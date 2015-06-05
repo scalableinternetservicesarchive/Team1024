@@ -38,7 +38,7 @@ class LineProcess
         end  
         if Time.current() < @line.end_time
           puts 'New checkin phase.'
-          @line.next_checkin_time += 60
+          @line.next_checkin_time += 10
           puts 'next_checkin_time '+ @line.next_checkin_time.to_s
 
           @line.users_and_lines_relationships.each do |relation|
