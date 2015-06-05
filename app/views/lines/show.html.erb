@@ -50,7 +50,7 @@
 
       <ul id="sign-out-button" class="nav navbar-nav navbar-right">
 
-        <%= button_to "User sign out", destroy_user_session_path, method: :delete, class: 'btn btn-warning', type: 'button', data: { confirm: 'Are you sure?' } %>
+        <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-warning', type: 'button', data: { confirm: 'Are you sure?' } %>
       </ul>
 
 
@@ -61,7 +61,7 @@
 </div>
 
 
-<div class="content">
+<div class="container">
 Line starts now!
 <%= link_to 'Edit', edit_line_path(@line),  class: "btn btn-warning"%>
 <%= link_to 'Back', current_manager , class: "btn btn-success"%>

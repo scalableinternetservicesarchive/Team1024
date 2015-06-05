@@ -37,3 +37,11 @@
 .field {
   margin-bottom: 5px;
 }
+
+a.disabled {
+  background-color: #BBB;
+}
+
+.save-button {
+  color: #000;
+}
