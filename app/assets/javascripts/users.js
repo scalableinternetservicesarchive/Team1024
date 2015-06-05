@@ -5,9 +5,21 @@ $(document).ready(function() {
     channel.bind('checkin_notification', function(data) {
       prompt_user('myModal', data.message, 30000);
     });
+
+    channel.bind('greeting', function(data) {
+      prompt_user_no_time('myGreetingModal', data.message);
+    });
+
+    channel.bind('ticket', function(data) {
+      prompt_user_no_time('myTicketModal', data.message);
+    });
   }
 });
 
+function prompt_user_no_time(modal_id, message) {
+  $('#' + modal_id + ' .modal-body').html(message);
+  $('#' + modal_id).modal('show');
+}
 function prompt_user(modal_id, message, timeout) {
   $('#' + modal_id + ' .modal-body').html(message);
 
