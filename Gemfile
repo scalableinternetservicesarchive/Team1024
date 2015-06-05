@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'yaml_db'
+
 gem 'daemons'
 
 gem 'delayed_job_active_record'
