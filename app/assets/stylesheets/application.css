@@ -28,3 +28,12 @@
 }
 
 .navbar {min-height:80px !important;}*/
+
+.new-content {
+  text-align: left;
+  padding-left: 50px;
+}
+
+.field {
+  margin-bottom: 5px;
+}
