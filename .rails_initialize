@@ -2,3 +2,10 @@ RAILS_ENV=production rake db:migrate
 RAILS_ENV=production rake db:reset
 RAILS_ENV=production rake db:seed
 RAILS_ENV=production rake sunspot:solr:start
+wget http://download.redis.io/redis-stable.tar.gz
+tar xvzf redis-stable.tar.gz
+rm redis-stable.tar.gz
+(cd redis-stable && make)
+(redis-stable/src/redis-server) & (RAILS_ENV=production bundle exec sidekiq) &
+
+

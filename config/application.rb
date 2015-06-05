@@ -22,7 +22,7 @@ module Singlefile
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    config.cache_store = :redis_store, 'redis://localhost:6379/0/cache', { expires_in: 90.minutes }
+    config.cache_store = :redis_store, 'redis://team1024-001.7erwlc.0001.usw2.cache.amazonaws.com:6379/:6379/0/cache', { expires_in: 90.minutes }
 
   end
 end

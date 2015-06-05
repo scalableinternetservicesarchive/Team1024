@@ -1,4 +1,4 @@
 class UsersFavoriteEventsRelationship < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :userUsersFavoriteEventsRelationship
   belongs_to :event
 end
