@@ -31,5 +31,6 @@ function modal_dismiss_timeout_handler(modal_id, timeout, dismiss_text) {
       }, 1000);
   } else {
     $('#myModal').modal('hide');
+    $('#' + modal_id + ' .modal-footer button[data-dismiss]').html(dismiss_text);
   }
 }

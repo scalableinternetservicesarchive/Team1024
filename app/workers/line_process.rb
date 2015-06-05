@@ -27,7 +27,7 @@ class LineProcess
       @line.users_and_lines_relationships.each do |relation|
         if relation.robot == false
           $pusher.trigger('notification', 'greeting', {
-            message: 'Hello'+relation.user.first_name+ '!! Welcome to join event "'+@event.name+'"!'
+            message: 'Hello '+relation.user.first_name+ '!! Welcome to join event "'+@event.name+'"!'
           })
         end
       end   
